@@ -1,0 +1,3934 @@
+{
+    "services": [
+        {
+            "service": "Azure Virtual Machines",
+            "category": "Compute",
+            "description": "On-demand, scalable virtual machines for Windows and Linux workloads; supports sizes, disks, and networking for lift-and-shift and custom apps."
+        },
+        {
+            "service": "Azure App Service",
+            "category": "App Platform",
+            "description": "Fully managed platform for web apps and APIs with built-in CI/CD, scaling, and authentication integrations."
+        },
+        {
+            "service": "Azure Kubernetes Service (AKS)",
+            "category": "Containers",
+            "description": "Managed Kubernetes for container orchestration, automated upgrades, and integrated monitoring."
+        },
+        {
+            "service": "Azure Container Instances",
+            "category": "Containers",
+            "description": "Serverless containers for fast, per-second billed container runs without cluster management."
+        },
+        {
+            "service": "Azure Container Registry",
+            "category": "Containers",
+            "description": "Private Docker-compatible registry for storing and managing container images."
+        },
+        {
+            "service": "Azure Functions",
+            "category": "Serverless",
+            "description": "Event-driven serverless compute for running code on demand with pay-per-execution billing."
+        },
+        {
+            "service": "Azure Logic Apps",
+            "category": "Integration",
+            "description": "Low-code workflow automation to connect apps, data, and services across cloud and on-premises."
+        },
+        {
+            "service": "Azure Event Grid",
+            "category": "Integration",
+            "description": "Event routing service for building reactive, event-driven architectures at scale."
+        },
+        {
+            "service": "Azure Event Hubs",
+            "category": "Messaging",
+            "description": "Big-data streaming platform and event ingestion service for telemetry and analytics."
+        },
+        {
+            "service": "Azure Service Bus",
+            "category": "Messaging",
+            "description": "Enterprise messaging for reliable asynchronous communication between applications and services."
+        },
+        {
+            "service": "Azure Storage (Blob, File, Queue, Table)",
+            "category": "Storage",
+            "description": "Durable, scalable object and file storage with tiers for hot, cool, and archive data."
+        },
+        {
+            "service": "Azure Disk Storage",
+            "category": "Storage",
+            "description": "High-performance managed disks for VMs with SSD and HDD options and snapshot capabilities."
+        },
+        {
+            "service": "Azure SQL Database",
+            "category": "Databases",
+            "description": "Managed relational database service compatible with SQL Server, with built-in HA and scaling."
+        },
+        {
+            "service": "Azure Cosmos DB",
+            "category": "Databases",
+            "description": "Globally distributed, multi-model NoSQL database with low-latency reads and multi-region replication."
+        },
+        {
+            "service": "Azure Database for PostgreSQL",
+            "category": "Databases",
+            "description": "Managed PostgreSQL with scaling, backups, and security features."
+        },
+        {
+            "service": "Azure Database for MySQL",
+            "category": "Databases",
+            "description": "Managed MySQL service with automated maintenance and high availability."
+        },
+        {
+            "service": "Azure Cache for Redis",
+            "category": "Databases",
+            "description": "In-memory data store for caching and fast data access to improve app performance."
+        },
+        {
+            "service": "Azure Synapse Analytics",
+            "category": "Analytics",
+            "description": "Integrated analytics service combining data warehousing, big data, and data integration."
+        },
+        {
+            "service": "Azure Data Factory",
+            "category": "Analytics",
+            "description": "Cloud ETL/ELT service for orchestrating data movement and transformation pipelines."
+        },
+        {
+            "service": "Azure Data Lake Storage",
+            "category": "Analytics",
+            "description": "Scalable storage optimized for big data analytics workloads and hierarchical namespace."
+        },
+        {
+            "service": "Azure Databricks",
+            "category": "Analytics",
+            "description": "Apache Spark–based analytics platform for data engineering, ML, and analytics collaboration."
+        },
+        {
+            "service": "Azure HDInsight",
+            "category": "Analytics",
+            "description": "Managed Hadoop, Spark, and Kafka clusters for open-source big data workloads."
+        },
+        {
+            "service": "Azure Machine Learning",
+            "category": "AI + Machine Learning",
+            "description": "End-to-end platform for building, training, and deploying machine learning models."
+        },
+        {
+            "service": "Azure Cognitive Services",
+            "category": "AI + Machine Learning",
+            "description": "Prebuilt AI APIs for vision, speech, language, and decision-making capabilities."
+        },
+        {
+            "service": "Azure OpenAI Service",
+            "category": "AI + Machine Learning",
+            "description": "Access to advanced large language models and generative AI capabilities (where available)."
+        },
+        {
+            "service": "Azure Bot Service",
+            "category": "AI + Machine Learning",
+            "description": "Platform for building, connecting, and deploying intelligent bots across channels."
+        },
+        {
+            "service": "Azure Search (Azure Cognitive Search)",
+            "category": "AI + Machine Learning",
+            "description": "Search-as-a-service with AI enrichment for indexing and querying content."
+        },
+        {
+            "service": "Azure Media Services",
+            "category": "Media",
+            "description": "Encoding, streaming, and content protection services for video and media workflows."
+        },
+        {
+            "service": "Azure CDN",
+            "category": "Networking",
+            "description": "Global content delivery network to accelerate web and media delivery."
+        },
+        {
+            "service": "Azure Front Door",
+            "category": "Networking",
+            "description": "Global application delivery network with load balancing, WAF, and routing features."
+        },
+        {
+            "service": "Azure Load Balancer",
+            "category": "Networking",
+            "description": "Layer 4 load balancing for high-performance network traffic distribution."
+        },
+        {
+            "service": "Azure Application Gateway",
+            "category": "Networking",
+            "description": "Layer 7 web traffic load balancer with Web Application Firewall capabilities."
+        },
+        {
+            "service": "Azure Virtual Network",
+            "category": "Networking",
+            "description": "Fundamental networking service for isolating and connecting Azure resources."
+        },
+        {
+            "service": "Azure VPN Gateway",
+            "category": "Networking",
+            "description": "Secure cross-premises connectivity via site-to-site and point-to-site VPNs."
+        },
+        {
+            "service": "Azure ExpressRoute",
+            "category": "Networking",
+            "description": "Private, dedicated network connections between on-premises and Azure datacenters."
+        },
+        {
+            "service": "Azure DNS",
+            "category": "Networking",
+            "description": "Hosting DNS domains and managing DNS records with Azure scale and reliability."
+        },
+        {
+            "service": "Azure Active Directory",
+            "category": "Identity",
+            "description": "Cloud identity and access management with SSO, MFA, and conditional access."
+        },
+        {
+            "service": "Azure AD B2C",
+            "category": "Identity",
+            "description": "Customer identity and access management for consumer-facing applications."
+        },
+        {
+            "service": "Azure Key Vault",
+            "category": "Security",
+            "description": "Securely store and manage keys, secrets, and certificates with access controls."
+        },
+        {
+            "service": "Azure Security Center (Defender for Cloud)",
+            "category": "Security",
+            "description": "Unified security management and threat protection across cloud workloads."
+        },
+        {
+            "service": "Azure Sentinel (Microsoft Sentinel)",
+            "category": "Security",
+            "description": "Cloud-native SIEM for intelligent security analytics and threat detection."
+        },
+        {
+            "service": "Azure Policy",
+            "category": "Governance",
+            "description": "Policy-as-code for enforcing organizational standards and compliance at scale."
+        },
+        {
+            "service": "Azure Monitor",
+            "category": "Management + Governance",
+            "description": "Full-stack monitoring for applications, infrastructure, and networks."
+        },
+        {
+            "service": "Azure Application Insights",
+            "category": "Management + Governance",
+            "description": "Application performance monitoring and diagnostics for web apps."
+        },
+        {
+            "service": "Azure Advisor",
+            "category": "Management + Governance",
+            "description": "Personalized best-practice recommendations to optimize Azure resources."
+        },
+        {
+            "service": "Azure Automation",
+            "category": "Management + Governance",
+            "description": "Process automation, configuration management, and update orchestration."
+        },
+        {
+            "service": "Azure Backup",
+            "category": "Storage",
+            "description": "Managed backup service for Azure VMs, files, and workloads."
+        },
+        {
+            "service": "Azure Site Recovery",
+            "category": "Migration",
+            "description": "Disaster recovery orchestration for VMs and physical servers."
+        },
+        {
+            "service": "Azure Migrate",
+            "category": "Migration",
+            "description": "Assessment and migration tools for moving workloads to Azure."
+        },
+        {
+            "service": "Azure Arc",
+            "category": "Hybrid",
+            "description": "Extend Azure management to on-premises and multi-cloud resources."
+        },
+        {
+            "service": "Azure Stack Hub",
+            "category": "Hybrid",
+            "description": "Run Azure services from your datacenter with consistent APIs."
+        },
+        {
+            "service": "Azure Stack HCI",
+            "category": "Hybrid",
+            "description": "Hyperconverged infrastructure solution for running virtualized workloads."
+        },
+        {
+            "service": "Azure Stack Edge",
+            "category": "Edge",
+            "description": "Edge compute and storage appliance for local processing and ML."
+        },
+        {
+            "service": "Azure Sphere",
+            "category": "IoT + Edge",
+            "description": "End-to-end security for IoT devices with certified hardware and OS."
+        },
+        {
+            "service": "Azure IoT Hub",
+            "category": "IoT + Edge",
+            "description": "Central message hub for bi-directional device-to-cloud communication."
+        },
+        {
+            "service": "Azure IoT Central",
+            "category": "IoT + Edge",
+            "description": "SaaS IoT app platform for device management and telemetry."
+        },
+        {
+            "service": "Azure Digital Twins",
+            "category": "IoT + Edge",
+            "description": "Model and simulate real-world environments and relationships."
+        },
+        {
+            "service": "Azure Time Series Insights",
+            "category": "IoT + Edge",
+            "description": "Analytics and storage for time-series IoT data."
+        },
+        {
+            "service": "Azure Maps",
+            "category": "Developer Tools",
+            "description": "Geospatial APIs and mapping services for location-aware apps."
+        },
+        {
+            "service": "Azure Notification Hubs",
+            "category": "Mobile",
+            "description": "Push notification service for mobile and cross-platform apps."
+        },
+        {
+            "service": "Azure Communication Services",
+            "category": "Media + Comms",
+            "description": "Programmable voice, chat, SMS, and video communication APIs."
+        },
+        {
+            "service": "Azure Relay",
+            "category": "Integration",
+            "description": "Securely expose on-premises services to the cloud without opening firewall ports."
+        },
+        {
+            "service": "Azure API Management",
+            "category": "Integration",
+            "description": "Publish, secure, and analyze APIs with developer portal and policies."
+        },
+        {
+            "service": "Azure DevOps Services",
+            "category": "Developer Tools",
+            "description": "CI/CD, repos, pipelines, and project tracking for Dev teams."
+        },
+        {
+            "service": "Azure DevTest Labs",
+            "category": "Developer Tools",
+            "description": "Quickly create environments for testing and development with cost controls."
+        },
+        {
+            "service": "Azure Lab Services",
+            "category": "Developer Tools",
+            "description": "Managed lab environments for classroom and testing scenarios."
+        },
+        {
+            "service": "Azure Spring Apps",
+            "category": "App Platform",
+            "description": "Managed Spring Boot service for Java applications."
+        },
+        {
+            "service": "Azure Dev Spaces",
+            "category": "Containers",
+            "description": "Iterative Kubernetes development environment (when available)."
+        },
+        {
+            "service": "Azure Batch",
+            "category": "Compute",
+            "description": "Large-scale parallel and HPC job scheduling and execution."
+        },
+        {
+            "service": "Azure Quantum",
+            "category": "Specialty",
+            "description": "Access to quantum hardware, simulators, and development tools."
+        },
+        {
+            "service": "Azure Orbital",
+            "category": "Specialty",
+            "description": "Ground station as a service for satellite communications and data ingestion."
+        },
+        {
+            "service": "Azure Dedicated Host",
+            "category": "Compute",
+            "description": "Physical servers dedicated to your organization for compliance and isolation."
+        },
+        {
+            "service": "Azure Confidential Computing",
+            "category": "Security",
+            "description": "Hardware-based trusted execution environments for data-in-use protection."
+        },
+        {
+            "service": "Azure Confidential Ledger",
+            "category": "Security",
+            "description": "Tamper-evident ledger for secure, auditable records."
+        },
+        {
+            "service": "Azure NetApp Files",
+            "category": "Storage",
+            "description": "Enterprise-grade file storage with NFS and SMB support."
+        },
+        {
+            "service": "Azure Elastic SAN",
+            "category": "Storage",
+            "description": "Scalable, managed SAN for block storage workloads."
+        },
+        {
+            "service": "Azure Files",
+            "category": "Storage",
+            "description": "Fully managed file shares accessible via SMB and NFS."
+        },
+        {
+            "service": "Azure File Sync",
+            "category": "Storage",
+            "description": "Synchronize on-premises file servers with Azure Files."
+        },
+        {
+            "service": "Azure Data Explorer",
+            "category": "Analytics",
+            "description": "Fast, fully managed data exploration service for log and telemetry data."
+        },
+        {
+            "service": "Microsoft Purview",
+            "category": "Governance",
+            "description": "Unified data governance and cataloging across on-premises and cloud."
+        },
+        {
+            "service": "Azure Cost Management + Billing",
+            "category": "Management + Governance",
+            "description": "Cost analysis, budgeting, and billing tools for cloud spend control."
+        },
+        {
+            "service": "Azure Lighthouse",
+            "category": "Management + Governance",
+            "description": "Manage multiple customer tenants at scale for service providers."
+        },
+        {
+            "service": "Azure Bastion",
+            "category": "Networking",
+            "description": "Secure RDP/SSH access to VMs without exposing public IPs."
+        },
+        {
+            "service": "Azure DDoS Protection",
+            "category": "Security",
+            "description": "DDoS mitigation service to protect public-facing applications."
+        },
+        {
+            "service": "Azure Traffic Manager",
+            "category": "Networking",
+            "description": "DNS-based traffic load balancing across global endpoints."
+        },
+        {
+            "service": "Azure Private Link",
+            "category": "Networking",
+            "description": "Private connectivity to Azure services via private endpoints."
+        },
+        {
+            "service": "Azure Managed Identities",
+            "category": "Identity",
+            "description": "Managed service identities for secure resource authentication without secrets."
+        },
+        {
+            "service": "Azure Resource Manager",
+            "category": "Management + Governance",
+            "description": "Deployment and management service that provides a consistent management layer for creating, updating, and deleting Azure resources using templates and role-based access control."
+        },
+        {
+            "service": "Azure Blueprints",
+            "category": "Governance",
+            "description": "Orchestrate the deployment of resource templates, policies, and role assignments to ensure compliant, repeatable environment provisioning."
+        },
+        {
+            "service": "Azure Resource Graph",
+            "category": "Management + Governance",
+            "description": "Efficiently explore and query at-scale resource inventory across subscriptions for governance, auditing, and automation scenarios."
+        },
+        {
+            "service": "Azure Service Fabric",
+            "category": "Containers",
+            "description": "Distributed systems platform for packaging, deploying, and managing scalable microservices and containers with lifecycle management."
+        },
+        {
+            "service": "Azure SignalR Service",
+            "category": "App Platform",
+            "description": "Managed real-time messaging service for adding WebSocket-based real-time features such as chat, live dashboards, and notifications."
+        },
+        {
+            "service": "Azure App Configuration",
+            "category": "Developer Tools",
+            "description": "Centralized configuration service for storing and managing application settings and feature flags across environments."
+        },
+        {
+            "service": "Azure API Apps",
+            "category": "Integration",
+            "description": "Platform capabilities for hosting and managing APIs with built-in security, scaling, and developer experience features."
+        },
+        {
+            "service": "Azure API Management Developer Portal",
+            "category": "Integration",
+            "description": "Developer-facing portal for publishing APIs, documentation, and onboarding external developers with subscription controls."
+        },
+        {
+            "service": "Azure Content Moderator",
+            "category": "AI + Machine Learning",
+            "description": "AI-assisted content moderation APIs for detecting potentially offensive or unwanted text, images, and videos."
+        },
+        {
+            "service": "Azure Form Recognizer",
+            "category": "AI + Machine Learning",
+            "description": "Document intelligence service that extracts structured data from forms, receipts, and invoices using OCR and ML models."
+        },
+        {
+            "service": "Azure Speech Services",
+            "category": "AI + Machine Learning",
+            "description": "Speech-to-text, text-to-speech, and speech translation capabilities for building voice-enabled applications."
+        },
+        {
+            "service": "Azure Translator",
+            "category": "AI + Machine Learning",
+            "description": "Neural machine translation APIs for translating text between languages in real time or batch scenarios."
+        },
+        {
+            "service": "Azure Language Services",
+            "category": "AI + Machine Learning",
+            "description": "Natural language processing APIs for sentiment analysis, entity recognition, key phrase extraction, and conversational AI."
+        },
+        {
+            "service": "Azure Personalizer",
+            "category": "AI + Machine Learning",
+            "description": "Reinforcement-learning based personalization service to deliver tailored content and experiences to users."
+        },
+        {
+            "service": "Azure Anomaly Detector",
+            "category": "AI + Machine Learning",
+            "description": "Detect anomalies in time-series data to identify unusual patterns in telemetry, metrics, and business KPIs."
+        },
+        {
+            "service": "Azure Metrics Advisor",
+            "category": "AI + Machine Learning",
+            "description": "Monitoring and diagnostics service that detects and diagnoses issues in business and operational metrics."
+        },
+        {
+            "service": "Azure QnA Maker (Knowledge Service)",
+            "category": "AI + Machine Learning",
+            "description": "Create a conversational layer over your content by extracting Q&A pairs and exposing them via an API."
+        },
+        {
+            "service": "Azure Immersive Reader",
+            "category": "AI + Machine Learning",
+            "description": "Reading comprehension and accessibility service that improves content readability with text-to-speech and translation features."
+        },
+        {
+            "service": "Azure Ink Recognizer",
+            "category": "AI + Machine Learning",
+            "description": "Convert digital ink strokes into structured text, shapes, and semantic information for pen-enabled apps."
+        },
+        {
+            "service": "Azure Database Migration Service",
+            "category": "Migration",
+            "description": "Simplify database migrations from on-premises or other clouds to Azure with minimal downtime and guided workflows."
+        },
+        {
+            "service": "Azure VMware Solution",
+            "category": "Hybrid",
+            "description": "Run VMware workloads natively on Azure infrastructure with integrated management and hybrid connectivity."
+        },
+        {
+            "service": "Azure Dedicated HSM",
+            "category": "Security",
+            "description": "Hardware security module service providing dedicated FIPS-compliant key protection for high-assurance scenarios."
+        },
+        {
+            "service": "Azure Key Vault Managed HSM",
+            "category": "Security",
+            "description": "Fully managed, single-tenant HSM cluster for cryptographic key storage with compliance and isolation guarantees."
+        },
+        {
+            "service": "Azure Confidential VMs",
+            "category": "Security",
+            "description": "Virtual machines that use hardware-based trusted execution environments to protect data in use."
+        },
+        {
+            "service": "Azure Confidential Ledger",
+            "category": "Security",
+            "description": "Tamper-evident ledger service for storing immutable, auditable records with confidentiality guarantees."
+        },
+        {
+            "service": "Azure Managed Grafana",
+            "category": "Management + Governance",
+            "description": "Managed Grafana service for visualizing telemetry and metrics from Azure Monitor and other data sources."
+        },
+        {
+            "service": "Azure Monitor Logs (Log Analytics)",
+            "category": "Management + Governance",
+            "description": "Collect, query, and analyze telemetry and logs from applications and infrastructure at scale."
+        },
+        {
+            "service": "Azure Service Health",
+            "category": "Management + Governance",
+            "description": "Personalized view of Azure service incidents, planned maintenance, and health advisories affecting your resources."
+        },
+        {
+            "service": "Azure Resource Health",
+            "category": "Management + Governance",
+            "description": "Insights into the health of individual Azure resources with guidance and remediation steps."
+        },
+        {
+            "service": "Azure Update Manager",
+            "category": "Management + Governance",
+            "description": "Orchestrate and automate OS and extension updates across Azure VMs and hybrid machines."
+        },
+        {
+            "service": "Azure Reservations",
+            "category": "Cost Management",
+            "description": "Purchase reserved capacity for compute and other services to reduce costs through long-term commitments."
+        },
+        {
+            "service": "Azure Marketplace",
+            "category": "Ecosystem",
+            "description": "Catalog of third-party and Microsoft solutions that can be deployed into Azure subscriptions."
+        },
+        {
+            "service": "Azure Data Share",
+            "category": "Analytics",
+            "description": "Securely share data across organizations and subscriptions with governance and snapshot capabilities."
+        },
+        {
+            "service": "Azure Data Catalog",
+            "category": "Analytics",
+            "description": "Metadata catalog to discover, understand, and consume enterprise data assets (legacy offering in some regions)."
+        },
+        {
+            "service": "Azure Data Box",
+            "category": "Migration",
+            "description": "Appliance and service family for offline data transfer to Azure including Data Box, Data Box Edge, and Data Box Heavy."
+        },
+        {
+            "service": "Azure Import/Export",
+            "category": "Migration",
+            "description": "Transfer large amounts of data to and from Azure using encrypted hard drives shipped to Microsoft datacenters."
+        },
+        {
+            "service": "Azure Database for MariaDB",
+            "category": "Databases",
+            "description": "Managed MariaDB service with automated backups, scaling, and security features for open-source workloads."
+        },
+        {
+            "service": "Azure SQL Managed Instance",
+            "category": "Databases",
+            "description": "Managed SQL Server instance offering near 100% compatibility with on-premises SQL Server for easy migrations."
+        },
+        {
+            "service": "Azure SQL Edge",
+            "category": "Databases",
+            "description": "Small-footprint, edge-optimized relational database for IoT and edge analytics with built-in ML capabilities."
+        },
+        {
+            "service": "Azure Managed Instance for Apache Cassandra",
+            "category": "Databases",
+            "description": "Managed Cassandra-compatible service for scalable wide-column NoSQL workloads with simplified operations."
+        },
+        {
+            "service": "Azure Cache for Redis Enterprise",
+            "category": "Databases",
+            "description": "Enhanced Redis offering with higher throughput, persistence, and enterprise features for demanding workloads."
+        },
+        {
+            "service": "Azure Health Data Services",
+            "category": "Healthcare",
+            "description": "FHIR-native platform and services for ingesting, storing, and managing healthcare data securely and compliantly."
+        },
+        {
+            "service": "Azure Health Bot",
+            "category": "Healthcare",
+            "description": "Healthcare-specific conversational AI platform for building compliant virtual health assistants and triage bots."
+        },
+        {
+            "service": "Azure HPC Cache",
+            "category": "Compute",
+            "description": "High-performance caching service to accelerate access to large datasets for HPC and rendering workloads."
+        },
+        {
+            "service": "Azure NetApp Files Cloud Volumes",
+            "category": "Storage",
+            "description": "Enterprise-grade file services with high performance and multi-protocol support for lift-and-shift file workloads."
+        },
+        {
+            "service": "Azure Confidential Ledger",
+            "category": "Security",
+            "description": "Tamper-evident ledger for secure, auditable records with confidentiality guarantees."
+        },
+        {
+            "service": "Azure SignalR Service (Serverless)",
+            "category": "App Platform",
+            "description": "Serverless variant of SignalR for simplified real-time messaging without infrastructure management."
+        },
+        {
+            "service": "Azure Policy Insights",
+            "category": "Governance",
+            "description": "Insights and reporting on policy compliance across subscriptions and resources to help enforce organizational standards."
+        },
+        {
+            "service": "Azure Resource Manager Templates",
+            "category": "Management + Governance",
+            "description": "Declarative JSON templates for deploying and managing Azure resources consistently and repeatably."
+        },
+        {
+            "service": "Azure Quickstart Templates",
+            "category": "Management + Governance",
+            "description": "Community and Microsoft-provided ARM templates to accelerate common deployment scenarios."
+        },
+        {
+            "service": "Azure Marketplace Private Offers",
+            "category": "Ecosystem",
+            "description": "Private procurement and licensing offers from marketplace publishers tailored for enterprise agreements."
+        },
+        {
+            "service": "Azure Managed Applications",
+            "category": "Ecosystem",
+            "description": "Deployable, managed solutions that let service providers operate applications in customer subscriptions."
+        },
+        {
+            "service": "Azure Well-Architected Review",
+            "category": "Advisory",
+            "description": "Guidance and assessments to align workloads with best practices for reliability, security, and cost."
+        },
+        {
+            "service": "Azure Advisor Recommendations",
+            "category": "Management + Governance",
+            "description": "Actionable recommendations to optimize performance, security, reliability, and cost across resources."
+        },
+        {
+            "service": "Azure Cost Alerts",
+            "category": "Cost Management",
+            "description": "Budgeting and alerting tools to notify teams when cloud spend approaches defined thresholds."
+        },
+        {
+            "service": "Azure Billing APIs",
+            "category": "Cost Management",
+            "description": "Programmatic access to billing and usage data for integration with financial systems."
+        },
+        {
+            "service": "Azure Enrollment APIs",
+            "category": "Management + Governance",
+            "description": "APIs for managing enterprise enrollments, subscriptions, and billing relationships."
+        },
+        {
+            "service": "Azure RBAC (Role-Based Access Control)",
+            "category": "Identity",
+            "description": "Fine-grained access control for Azure resources using roles, scopes, and assignments."
+        },
+        {
+            "service": "Azure Privileged Identity Management",
+            "category": "Identity",
+            "description": "Just-in-time privileged access and oversight for high-privilege roles and accounts."
+        },
+        {
+            "service": "Azure Identity Protection",
+            "category": "Identity",
+            "description": "Risk-based conditional access and identity threat detection to protect user accounts."
+        },
+        {
+            "service": "Azure AD Domain Services",
+            "category": "Identity",
+            "description": "Managed domain services such as domain join, LDAP, and Kerberos without domain controllers."
+        },
+        {
+            "service": "Azure AD Connect",
+            "category": "Identity",
+            "description": "Tool to synchronize on-premises Active Directory identities with Azure AD for hybrid identity."
+        },
+        {
+            "service": "Azure AD Application Proxy",
+            "category": "Identity",
+            "description": "Secure remote access to on-premises web applications through Azure AD authentication."
+        },
+        {
+            "service": "Azure Bastion Host",
+            "category": "Networking",
+            "description": "Managed service providing secure and seamless RDP/SSH connectivity to VMs without public IPs."
+        },
+        {
+            "service": "Azure Virtual WAN",
+            "category": "Networking",
+            "description": "Unified wide-area networking service for connecting branches, users, and Azure regions at scale."
+        },
+        {
+            "service": "Azure Network Watcher",
+            "category": "Networking",
+            "description": "Monitoring and diagnostic tools for network performance, topology, and packet capture."
+        },
+        {
+            "service": "Azure Private DNS",
+            "category": "Networking",
+            "description": "Host and manage DNS zones privately within virtual networks for internal name resolution."
+        },
+        {
+            "service": "Azure Firewall Manager",
+            "category": "Security",
+            "description": "Centralized security policy and route management for Azure Firewall across multiple hubs."
+        },
+        {
+            "service": "Azure Web Application Firewall (WAF)",
+            "category": "Security",
+            "description": "Protect web applications from common exploits and vulnerabilities at the edge or application gateway."
+        },
+        {
+            "service": "Azure Application Insights Profiler",
+            "category": "Management + Governance",
+            "description": "Continuous profiling to identify performance hotspots and optimize application code."
+        },
+        {
+            "service": "Azure Autoscale",
+            "category": "Management + Governance",
+            "description": "Automatic scaling of compute resources based on metrics and schedules to match demand."
+        },
+        {
+            "service": "Azure Spot Virtual Machines",
+            "category": "Compute",
+            "description": "Discounted compute capacity for interruptible workloads using spare Azure capacity."
+        },
+        {
+            "service": "Azure Proximity Placement Groups",
+            "category": "Compute",
+            "description": "Placement control to co-locate compute resources for low-latency scenarios."
+        },
+        {
+            "service": "Azure Dedicated Hosts",
+            "category": "Compute",
+            "description": "Single-tenant physical servers to meet compliance, licensing, and isolation requirements."
+        },
+        {
+            "service": "Azure Instance Metadata Service",
+            "category": "Compute",
+            "description": "Metadata endpoint providing VM instance information and managed identity tokens."
+        },
+        {
+            "service": "Azure Image Builder",
+            "category": "Compute",
+            "description": "Automate creation of custom VM images with desired OS, patches, and software preinstalled."
+        },
+        {
+            "service": "Azure Container Apps",
+            "category": "Containers",
+            "description": "Serverless container hosting for microservices and event-driven apps with Dapr integration."
+        },
+        {
+            "service": "Azure Red Hat OpenShift",
+            "category": "Containers",
+            "description": "Managed OpenShift service jointly supported with Red Hat for enterprise Kubernetes workloads."
+        },
+        {
+            "service": "Azure Container Registry Tasks",
+            "category": "Containers",
+            "description": "Automated image builds, base image updates, and multi-arch image management."
+        },
+        {
+            "service": "Azure Service Fabric Mesh (legacy)",
+            "category": "Containers",
+            "description": "Platform for microservices-based applications with built-in lifecycle management (legacy/retired in some regions)."
+        },
+        {
+            "service": "Azure SignalR Service",
+            "category": "App Platform",
+            "description": "Managed service for adding real-time web functionality such as live chat and notifications."
+        },
+        {
+            "service": "Azure App Service Environment",
+            "category": "App Platform",
+            "description": "Isolated, dedicated environment for running App Service apps at high scale and security."
+        },
+        {
+            "service": "Azure API Management Gateway",
+            "category": "Integration",
+            "description": "Runtime component that enforces API policies and routes traffic for published APIs."
+        },
+        {
+            "service": "Azure Event Grid Domains",
+            "category": "Integration",
+            "description": "Multi-tenant event routing endpoints for large-scale event publishers and partners."
+        },
+        {
+            "service": "Azure Service Bus Premium",
+            "category": "Messaging",
+            "description": "Dedicated messaging throughput and predictable performance for enterprise workloads."
+        },
+        {
+            "service": "Azure Queue Storage",
+            "category": "Storage",
+            "description": "Simple, durable message queue for decoupling application components and background processing."
+        },
+        {
+            "service": "Azure Blob Storage Lifecycle Management",
+            "category": "Storage",
+            "description": "Automated policies to transition blobs between access tiers and expire data."
+        },
+        {
+            "service": "Azure Storage Explorer (service)",
+            "category": "Storage",
+            "description": "Tools and APIs to browse, manage, and transfer data across storage accounts and services."
+        },
+        {
+            "service": "Azure Files Sync",
+            "category": "Storage",
+            "description": "Cache and synchronize Azure Files with on-premises Windows Servers for hybrid file services."
+        },
+        {
+            "service": "Azure Backup Center",
+            "category": "Storage",
+            "description": "Centralized management for backup operations, monitoring, and recovery across workloads."
+        },
+        {
+            "service": "Azure Site Recovery Mobility Service",
+            "category": "Migration",
+            "description": "Agent-based replication for orchestrating failover and recovery of VMs and physical servers."
+        },
+        {
+            "service": "Azure Database for PostgreSQL Hyperscale (Citus)",
+            "category": "Databases",
+            "description": "Scale-out Postgres with distributed tables for high-throughput transactional and analytical workloads."
+        },
+        {
+            "service": "Azure SQL Analytics",
+            "category": "Databases",
+            "description": "Performance monitoring and intelligent insights for SQL databases using telemetry and analytics."
+        },
+        {
+            "service": "Azure Database for MySQL Flexible Server",
+            "category": "Databases",
+            "description": "Flexible deployment options and control plane for managed MySQL with high availability."
+        },
+        {
+            "service": "Azure Database for MariaDB Flexible Server",
+            "category": "Databases",
+            "description": "Managed MariaDB with flexible configuration, scaling, and maintenance windows."
+        },
+        {
+            "service": "Azure AI Studio",
+            "category": "AI + Machine Learning",
+            "description": "Integrated development environment for building, testing, and deploying AI solutions with model management and tooling."
+        },
+        {
+            "service": "Azure Open Datasets",
+            "category": "Analytics",
+            "description": "Curated public datasets to accelerate machine learning and analytics experiments in Azure."
+        },
+        {
+            "service": "Azure Applied AI Services",
+            "category": "AI + Machine Learning",
+            "description": "Prebuilt, customizable AI solutions that combine cognitive services and orchestration for common scenarios."
+        },
+        {
+            "service": "Azure Cognitive Search Skillsets",
+            "category": "AI + Machine Learning",
+            "description": "Enrichment pipelines for extracting insights from content during indexing using AI skills."
+        },
+        {
+            "service": "Azure Form Recognizer Custom Models",
+            "category": "AI + Machine Learning",
+            "description": "Trainable document extraction models to parse structured data from custom forms and documents."
+        },
+        {
+            "service": "Azure Video Indexer",
+            "category": "Media",
+            "description": "Extract metadata, transcripts, and insights from video content using AI-powered analysis."
+        },
+        {
+            "service": "Azure Media Player",
+            "category": "Media",
+            "description": "Client-side player optimized for streaming media delivered via Azure Media Services and CDN."
+        },
+        {
+            "service": "Azure SignalR Service (Classic)",
+            "category": "App Platform",
+            "description": "Managed real-time messaging service for WebSocket-based applications and live updates."
+        },
+        {
+            "service": "Azure App Configuration Feature Management",
+            "category": "Developer Tools",
+            "description": "Feature flagging and configuration management to control application behavior across environments."
+        },
+        {
+            "service": "Azure DevOps Artifacts",
+            "category": "Developer Tools",
+            "description": "Package management for Maven, npm, NuGet, and Python packages integrated with CI/CD."
+        },
+        {
+            "service": "Azure DevOps Pipelines",
+            "category": "Developer Tools",
+            "description": "CI/CD pipelines for building, testing, and deploying applications to Azure and other targets."
+        },
+        {
+            "service": "Azure DevOps Repos",
+            "category": "Developer Tools",
+            "description": "Git repositories with code review, branch policies, and collaboration features."
+        },
+        {
+            "service": "Azure DevOps Boards",
+            "category": "Developer Tools",
+            "description": "Work tracking and agile planning tools for managing backlogs, sprints, and tasks."
+        },
+        {
+            "service": "Azure DevOps Test Plans",
+            "category": "Developer Tools",
+            "description": "Manual and exploratory testing tools integrated with pipelines and work items."
+        },
+        {
+            "service": "Azure Blueprints Samples",
+            "category": "Governance",
+            "description": "Prebuilt blueprint packages to deploy compliant environments quickly and consistently."
+        },
+        {
+            "service": "Azure Well-Architected Framework Tools",
+            "category": "Advisory",
+            "description": "Assessment tools and guidance to evaluate workloads against best-practice pillars."
+        },
+        {
+            "service": "Azure Resource Locks",
+            "category": "Management + Governance",
+            "description": "Prevent accidental deletion or modification of critical resources by applying locks at scope."
+        },
+        {
+            "service": "Azure Tags",
+            "category": "Management + Governance",
+            "description": "Metadata tagging for organizing, billing, and governance across Azure resources."
+        },
+        {
+            "service": "Azure Managed Disks Snapshot",
+            "category": "Storage",
+            "description": "Point-in-time snapshots of managed disks for backup, cloning, and recovery scenarios."
+        },
+        {
+            "service": "Azure Backup Instant Restore",
+            "category": "Storage",
+            "description": "Rapid restore capabilities for backed-up VMs and workloads to minimize downtime."
+        },
+        {
+            "service": "Azure Site Recovery Orchestration",
+            "category": "Migration",
+            "description": "Automated runbooks and failover plans to orchestrate disaster recovery across sites."
+        },
+        {
+            "service": "Azure Migrate Server Assessment",
+            "category": "Migration",
+            "description": "Discovery and readiness assessment tools to plan server migrations to Azure."
+        },
+        {
+            "service": "Azure Migrate Database Assessment",
+            "category": "Migration",
+            "description": "Tools to evaluate database compatibility and migration paths to Azure database services."
+        },
+        {
+            "service": "Azure Database Migration Service Online",
+            "category": "Migration",
+            "description": "Near-zero-downtime migration capability for moving databases to Azure with continuous replication."
+        },
+        {
+            "service": "Azure Arc-enabled Kubernetes",
+            "category": "Hybrid",
+            "description": "Bring Kubernetes clusters under Azure management for policy, security, and governance."
+        },
+        {
+            "service": "Azure Arc-enabled Data Services",
+            "category": "Hybrid",
+            "description": "Run Azure data services on-premises or at the edge with unified management and updates."
+        },
+        {
+            "service": "Azure Arc-enabled Servers",
+            "category": "Hybrid",
+            "description": "Manage physical and virtual servers outside Azure using Azure management plane and policies."
+        },
+        {
+            "service": "Azure Stack Development Kit (ASDK)",
+            "category": "Hybrid",
+            "description": "Single-node deployment of Azure Stack for development and testing of hybrid applications."
+        },
+        {
+            "service": "Azure Edge Zones",
+            "category": "Edge",
+            "description": "Bring Azure services closer to users and devices with low-latency edge locations."
+        },
+        {
+            "service": "Azure Private Edge Zones",
+            "category": "Edge",
+            "description": "Private, carrier-integrated edge zones for localized compute and networking."
+        },
+        {
+            "service": "Azure IoT Edge Modules",
+            "category": "IoT + Edge",
+            "description": "Containerized workloads that run on IoT Edge devices for local processing and ML inference."
+        },
+        {
+            "service": "Azure IoT Hub Device Provisioning Service",
+            "category": "IoT + Edge",
+            "description": "Automated, secure provisioning of devices at scale into IoT Hub with zero-touch enrollment."
+        },
+        {
+            "service": "Azure IoT Plug and Play",
+            "category": "IoT + Edge",
+            "description": "Model-driven device integration to simplify device connectivity and interoperability."
+        },
+        {
+            "service": "Azure IoT Hub Device Twins",
+            "category": "IoT + Edge",
+            "description": "JSON document representation of device state for synchronization and management."
+        },
+        {
+            "service": "Azure Digital Twins Live Execution",
+            "category": "IoT + Edge",
+            "description": "Real-time simulation and live execution of digital twin models and relationships."
+        },
+        {
+            "service": "Azure Time Series Insights Gen2",
+            "category": "IoT + Edge",
+            "description": "Scalable time-series data store and analytics with fast query and visualization capabilities."
+        },
+        {
+            "service": "Azure Maps Creator",
+            "category": "Developer Tools",
+            "description": "Create and manage custom map data and tiles for specialized mapping scenarios."
+        },
+        {
+            "service": "Azure Maps Render",
+            "category": "Developer Tools",
+            "description": "Server-side rendering APIs for map images, tiles, and static map generation."
+        },
+        {
+            "service": "Azure Notification Hubs Tags and Templates",
+            "category": "Mobile",
+            "description": "Targeted push notifications using tags and templates for personalized mobile messaging."
+        },
+        {
+            "service": "Azure Communication Services Chat",
+            "category": "Media + Comms",
+            "description": "Managed chat APIs and SDKs for building in-app messaging experiences."
+        },
+        {
+            "service": "Azure Communication Services SMS",
+            "category": "Media + Comms",
+            "description": "Programmable SMS capabilities for notifications, verification, and alerts."
+        },
+        {
+            "service": "Azure Relay Hybrid Connections",
+            "category": "Integration",
+            "description": "Lightweight relay mechanism to securely connect cloud apps to on-premises endpoints."
+        },
+        {
+            "service": "Azure API Management Policies",
+            "category": "Integration",
+            "description": "Policy expressions to transform, secure, and control API behavior at runtime."
+        },
+        {
+            "service": "Azure API Management Consumption Tier",
+            "category": "Integration",
+            "description": "Serverless, consumption-based API gateway tier for cost-effective API hosting."
+        },
+        {
+            "service": "Azure Logic Apps Standard",
+            "category": "Integration",
+            "description": "Single-tenant, developer-friendly Logic Apps runtime for local and cloud deployments."
+        },
+        {
+            "service": "Azure Logic Apps Enterprise Integration Pack",
+            "category": "Integration",
+            "description": "B2B and EDI capabilities for enterprise message exchange and partner workflows."
+        },
+        {
+            "service": "Azure Event Hubs Capture",
+            "category": "Messaging",
+            "description": "Automatic capture of streaming data to storage for downstream analytics and processing."
+        },
+        {
+            "service": "Azure Event Hubs Dedicated",
+            "category": "Messaging",
+            "description": "Dedicated throughput units for predictable, high-volume event ingestion workloads."
+        },
+        {
+            "service": "Azure Service Bus Geo-Disaster Recovery",
+            "category": "Messaging",
+            "description": "Pairing and failover capabilities to protect messaging namespaces across regions."
+        },
+        {
+            "service": "Azure Confidential Ledger",
+            "category": "Security",
+            "description": "Tamper-evident ledger for immutable, auditable records."
+        },
+        {
+            "service": "Azure AI Studio",
+            "category": "AI + Machine Learning",
+            "description": "Unified tooling for building and managing AI models and apps."
+        },
+        {
+            "service": "Azure Open Datasets",
+            "category": "Analytics",
+            "description": "Curated public datasets to accelerate ML and analytics."
+        },
+        {
+            "service": "Azure Applied AI Services",
+            "category": "AI + Machine Learning",
+            "description": "Prebuilt AI solutions for common enterprise scenarios."
+        },
+        {
+            "service": "Azure Cognitive Search",
+            "category": "AI + Machine Learning",
+            "description": "Search-as-a-service with AI enrichment and indexing."
+        },
+        {
+            "service": "Azure Video Indexer",
+            "category": "Media",
+            "description": "Extract transcripts, faces, and insights from video content."
+        },
+        {
+            "service": "Azure Media Services Live",
+            "category": "Media",
+            "description": "Live streaming, encoding, and content protection for broadcasts."
+        },
+        {
+            "service": "Azure Media Services On-Demand",
+            "category": "Media",
+            "description": "Video encoding, packaging, and VOD delivery workflows."
+        },
+        {
+            "service": "Azure Media Player",
+            "category": "Media",
+            "description": "Client player optimized for Azure streaming and DRM."
+        },
+        {
+            "service": "Azure CDN from Microsoft",
+            "category": "Networking",
+            "description": "Global CDN for accelerating web and media delivery."
+        },
+        {
+            "service": "Azure CDN from Verizon",
+            "category": "Networking",
+            "description": "Verizon-backed CDN option integrated with Azure services."
+        },
+        {
+            "service": "Azure CDN from Akamai",
+            "category": "Networking",
+            "description": "Akamai-backed CDN option for global content distribution."
+        },
+        {
+            "service": "Azure Front Door Standard/Premium",
+            "category": "Networking",
+            "description": "Global application delivery with WAF and routing features."
+        },
+        {
+            "service": "Azure Application Gateway WAF",
+            "category": "Security",
+            "description": "Layer 7 WAF to protect web applications from exploits."
+        },
+        {
+            "service": "Azure Firewall",
+            "category": "Security",
+            "description": "Managed, cloud-native network security service with policies."
+        },
+        {
+            "service": "Azure DDoS Protection Standard",
+            "category": "Security",
+            "description": "DDoS mitigation for public-facing Azure resources."
+        },
+        {
+            "service": "Azure Bastion",
+            "category": "Networking",
+            "description": "Secure RDP/SSH access to VMs without public IPs."
+        },
+        {
+            "service": "Azure Private Link",
+            "category": "Networking",
+            "description": "Private endpoint connectivity to Azure PaaS services."
+        },
+        {
+            "service": "Azure Virtual WAN",
+            "category": "Networking",
+            "description": "Centralized hub-and-spoke networking for large-scale connectivity."
+        },
+        {
+            "service": "Azure ExpressRoute Direct",
+            "category": "Networking",
+            "description": "High-bandwidth private connectivity with direct peering options."
+        },
+        {
+            "service": "Azure Network Security Groups",
+            "category": "Networking",
+            "description": "Packet-filtering controls for subnet and NIC traffic."
+        },
+        {
+            "service": "Azure Application Insights",
+            "category": "Management + Governance",
+            "description": "Telemetry and APM for application performance and diagnostics."
+        },
+        {
+            "service": "Azure Monitor Metrics",
+            "category": "Management + Governance",
+            "description": "Time-series metrics collection and alerting for resources."
+        },
+        {
+            "service": "Azure Monitor Alerts",
+            "category": "Management + Governance",
+            "description": "Alerting and action rules based on telemetry and metrics."
+        },
+        {
+            "service": "Azure Monitor for VMs",
+            "category": "Management + Governance",
+            "description": "VM-level monitoring with dependency and performance insights."
+        },
+        {
+            "service": "Azure Log Analytics",
+            "category": "Management + Governance",
+            "description": "Query and analyze logs across resources at scale."
+        },
+        {
+            "service": "Azure Automation State Configuration",
+            "category": "Management + Governance",
+            "description": "Desired-state configuration and automation for machines."
+        },
+        {
+            "service": "Azure Update Management",
+            "category": "Management + Governance",
+            "description": "Schedule and orchestrate OS updates across environments."
+        },
+        {
+            "service": "Azure Backup Vault",
+            "category": "Storage",
+            "description": "Centralized backup management and recovery for Azure workloads."
+        },
+        {
+            "service": "Azure Site Recovery Vault",
+            "category": "Migration",
+            "description": "Orchestrate disaster recovery and failover for VMs."
+        },
+        {
+            "service": "Azure Migrate Hub",
+            "category": "Migration",
+            "description": "Centralized migration assessment and migration tools hub."
+        },
+        {
+            "service": "Azure Database for PostgreSQL Flexible Server",
+            "category": "Databases",
+            "description": "Managed Postgres with flexible maintenance and scaling options."
+        },
+        {
+            "service": "Azure Database for MySQL Flexible Server",
+            "category": "Databases",
+            "description": "Managed MySQL with customizable maintenance windows and HA."
+        },
+        {
+            "service": "Azure Database for MariaDB Flexible Server",
+            "category": "Databases",
+            "description": "Managed MariaDB with flexible deployment and scaling."
+        },
+        {
+            "service": "Azure SQL Edge",
+            "category": "Databases",
+            "description": "Edge-optimized SQL engine for IoT and local analytics."
+        },
+        {
+            "service": "Azure Cache for Redis (Basic/Standard/Premium)",
+            "category": "Databases",
+            "description": "In-memory caching tiers for low-latency data access."
+        },
+        {
+            "service": "Azure Synapse Link",
+            "category": "Analytics",
+            "description": "Near-real-time analytics integration between operational stores and Synapse."
+        },
+        {
+            "service": "Azure Data Factory Mapping Data Flows",
+            "category": "Analytics",
+            "description": "Code-free data transformation at scale within pipelines."
+        },
+        {
+            "service": "Azure Databricks SQL Analytics",
+            "category": "Analytics",
+            "description": "SQL-native analytics and dashboards on Databricks data."
+        },
+        {
+            "service": "Azure Data Explorer (Kusto)",
+            "category": "Analytics",
+            "description": "Fast analytics for log and telemetry data with KQL."
+        },
+        {
+            "service": "Azure Purview Data Map",
+            "category": "Governance",
+            "description": "Automated discovery and classification of enterprise data assets."
+        },
+        {
+            "service": "Microsoft Purview Data Catalog",
+            "category": "Governance",
+            "description": "Catalog and lineage for governed data across environments."
+        },
+        {
+            "service": "Azure Lighthouse Delegated Resource Management",
+            "category": "Management + Governance",
+            "description": "Scale management across customer tenants for service providers."
+        },
+        {
+            "service": "Azure Cost Management Budgets",
+            "category": "Cost Management",
+            "description": "Budgets and alerts to control and optimize cloud spend."
+        },
+        {
+            "service": "Azure Reservations Exchange and Refund",
+            "category": "Cost Management",
+            "description": "Manage reserved capacity purchases and adjustments."
+        },
+        {
+            "service": "Azure Marketplace",
+            "category": "Ecosystem",
+            "description": "Catalog of third-party and Microsoft solutions deployable to Azure."
+        },
+        {
+            "service": "Azure Managed Grafana",
+            "category": "Management + Governance",
+            "description": "Managed Grafana for visualizing telemetry and metrics from Azure Monitor and other data sources."
+        },
+        {
+            "service": "Azure Monitor for Containers",
+            "category": "Management + Governance",
+            "description": "Container-specific monitoring for Kubernetes clusters with performance and health insights."
+        },
+        {
+            "service": "Azure Monitor for Networks",
+            "category": "Management + Governance",
+            "description": "Network monitoring and diagnostics for connectivity, topology, and performance issues."
+        },
+        {
+            "service": "Azure Monitor for Storage",
+            "category": "Management + Governance",
+            "description": "Storage-level telemetry and alerts to track capacity, performance, and availability."
+        },
+        {
+            "service": "Azure Monitor for SAP Solutions",
+            "category": "Management + Governance",
+            "description": "Specialized monitoring and diagnostics for SAP workloads running on Azure."
+        },
+        {
+            "service": "Azure Monitor Application Insights Profiler",
+            "category": "Management + Governance",
+            "description": "Continuous profiling to identify CPU and performance hotspots in applications."
+        },
+        {
+            "service": "Azure Monitor Autoscale",
+            "category": "Management + Governance",
+            "description": "Automatic scaling rules for compute and platform services based on metrics and schedules."
+        },
+        {
+            "service": "Azure Monitor Workbooks",
+            "category": "Management + Governance",
+            "description": "Interactive reports and visualizations for telemetry and operational data."
+        },
+        {
+            "service": "Azure Monitor Notebooks",
+            "category": "Management + Governance",
+            "description": "Jupyter-compatible notebooks integrated with telemetry for advanced analysis."
+        },
+        {
+            "service": "Azure Monitor Insights for Containers",
+            "category": "Management + Governance",
+            "description": "Deep container and node-level insights for AKS and Kubernetes clusters."
+        },
+        {
+            "service": "Azure Policy Guest Configuration",
+            "category": "Governance",
+            "description": "Enforce and audit OS-level configuration settings inside VMs and machines."
+        },
+        {
+            "service": "Azure Policy Initiative Definitions",
+            "category": "Governance",
+            "description": "Grouped policy definitions to apply sets of governance rules consistently."
+        },
+        {
+            "service": "Azure Resource Graph Explorer",
+            "category": "Management + Governance",
+            "description": "Query and explore resource inventory across subscriptions with performant queries."
+        },
+        {
+            "service": "Azure Cost Analysis",
+            "category": "Cost Management",
+            "description": "Detailed cost reporting and breakdowns to analyze cloud spend by resource and tag."
+        },
+        {
+            "service": "Azure Cost Recommendations",
+            "category": "Cost Management",
+            "description": "Automated suggestions to reduce costs such as rightsizing and reserved instance purchases."
+        },
+        {
+            "service": "Azure Advisor Cost Recommendations",
+            "category": "Management + Governance",
+            "description": "Advisor-driven cost optimization recommendations tailored to your environment."
+        },
+        {
+            "service": "Azure Marketplace Private Offers Management",
+            "category": "Ecosystem",
+            "description": "Manage and accept private procurement offers from marketplace publishers."
+        },
+        {
+            "service": "Azure Managed Applications Marketplace",
+            "category": "Ecosystem",
+            "description": "Deployable managed solutions that service providers operate in customer subscriptions."
+        },
+        {
+            "service": "Azure DevOps Extensions Marketplace",
+            "category": "Developer Tools",
+            "description": "Catalog of extensions to extend Azure DevOps capabilities and integrations."
+        },
+        {
+            "service": "Azure DevOps Pipelines YAML",
+            "category": "Developer Tools",
+            "description": "Declarative pipeline definitions using YAML for CI/CD automation."
+        },
+        {
+            "service": "Azure DevOps Self-Hosted Agents",
+            "category": "Developer Tools",
+            "description": "Run build and deployment agents on your own infrastructure for custom workloads."
+        },
+        {
+            "service": "Azure DevOps Artifacts Universal Packages",
+            "category": "Developer Tools",
+            "description": "Universal package format for storing and distributing build artifacts."
+        },
+        {
+            "service": "Azure Repos Pull Requests",
+            "category": "Developer Tools",
+            "description": "Code review and collaboration workflows for Git-based development."
+        },
+        {
+            "service": "Azure Boards Work Item Analytics",
+            "category": "Developer Tools",
+            "description": "Reporting and analytics for work tracking, velocity, and delivery metrics."
+        },
+        {
+            "service": "Azure DevTest Labs Formulae",
+            "category": "Developer Tools",
+            "description": "Reusable VM templates and artifacts to standardize lab environments."
+        },
+        {
+            "service": "Azure Lab Services Classroom Scheduling",
+            "category": "Developer Tools",
+            "description": "Schedule and manage lab access for training and classroom scenarios."
+        },
+        {
+            "service": "Azure Spring Apps Enterprise",
+            "category": "App Platform",
+            "description": "Enterprise-grade managed Spring Boot hosting with scaling and observability."
+        },
+        {
+            "service": "Azure App Service Deployment Slots",
+            "category": "App Platform",
+            "description": "Staged deployment environments for safe app rollouts and testing in production."
+        },
+        {
+            "service": "Azure App Service Hybrid Connections",
+            "category": "App Platform",
+            "description": "Securely connect App Service apps to on-premises resources without VPNs."
+        },
+        {
+            "service": "Azure App Service Authentication/Authorization",
+            "category": "App Platform",
+            "description": "Built-in identity integration for apps with Azure AD and social providers."
+        },
+        {
+            "service": "Azure SignalR Service Serverless Autoscale",
+            "category": "App Platform",
+            "description": "Automatic scaling for real-time messaging workloads without infrastructure management."
+        },
+        {
+            "service": "Azure Container Registry Geo-Replication",
+            "category": "Containers",
+            "description": "Replicate container images across regions for low-latency pulls and resilience."
+        },
+        {
+            "service": "Azure Container Registry Content Trust",
+            "category": "Containers",
+            "description": "Image signing and verification to ensure provenance and integrity of container images."
+        },
+        {
+            "service": "Azure Kubernetes Service Virtual Nodes",
+            "category": "Containers",
+            "description": "Burstable, serverless node capability for AKS using virtual node integration."
+        },
+        {
+            "service": "Azure Kubernetes Service Cluster Autoscaler",
+            "category": "Containers",
+            "description": "Automatic scaling of node pools in AKS based on pod resource requests."
+        },
+        {
+            "service": "Azure Kubernetes Service Pod Identity",
+            "category": "Containers",
+            "description": "Assign managed identities to pods for secure access to Azure resources."
+        },
+        {
+            "service": "Azure Container Instances GPU",
+            "category": "Containers",
+            "description": "GPU-enabled serverless containers for accelerated compute workloads."
+        },
+        {
+            "service": "Azure Batch AI (legacy)",
+            "category": "Compute",
+            "description": "Managed batch and distributed training capabilities for AI workloads (legacy offerings vary by region)."
+        },
+        {
+            "service": "Azure Batch Low-Priority VMs",
+            "category": "Compute",
+            "description": "Cost-effective compute for batch jobs using spare capacity with preemption."
+        },
+        {
+            "service": "Azure Dedicated Host Maintenance Control",
+            "category": "Compute",
+            "description": "Control maintenance windows for dedicated hosts to meet compliance and uptime needs."
+        },
+        {
+            "service": "Azure Image Builder Shared Image Gallery",
+            "category": "Compute",
+            "description": "Manage and replicate custom VM images across regions using a shared gallery."
+        },
+        {
+            "service": "Azure Proximity Placement Groups Low-Latency",
+            "category": "Compute",
+            "description": "Group resources to achieve low-latency network performance for tightly coupled workloads."
+        },
+        {
+            "service": "Azure Confidential Computing Enclaves",
+            "category": "Security",
+            "description": "Trusted execution environments for protecting sensitive computations and data-in-use."
+        },
+        {
+            "service": "Azure Key Vault Secrets Management",
+            "category": "Security",
+            "description": "Store and manage application secrets, connection strings, and credentials securely."
+        },
+        {
+            "service": "Azure Key Vault Certificates",
+            "category": "Security",
+            "description": "Provision, manage, and renew TLS/SSL certificates with integrated lifecycle management."
+        },
+        {
+            "service": "Azure Key Vault Keys",
+            "category": "Security",
+            "description": "Cryptographic key storage and operations with role-based access and HSM options."
+        },
+        {
+            "service": "Azure Sentinel Notebooks",
+            "category": "Security",
+            "description": "Investigative notebooks for threat hunting and advanced security analytics."
+        },
+        {
+            "service": "Azure Sentinel Fusion",
+            "category": "Security",
+            "description": "AI-driven correlation of alerts to reduce noise and surface complex threats."
+        },
+        {
+            "service": "Azure Security Center Regulatory Compliance Dashboard",
+            "category": "Security",
+            "description": "Assess and report compliance posture against industry standards and regulations."
+        },
+        {
+            "service": "Azure Firewall Threat Intelligence",
+            "category": "Security",
+            "description": "Block or alert on traffic associated with known malicious IPs and domains."
+        },
+        {
+            "service": "Azure Quantum Development Kit",
+            "category": "Quantum",
+            "description": "Tools, SDKs, and simulators for developing quantum algorithms and running them on quantum hardware or simulators."
+        },
+        {
+            "service": "Azure Quantum Optimization",
+            "category": "Quantum",
+            "description": "Optimization solvers and hybrid quantum-classical tools for combinatorial and optimization problems."
+        },
+        {
+            "service": "Azure Quantum Hardware Access",
+            "category": "Quantum",
+            "description": "Provisioned access to partner quantum hardware and cloud-hosted quantum processors."
+        },
+        {
+            "service": "Azure Quantum Simulators",
+            "category": "Quantum",
+            "description": "High-performance simulators for testing and validating quantum circuits and algorithms."
+        },
+        {
+            "service": "Azure Blockchain Service (legacy)",
+            "category": "Distributed Ledger",
+            "description": "Managed blockchain network hosting and consortium management (legacy/retired in some regions)."
+        },
+        {
+            "service": "Azure Blockchain Workbench",
+            "category": "Distributed Ledger",
+            "description": "Developer tooling and templates to accelerate blockchain application development."
+        },
+        {
+            "service": "Azure Confidential Consortium Framework",
+            "category": "Security",
+            "description": "Framework for building confidential, multi-party applications with trusted execution environments."
+        },
+        {
+            "service": "Azure Confidential Containers",
+            "category": "Security",
+            "description": "Container runtime and tooling that enable confidential computing for containerized workloads."
+        },
+        {
+            "service": "Azure Policy Guest Configuration Insights",
+            "category": "Governance",
+            "description": "Visibility and compliance reporting for guest-level configuration across machines."
+        },
+        {
+            "service": "Azure Resource Manager Locks",
+            "category": "Management + Governance",
+            "description": "Prevent accidental deletion or modification of critical resources by applying locks at scope."
+        },
+        {
+            "service": "Azure Resource Manager Deployment Scripts",
+            "category": "Management + Governance",
+            "description": "Run scripts during ARM template deployments to perform custom provisioning tasks."
+        },
+        {
+            "service": "Azure Resource Manager Private Link Scopes",
+            "category": "Management + Governance",
+            "description": "Securely manage resource provider endpoints using private connectivity and scopes."
+        },
+        {
+            "service": "Azure Stack Edge Pro GPU",
+            "category": "Edge",
+            "description": "Edge appliance with GPU acceleration for local inferencing and media processing."
+        },
+        {
+            "service": "Azure Stack Edge Storage Optimized",
+            "category": "Edge",
+            "description": "Edge appliance optimized for large-scale local storage and data transfer to Azure."
+        },
+        {
+            "service": "Azure Edge Hub",
+            "category": "Edge",
+            "description": "Local hub for orchestrating and managing edge devices and modules with offline capabilities."
+        },
+        {
+            "service": "Azure IoT Hub Device Streams",
+            "category": "IoT + Edge",
+            "description": "Secure, bi-directional streaming channel for device management and diagnostics."
+        },
+        {
+            "service": "Azure IoT Hub Message Routing",
+            "category": "IoT + Edge",
+            "description": "Route device telemetry to endpoints like Event Hubs, Service Bus, or storage based on rules."
+        },
+        {
+            "service": "Azure IoT Hub Twin Reconciliation",
+            "category": "IoT + Edge",
+            "description": "Synchronize desired and reported properties across device twins for consistent state management."
+        },
+        {
+            "service": "Azure IoT Central Templates",
+            "category": "IoT + Edge",
+            "description": "Prebuilt device templates and application templates to accelerate IoT solution deployment."
+        },
+        {
+            "service": "Azure Digital Twins Explorer",
+            "category": "IoT + Edge",
+            "description": "Visualization and debugging tool for modeling and inspecting digital twin graphs and telemetry."
+        },
+        {
+            "service": "Azure Time Series Insights Explorer",
+            "category": "IoT + Edge",
+            "description": "Interactive visualization and query experience for time-series IoT data."
+        },
+        {
+            "service": "Azure Maps Spatial Anchors",
+            "category": "Developer Tools",
+            "description": "Persistent, geospatial anchors for mixed-reality and location-aware applications."
+        },
+        {
+            "service": "Azure Maps Search",
+            "category": "Developer Tools",
+            "description": "Geocoding and reverse-geocoding APIs to find addresses, places, and points of interest."
+        },
+        {
+            "service": "Azure Maps Route",
+            "category": "Developer Tools",
+            "description": "Routing and directions APIs for driving, walking, and transit scenarios with traffic-aware routing."
+        },
+        {
+            "service": "Azure Notification Hubs Scheduled Push",
+            "category": "Mobile",
+            "description": "Schedule and orchestrate push notifications for targeted audiences at scale."
+        },
+        {
+            "service": "Azure Communication Services PSTN Calling",
+            "category": "Media + Comms",
+            "description": "Public switched telephone network connectivity for voice calling and telephony scenarios."
+        },
+        {
+            "service": "Azure Communication Services Video Rooms",
+            "category": "Media + Comms",
+            "description": "Managed multi-party video rooms and real-time media orchestration for applications."
+        },
+        {
+            "service": "Azure Relay WCF Relay",
+            "category": "Integration",
+            "description": "Legacy support for exposing WCF services securely through the cloud relay."
+        },
+        {
+            "service": "Azure Relay Hybrid Connections Manager",
+            "category": "Integration",
+            "description": "Lightweight agent to enable hybrid connections from cloud apps to on-premises endpoints."
+        },
+        {
+            "service": "Azure API Management Dev Portal Customization",
+            "category": "Integration",
+            "description": "Customize and extend the developer portal for API documentation and onboarding."
+        },
+        {
+            "service": "Azure API Management Self-Hosted Gateway",
+            "category": "Integration",
+            "description": "Run API gateway runtime in customer-managed environments for low-latency and offline scenarios."
+        },
+        {
+            "service": "Azure Logic Apps Connectors",
+            "category": "Integration",
+            "description": "Prebuilt connectors to integrate with SaaS, on-premises systems, and custom APIs."
+        },
+        {
+            "service": "Azure Logic Apps Enterprise Connectors",
+            "category": "Integration",
+            "description": "High-scale, enterprise-grade connectors for B2B and legacy system integration."
+        },
+        {
+            "service": "Azure Event Grid Partner Topics",
+            "category": "Integration",
+            "description": "Partner and multi-tenant event publishing model for large-scale event ecosystems."
+        },
+        {
+            "service": "Azure Event Grid System Topics",
+            "category": "Integration",
+            "description": "Built-in event sources and system topics for Azure resource events and lifecycle notifications."
+        },
+        {
+            "service": "Azure Event Hubs Capture to ADLS Gen2",
+            "category": "Messaging",
+            "description": "Native capture of streaming events into Azure Data Lake Storage Gen2 for analytics."
+        },
+        {
+            "service": "Azure Event Hubs Kafka Endpoint",
+            "category": "Messaging",
+            "description": "Kafka-compatible endpoint enabling existing Kafka clients to publish to Event Hubs."
+        },
+        {
+            "service": "Azure Service Bus Sessions",
+            "category": "Messaging",
+            "description": "Message session support for ordered, stateful message processing patterns."
+        },
+        {
+            "service": "Azure Service Bus Transactions",
+            "category": "Messaging",
+            "description": "Atomic operations across multiple messaging entities to ensure consistency."
+        },
+        {
+            "service": "Azure Queue Storage Poison Message Handling",
+            "category": "Storage",
+            "description": "Mechanisms to detect and handle messages that repeatedly fail processing."
+        },
+        {
+            "service": "Azure Blob Storage Soft Delete",
+            "category": "Storage",
+            "description": "Protect blobs from accidental deletion by retaining soft-deleted versions for recovery."
+        },
+        {
+            "service": "Azure Blob Storage Immutable Storage (WORM)",
+            "category": "Storage",
+            "description": "Write-once-read-many policies for regulatory compliance and tamper protection."
+        },
+        {
+            "service": "Azure Files Active Directory Integration",
+            "category": "Storage",
+            "description": "Integrate Azure Files with on-premises AD for identity-based access control."
+        },
+        {
+            "service": "Azure NetApp Files Snapshot Policies",
+            "category": "Storage",
+            "description": "Automated snapshot scheduling and retention for enterprise file shares."
+        },
+        {
+            "service": "Azure Elastic SAN Volume Groups",
+            "category": "Storage",
+            "description": "Group and manage block volumes with consistent performance and replication policies."
+        },
+        {
+            "service": "Azure Backup Instant Restore for Files",
+            "category": "Storage",
+            "description": "Rapid file-level restore capabilities to minimize recovery time objectives."
+        },
+        {
+            "service": "Azure Site Recovery Test Failover",
+            "category": "Migration",
+            "description": "Non-disruptive test failovers to validate disaster recovery plans and runbooks."
+        },
+        {
+            "service": "Azure Migrate App Containerization",
+            "category": "Migration",
+            "description": "Assess and containerize legacy applications for migration to container platforms."
+        },
+        {
+            "service": "Azure Resource Manager Blueprints",
+            "category": "Governance",
+            "description": "Package and deploy a repeatable set of resources, policies, and role assignments to enforce organizational standards."
+        },
+        {
+            "service": "Azure Resource Manager Locks and Tags",
+            "category": "Management + Governance",
+            "description": "Protect critical resources from accidental change and organize assets with metadata for billing and governance."
+        },
+        {
+            "service": "Azure Policy Guest Configuration Extensions",
+            "category": "Governance",
+            "description": "Apply and audit OS-level configuration settings inside VMs to ensure compliance with corporate baselines."
+        },
+        {
+            "service": "Azure Automation Runbooks",
+            "category": "Management + Governance",
+            "description": "Automate operational tasks and orchestrate workflows across Azure and hybrid environments using PowerShell and Python runbooks."
+        },
+        {
+            "service": "Azure Automation Update Management",
+            "category": "Management + Governance",
+            "description": "Schedule and orchestrate OS updates for Windows and Linux machines across cloud and on-premises systems."
+        },
+        {
+            "service": "Azure Monitor Application Insights Live Metrics",
+            "category": "Management + Governance",
+            "description": "Real-time telemetry stream to observe application performance and diagnose issues as they occur."
+        },
+        {
+            "service": "Azure Monitor Alerts Action Groups",
+            "category": "Management + Governance",
+            "description": "Define notification and remediation actions triggered by alerts, including webhooks and automation runbooks."
+        },
+        {
+            "service": "Azure Monitor Autoscale Profiles",
+            "category": "Management + Governance",
+            "description": "Define metric- and schedule-based scaling rules to automatically adjust resource capacity."
+        },
+        {
+            "service": "Azure Monitor Diagnostic Settings",
+            "category": "Management + Governance",
+            "description": "Configure resource-level diagnostics to route logs and metrics to storage, Event Hubs, or Log Analytics."
+        },
+        {
+            "service": "Azure Advisor Security Recommendations",
+            "category": "Management + Governance",
+            "description": "Actionable guidance to improve security posture by addressing misconfigurations and vulnerabilities."
+        },
+        {
+            "service": "Azure Backup Instant Restore for Disks",
+            "category": "Storage",
+            "description": "Rapidly restore managed disks from backups to minimize downtime for critical VMs."
+        },
+        {
+            "service": "Azure Backup Soft Delete",
+            "category": "Storage",
+            "description": "Protect backup data from accidental or malicious deletion by retaining deleted recovery points."
+        },
+        {
+            "service": "Azure Site Recovery Continuous Replication",
+            "category": "Migration",
+            "description": "Continuous replication of VMs and physical servers to Azure for disaster recovery readiness."
+        },
+        {
+            "service": "Azure Migrate Dependency Visualization",
+            "category": "Migration",
+            "description": "Map application dependencies to plan migrations and reduce risk during lift-and-shift moves."
+        },
+        {
+            "service": "Azure Migrate Server Migration",
+            "category": "Migration",
+            "description": "Agent-based and agentless tools to migrate on-premises servers to Azure VMs with minimal downtime."
+        },
+        {
+            "service": "Azure Database Migration Service Offline",
+            "category": "Migration",
+            "description": "Simplified, offline migration path for databases where continuous replication is not required."
+        },
+        {
+            "service": "Azure Arc-enabled SQL Managed Instance",
+            "category": "Hybrid",
+            "description": "Bring Azure SQL Managed Instance capabilities to on-premises and multi-cloud environments under Azure management."
+        },
+        {
+            "service": "Azure Arc-enabled Kubernetes GitOps",
+            "category": "Hybrid",
+            "description": "Apply GitOps patterns to manage Kubernetes clusters and applications across environments via Azure."
+        },
+        {
+            "service": "Azure Arc-enabled Machine Learning",
+            "category": "Hybrid",
+            "description": "Run and manage ML workloads on-premises or at the edge with Azure ML tooling and governance."
+        },
+        {
+            "service": "Azure Stack HCI Cluster Management",
+            "category": "Hybrid",
+            "description": "Integrated management for hyperconverged infrastructure running Windows Server and Azure services on-premises."
+        },
+        {
+            "service": "Azure Stack Edge ML Inference",
+            "category": "Edge",
+            "description": "Run trained machine learning models locally on edge appliances for low-latency inference."
+        },
+        {
+            "service": "Azure Edge Zones Private Carrier",
+            "category": "Edge",
+            "description": "Carrier-integrated edge locations that provide localized compute and networking for low-latency apps."
+        },
+        {
+            "service": "Azure IoT Hub Device Management",
+            "category": "IoT + Edge",
+            "description": "Provision, configure, and manage device lifecycle at scale with secure device operations."
+        },
+        {
+            "service": "Azure IoT Hub Message Enrichment",
+            "category": "IoT + Edge",
+            "description": "Enrich device telemetry with additional metadata before routing to downstream services."
+        },
+        {
+            "service": "Azure IoT Central Device Templates",
+            "category": "IoT + Edge",
+            "description": "Predefined device models and templates to accelerate IoT solution development and onboarding."
+        },
+        {
+            "service": "Azure Digital Twins Relationship Queries",
+            "category": "IoT + Edge",
+            "description": "Query and traverse complex relationships between digital twin entities for real-time insights."
+        },
+        {
+            "service": "Azure Time Series Insights Warm Store",
+            "category": "IoT + Edge",
+            "description": "Cost-optimized storage tier for recent time-series data with fast query performance."
+        },
+        {
+            "service": "Azure Maps Mobility Services",
+            "category": "Developer Tools",
+            "description": "APIs for routing, traffic, and mobility analytics to build transportation and logistics solutions."
+        },
+        {
+            "service": "Azure Maps Batch Geocoding",
+            "category": "Developer Tools",
+            "description": "Bulk geocoding and reverse-geocoding for large datasets and offline processing."
+        },
+        {
+            "service": "Azure Notification Hubs Direct Send",
+            "category": "Mobile",
+            "description": "Direct push notification delivery to platform push services with telemetry and diagnostics."
+        },
+        {
+            "service": "Azure Communication Services Identity",
+            "category": "Media + Comms",
+            "description": "Manage user identities and tokens for secure access to communication APIs and SDKs."
+        },
+        {
+            "service": "Azure Communication Services Recording",
+            "category": "Media + Comms",
+            "description": "Record and store audio/video sessions for compliance, playback, and analysis."
+        },
+        {
+            "service": "Azure Relay Hybrid Connectivity",
+            "category": "Integration",
+            "description": "Securely expose on-premises services to cloud applications without inbound firewall changes."
+        },
+        {
+            "service": "Azure API Management Analytics",
+            "category": "Integration",
+            "description": "Monitor API usage, performance, and developer adoption with built-in analytics dashboards."
+        },
+        {
+            "service": "Azure API Management Developer Onboarding",
+            "category": "Integration",
+            "description": "Self-service developer portal and subscription management to accelerate API adoption."
+        },
+        {
+            "service": "Azure Logic Apps Inline Code",
+            "category": "Integration",
+            "description": "Run small snippets of JavaScript or C# inline within workflows for custom logic."
+        },
+        {
+            "service": "Azure Logic Apps Managed Connectors",
+            "category": "Integration",
+            "description": "Secure, managed connectors for popular SaaS and enterprise systems with enterprise-grade SLAs."
+        },
+        {
+            "service": "Azure Event Grid Dead-Lettering",
+            "category": "Integration",
+            "description": "Capture undeliverable events for inspection and replay to ensure reliable event processing."
+        },
+        {
+            "service": "Azure Event Hubs Throughput Units",
+            "category": "Messaging",
+            "description": "Provision predictable throughput capacity for high-volume event ingestion scenarios."
+        },
+        {
+            "service": "Azure Service Bus Auto-Forwarding",
+            "category": "Messaging",
+            "description": "Chain queues and topics to build complex messaging topologies and processing pipelines."
+        },
+        {
+            "service": "Azure Service Bus Duplicate Detection",
+            "category": "Messaging",
+            "description": "Prevent processing of duplicate messages by enabling server-side deduplication windows."
+        },
+        {
+            "service": "Azure Queue Storage Visibility Timeout",
+            "category": "Storage",
+            "description": "Control message invisibility during processing to avoid concurrent handling and ensure reliability."
+        },
+        {
+            "service": "Azure Blob Storage Static Website Hosting",
+            "category": "Storage",
+            "description": "Host static web content directly from blob containers with global availability and CDN integration."
+        },
+        {
+            "service": "Azure Files Snapshot and Restore",
+            "category": "Storage",
+            "description": "Point-in-time snapshots for file shares to enable quick recovery and data protection."
+        },
+        {
+            "service": "Azure NetApp Files Cross-Region Replication",
+            "category": "Storage",
+            "description": "Replicate enterprise file shares across regions for disaster recovery and data locality."
+        },
+        {
+            "service": "Azure Elastic SAN Snapshot and Replication",
+            "category": "Storage",
+            "description": "Block-level snapshots and replication for SAN volumes to support backup and DR strategies."
+        },
+        {
+            "service": "Azure Backup Centralized Management",
+            "category": "Storage",
+            "description": "Manage backup policies, monitoring, and recovery across subscriptions from a single pane."
+        },
+        {
+            "service": "Azure Site Recovery Planned Failover",
+            "category": "Migration",
+            "description": "Coordinate planned failovers with minimal data loss and controlled cutover procedures."
+        },
+        {
+            "service": "Azure Migrate App Containerization Assessment",
+            "category": "Migration",
+            "description": "Analyze applications for container suitability and provide guidance for containerization efforts."
+        },
+        {
+            "service": "Azure Policy Remediation",
+            "category": "Governance",
+            "description": "Automated remediation of noncompliant resources by applying corrective actions defined in policy assignments to bring resources into compliance."
+        },
+        {
+            "service": "Azure Blueprints Assignment",
+            "category": "Governance",
+            "description": "Apply blueprint packages to subscriptions to provision resources, policies, and role assignments consistently across environments."
+        },
+        {
+            "service": "Azure Resource Manager Deployment Scripts (Bicep)",
+            "category": "Management + Governance",
+            "description": "Run deployment-time scripts and use Bicep templates to orchestrate complex provisioning tasks and custom resource configuration."
+        },
+        {
+            "service": "Azure Managed Identities for Azure Resources",
+            "category": "Identity",
+            "description": "Automatically provisioned identities for Azure services to authenticate to other resources without storing credentials or secrets."
+        },
+        {
+            "service": "Azure AD Conditional Access",
+            "category": "Identity",
+            "description": "Policy engine to enforce access controls based on user, device, location, and risk signals to protect applications and data."
+        },
+        {
+            "service": "Azure AD Identity Governance",
+            "category": "Identity",
+            "description": "Lifecycle and entitlement management including access reviews, entitlement management, and privileged identity workflows."
+        },
+        {
+            "service": "Azure AD B2B Collaboration",
+            "category": "Identity",
+            "description": "Invite external partners and contractors to collaborate securely using their own identities while enforcing organizational policies."
+        },
+        {
+            "service": "Azure AD B2B Direct Connect",
+            "category": "Identity",
+            "description": "Seamless, secure collaboration between organizations using direct identity federation and access controls."
+        },
+        {
+            "service": "Azure AD Conditional Access for Apps",
+            "category": "Identity",
+            "description": "Apply conditional access policies specifically scoped to applications to control sign-in and session behavior."
+        },
+        {
+            "service": "Azure Key Vault Managed Storage Account Keys",
+            "category": "Security",
+            "description": "Centralize and rotate storage account keys using Key Vault to reduce secret sprawl and improve key lifecycle management."
+        },
+        {
+            "service": "Azure Key Vault Soft-Delete and Purge Protection",
+            "category": "Security",
+            "description": "Protect keys, secrets, and certificates from accidental or malicious deletion by retaining recoverable objects."
+        },
+        {
+            "service": "Azure Defender for Storage",
+            "category": "Security",
+            "description": "Threat detection and anomaly monitoring tailored to storage accounts to identify suspicious access and data exfiltration."
+        },
+        {
+            "service": "Azure Defender for SQL",
+            "category": "Security",
+            "description": "Advanced threat protection and vulnerability assessment for Azure SQL Database and managed instances."
+        },
+        {
+            "service": "Azure Defender for App Service",
+            "category": "Security",
+            "description": "Runtime protection and threat detection for web apps hosted on Azure App Service."
+        },
+        {
+            "service": "Azure Security Benchmark",
+            "category": "Security",
+            "description": "Prescriptive security controls and recommendations aligned to industry standards to help secure Azure workloads."
+        },
+        {
+            "service": "Azure Firewall Policy",
+            "category": "Security",
+            "description": "Centralized policy management for Azure Firewall rules, NAT, and threat intelligence settings across hubs."
+        },
+        {
+            "service": "Azure Web Application Firewall Policies",
+            "category": "Security",
+            "description": "Reusable WAF rule sets and managed rule configurations to protect web applications from common exploits."
+        },
+        {
+            "service": "Azure DDoS Protection Adaptive Tuning",
+            "category": "Security",
+            "description": "Adaptive mitigation that learns application traffic patterns to reduce false positives while protecting against volumetric attacks."
+        },
+        {
+            "service": "Azure Sentinel Playbooks",
+            "category": "Security",
+            "description": "Automated response workflows using Logic Apps to orchestrate incident response and remediation actions."
+        },
+        {
+            "service": "Azure Sentinel Data Connectors",
+            "category": "Security",
+            "description": "Prebuilt connectors to ingest telemetry from Microsoft and third-party sources into Sentinel for correlation and hunting."
+        },
+        {
+            "service": "Azure Sentinel Watchlists",
+            "category": "Security",
+            "description": "Upload and reference external lists (IPs, users, assets) to enrich detections and investigations."
+        },
+        {
+            "service": "Azure Monitor Autoscale for App Service",
+            "category": "Management + Governance",
+            "description": "Scale App Service plans automatically based on performance metrics and schedule-based rules to match demand."
+        },
+        {
+            "service": "Azure Monitor Diagnostic Settings to Event Hubs",
+            "category": "Management + Governance",
+            "description": "Stream resource diagnostics and logs to Event Hubs for centralized processing and third-party SIEM integration."
+        },
+        {
+            "service": "Azure Monitor Private Link Scopes",
+            "category": "Management + Governance",
+            "description": "Securely access monitoring data and insights over private endpoints without exposing telemetry to the public internet."
+        },
+        {
+            "service": "Azure Monitor Alerts Dynamic Thresholds",
+            "category": "Management + Governance",
+            "description": "Use machine learning to set dynamic alert thresholds that adapt to historical patterns and reduce noisy alerts."
+        },
+        {
+            "service": "Azure Cost Management Reserved Instance Recommendations",
+            "category": "Cost Management",
+            "description": "Analyze usage patterns and recommend reserved instance purchases or savings plans to reduce compute costs."
+        },
+        {
+            "service": "Azure Cost Management Chargeback and Showback",
+            "category": "Cost Management",
+            "description": "Allocate and report cloud spend by department, project, or tag to enable internal chargeback or showback models."
+        },
+        {
+            "service": "Azure Reservations Scope Flexibility",
+            "category": "Cost Management",
+            "description": "Apply reserved capacity to single subscriptions or share across billing scopes to maximize utilization."
+        },
+        {
+            "service": "Azure Marketplace SaaS Subscriptions",
+            "category": "Ecosystem",
+            "description": "Procure and manage SaaS offerings through the Azure Marketplace with consolidated billing and license management."
+        },
+        {
+            "service": "Azure Marketplace Virtual Machine Images",
+            "category": "Ecosystem",
+            "description": "Prebuilt VM images from Microsoft and partners to accelerate deployment of common workloads and appliances."
+        },
+        {
+            "service": "Azure Marketplace Managed Services",
+            "category": "Ecosystem",
+            "description": "Third-party managed service offerings that can be engaged and provisioned through Azure Marketplace."
+        },
+        {
+            "service": "Azure DevOps Pipeline Environments",
+            "category": "Developer Tools",
+            "description": "Model deployment environments and approvals in pipelines to manage releases across stages and targets."
+        },
+        {
+            "service": "Azure DevOps YAML Templates and Reuse",
+            "category": "Developer Tools",
+            "description": "Shareable pipeline templates to standardize CI/CD across teams and projects using YAML."
+        },
+        {
+            "service": "Azure DevOps Secure Files",
+            "category": "Developer Tools",
+            "description": "Securely store and use secrets and certificates in pipelines without exposing them in logs or repos."
+        },
+        {
+            "service": "Azure Repos Branch Policies",
+            "category": "Developer Tools",
+            "description": "Enforce code quality and review workflows with required reviewers, build validation, and merge controls."
+        },
+        {
+            "service": "Azure Artifacts Upstream Sources",
+            "category": "Developer Tools",
+            "description": "Proxy and cache public package feeds to improve reliability and control over third-party dependencies."
+        },
+        {
+            "service": "Azure DevTest Labs Cost Policies",
+            "category": "Developer Tools",
+            "description": "Set quotas, auto-shutdown, and cost controls to limit spend in development and test environments."
+        },
+        {
+            "service": "Azure App Service Hybrid Connections Manager",
+            "category": "App Platform",
+            "description": "Lightweight agent to enable App Service apps to access on-premises resources securely without VPNs."
+        },
+        {
+            "service": "Azure App Service Deployment Center",
+            "category": "App Platform",
+            "description": "Integrated CI/CD setup for App Service using GitHub, Azure DevOps, or external repositories for automated deployments."
+        },
+        {
+            "service": "Azure App Service Backup and Restore",
+            "category": "App Platform",
+            "description": "Scheduled backups and point-in-time restore capabilities for web apps and their associated content and databases."
+        },
+        {
+            "service": "Azure Spring Apps Scale-to-Zero",
+            "category": "App Platform",
+            "description": "Scale Spring Boot applications down to zero instances to reduce cost for infrequently used services."
+        },
+        {
+            "service": "Azure Container Apps Dapr Integration",
+            "category": "Containers",
+            "description": "Built-in Dapr sidecar support to simplify building microservices with state, pub/sub, and bindings."
+        },
+        {
+            "service": "Azure Container Registry Immutable Tags",
+            "category": "Containers",
+            "description": "Prevent overwriting of image tags to ensure immutability and reproducible deployments."
+        },
+        {
+            "service": "Azure Kubernetes Service Node Image Upgrade",
+            "category": "Containers",
+            "description": "Automated node image upgrades to keep cluster nodes patched and secure with minimal disruption."
+        },
+        {
+            "service": "Azure Kubernetes Service Cluster Autoscaler (Node Pools)",
+            "category": "Containers",
+            "description": "Scale individual node pools independently to optimize cost and performance for heterogeneous workloads."
+        },
+        {
+            "service": "Azure Container Instances VNET Integration",
+            "category": "Containers",
+            "description": "Deploy container instances into virtual networks to enable secure connectivity to other resources."
+        },
+        {
+            "service": "Azure Batch Job Scheduling Policies",
+            "category": "Compute",
+            "description": "Define job priorities, task dependencies, and scheduling policies to optimize throughput for batch workloads."
+        },
+        {
+            "service": "Azure Dedicated Host Host Groups",
+            "category": "Compute",
+            "description": "Organize dedicated hosts into host groups to manage fault domains and placement for high availability."
+        },
+        {
+            "service": "Azure Spot VMs Eviction Policies",
+            "category": "Compute",
+            "description": "Control behavior when spot VMs are evicted, including eviction notifications and eviction policy settings."
+        },
+        {
+            "service": "Azure Image Builder Shared Image Versioning",
+            "category": "Compute",
+            "description": "Manage image versions and replicate them across regions using a shared image gallery for consistent deployments."
+        },
+        {
+            "service": "Azure Resource Manager Bicep",
+            "category": "Management + Governance",
+            "description": "Domain-specific language for declaratively deploying Azure resources with simpler syntax than ARM JSON."
+        },
+        {
+            "service": "Azure CLI",
+            "category": "Developer Tools",
+            "description": "Cross-platform command-line interface for managing Azure resources and automating workflows."
+        },
+        {
+            "service": "Azure PowerShell",
+            "category": "Developer Tools",
+            "description": "PowerShell modules for scripting and automating Azure resource management and operational tasks."
+        },
+        {
+            "service": "Azure SDKs",
+            "category": "Developer Tools",
+            "description": "Language-specific software development kits for integrating Azure services into applications."
+        },
+        {
+            "service": "Azure Identity SDKs",
+            "category": "Identity",
+            "description": "Client libraries to authenticate applications and services using managed identities and tokens."
+        },
+        {
+            "service": "Azure Monitor REST API",
+            "category": "Management + Governance",
+            "description": "Programmatic access to telemetry, metrics, and alerting capabilities for integration and automation."
+        },
+        {
+            "service": "Azure Resource Manager REST API",
+            "category": "Management + Governance",
+            "description": "APIs to programmatically deploy, manage, and query Azure resources and templates."
+        },
+        {
+            "service": "Azure Service Health Alerts",
+            "category": "Management + Governance",
+            "description": "Notifications and personalized alerts for service incidents, planned maintenance, and advisories."
+        },
+        {
+            "service": "Azure Advisor Security Best Practices",
+            "category": "Management + Governance",
+            "description": "Security-focused recommendations to remediate vulnerabilities and harden cloud workloads."
+        },
+        {
+            "service": "Azure Well-Architected Tooling",
+            "category": "Advisory",
+            "description": "Assessment tools and actionable guidance to align workloads with cloud best practices."
+        },
+        {
+            "service": "Azure Marketplace Consulting Services",
+            "category": "Ecosystem",
+            "description": "Third-party consulting and professional services available through the Azure Marketplace."
+        },
+        {
+            "service": "Azure Marketplace Managed Applications",
+            "category": "Ecosystem",
+            "description": "Deployable managed solutions that allow publishers to operate applications in customer subscriptions."
+        },
+        {
+            "service": "Azure Confidential Compute SDKs",
+            "category": "Security",
+            "description": "Developer libraries and tooling to build applications that leverage confidential computing enclaves."
+        },
+        {
+            "service": "Azure Attestation",
+            "category": "Security",
+            "description": "Service to verify the trustworthiness of confidential computing environments and attest code integrity."
+        },
+        {
+            "service": "Azure Policy Guest Configuration Remediation",
+            "category": "Governance",
+            "description": "Automated remediation actions to enforce guest-level configuration compliance on machines."
+        },
+        {
+            "service": "Azure Monitor Private Link",
+            "category": "Management + Governance",
+            "description": "Access monitoring data and insights over private endpoints to keep telemetry within private networks."
+        },
+        {
+            "service": "Azure Monitor Metrics Explorer",
+            "category": "Management + Governance",
+            "description": "Interactive tool to visualize and analyze time-series metrics across resources."
+        },
+        {
+            "service": "Azure Monitor Alerts Suppression",
+            "category": "Management + Governance",
+            "description": "Temporarily suppress alerts during maintenance windows or planned operations to reduce noise."
+        },
+        {
+            "service": "Azure Automation Hybrid Runbook Worker",
+            "category": "Management + Governance",
+            "description": "Run automation runbooks on hybrid machines to manage resources across cloud and on-premises."
+        },
+        {
+            "service": "Azure Automation Desired State Configuration",
+            "category": "Management + Governance",
+            "description": "Ensure machines remain in a defined configuration state using DSC-based automation."
+        },
+        {
+            "service": "Azure Backup Cross-Region Restore",
+            "category": "Storage",
+            "description": "Restore backup data to alternate regions to support disaster recovery and geographic resilience."
+        },
+        {
+            "service": "Azure Backup Long-Term Retention",
+            "category": "Storage",
+            "description": "Retention policies and vault capabilities to meet long-term archival and compliance needs."
+        },
+        {
+            "service": "Azure Site Recovery Mobility Service for Linux",
+            "category": "Migration",
+            "description": "Agent support for replicating Linux machines to Azure as part of disaster recovery plans."
+        },
+        {
+            "service": "Azure Migrate App Containerization Tools",
+            "category": "Migration",
+            "description": "Tooling to analyze, containerize, and migrate legacy applications to container platforms."
+        },
+        {
+            "service": "Azure Database for PostgreSQL High Availability",
+            "category": "Databases",
+            "description": "Built-in high-availability configurations and automated failover for managed Postgres instances."
+        },
+        {
+            "service": "Azure Database for MySQL High Availability",
+            "category": "Databases",
+            "description": "Managed MySQL deployments with zone-redundant high availability and automated failover."
+        },
+        {
+            "service": "Azure Database for MariaDB High Availability",
+            "category": "Databases",
+            "description": "High-availability managed MariaDB with automated backups and failover capabilities."
+        },
+        {
+            "service": "Azure SQL Vulnerability Assessment",
+            "category": "Databases",
+            "description": "Automated scanning and actionable remediation steps to reduce database security risks."
+        },
+        {
+            "service": "Azure SQL Threat Detection",
+            "category": "Databases",
+            "description": "Behavioral analytics to detect anomalous database activities and potential threats."
+        },
+        {
+            "service": "Azure Synapse Pipelines",
+            "category": "Analytics",
+            "description": "Data integration and orchestration pipelines built into Synapse for ETL/ELT workflows."
+        },
+        {
+            "service": "Azure Synapse Serverless SQL Pools",
+            "category": "Analytics",
+            "description": "On-demand, serverless query capability for analyzing data in data lake storage using T-SQL."
+        },
+        {
+            "service": "Azure Synapse Dedicated SQL Pools",
+            "category": "Analytics",
+            "description": "Provisioned data warehousing compute for high-performance, large-scale analytics."
+        },
+        {
+            "service": "Azure Data Factory Integration Runtime",
+            "category": "Analytics",
+            "description": "Compute infrastructure for executing data movement and transformation activities across environments."
+        },
+        {
+            "service": "Azure Data Factory Mapping Data Flow Debug",
+            "category": "Analytics",
+            "description": "Interactive debugging and testing for visual data transformation flows."
+        },
+        {
+            "service": "Azure Databricks Workspace",
+            "category": "Analytics",
+            "description": "Collaborative environment for data engineering, data science, and analytics on Databricks."
+        },
+        {
+            "service": "Azure Data Explorer Ingest",
+            "category": "Analytics",
+            "description": "High-throughput ingestion pipelines for streaming and batch telemetry into Kusto clusters."
+        },
+        {
+            "service": "Azure Cognitive Services Custom Vision",
+            "category": "AI + Machine Learning",
+            "description": "Trainable image classification and object detection models tailored to custom datasets."
+        },
+        {
+            "service": "Azure Cognitive Services Face",
+            "category": "AI + Machine Learning",
+            "description": "Face detection, verification, and identification APIs for building identity-aware experiences."
+        },
+        {
+            "service": "Azure Cognitive Services Speech to Text Batch",
+            "category": "AI + Machine Learning",
+            "description": "Batch transcription capabilities for large audio files and offline processing."
+        },
+        {
+            "service": "Azure Cognitive Services Speech SDK",
+            "category": "AI + Machine Learning",
+            "description": "Client libraries to integrate speech recognition and synthesis into applications."
+        },
+        {
+            "service": "Azure Bot Service Channels",
+            "category": "AI + Machine Learning",
+            "description": "Connect bots to multiple messaging channels such as Teams, Web Chat, and others."
+        },
+        {
+            "service": "Azure Bot Service Composer",
+            "category": "AI + Machine Learning",
+            "description": "Visual authoring tool to design, test, and deploy conversational experiences."
+        },
+        {
+            "service": "Azure Cognitive Search Indexers",
+            "category": "AI + Machine Learning",
+            "description": "Automated connectors and indexers to pull content from data sources into search indexes."
+        },
+        {
+            "service": "Azure Cognitive Search Synonyms",
+            "category": "AI + Machine Learning",
+            "description": "Synonym maps to improve search relevance and handle alternate query terms."
+        },
+        {
+            "service": "Azure Media Services DRM",
+            "category": "Media",
+            "description": "Digital rights management and content protection for streaming media assets."
+        },
+        {
+            "service": "Azure Media Services Live Transcription",
+            "category": "Media",
+            "description": "Real-time captioning and transcription for live streaming events."
+        },
+        {
+            "service": "Azure CDN Rules Engine",
+            "category": "Networking",
+            "description": "Edge-level request and response manipulation to implement caching, redirects, and security rules."
+        },
+        {
+            "service": "Azure Front Door Origin Groups",
+            "category": "Networking",
+            "description": "Group backend origins for health-based routing and failover in global application delivery."
+        },
+        {
+            "service": "Azure Application Gateway Autoscaling",
+            "category": "Networking",
+            "description": "Automatic scaling of application gateway instances to match traffic demands."
+        },
+        {
+            "service": "Azure Virtual Network Peering",
+            "category": "Networking",
+            "description": "Low-latency, high-bandwidth connectivity between virtual networks within or across regions."
+        },
+        {
+            "service": "Azure Resource Manager Bicep",
+            "category": "Management + Governance",
+            "description": "Domain-specific language for declaratively deploying Azure resources with simpler syntax than ARM JSON."
+        },
+        {
+            "service": "Azure CLI",
+            "category": "Developer Tools",
+            "description": "Cross-platform command-line interface for managing Azure resources and automating workflows."
+        },
+        {
+            "service": "Azure PowerShell",
+            "category": "Developer Tools",
+            "description": "PowerShell modules for scripting and automating Azure resource management and operational tasks."
+        },
+        {
+            "service": "Azure SDKs",
+            "category": "Developer Tools",
+            "description": "Language-specific software development kits for integrating Azure services into applications."
+        },
+        {
+            "service": "Azure Identity SDKs",
+            "category": "Identity",
+            "description": "Client libraries to authenticate applications and services using managed identities and tokens."
+        },
+        {
+            "service": "Azure Monitor REST API",
+            "category": "Management + Governance",
+            "description": "Programmatic access to telemetry, metrics, and alerting capabilities for integration and automation."
+        },
+        {
+            "service": "Azure Resource Manager REST API",
+            "category": "Management + Governance",
+            "description": "APIs to programmatically deploy, manage, and query Azure resources and templates."
+        },
+        {
+            "service": "Azure Service Health Alerts",
+            "category": "Management + Governance",
+            "description": "Notifications and personalized alerts for service incidents, planned maintenance, and advisories."
+        },
+        {
+            "service": "Azure Advisor Security Best Practices",
+            "category": "Management + Governance",
+            "description": "Security-focused recommendations to remediate vulnerabilities and harden cloud workloads."
+        },
+        {
+            "service": "Azure Well-Architected Tooling",
+            "category": "Advisory",
+            "description": "Assessment tools and actionable guidance to align workloads with cloud best practices."
+        },
+        {
+            "service": "Azure Marketplace Consulting Services",
+            "category": "Ecosystem",
+            "description": "Third-party consulting and professional services available through the Azure Marketplace."
+        },
+        {
+            "service": "Azure Marketplace Managed Applications",
+            "category": "Ecosystem",
+            "description": "Deployable managed solutions that allow publishers to operate applications in customer subscriptions."
+        },
+        {
+            "service": "Azure Confidential Compute SDKs",
+            "category": "Security",
+            "description": "Developer libraries and tooling to build applications that leverage confidential computing enclaves."
+        },
+        {
+            "service": "Azure Attestation",
+            "category": "Security",
+            "description": "Service to verify the trustworthiness of confidential computing environments and attest code integrity."
+        },
+        {
+            "service": "Azure Policy Guest Configuration Remediation",
+            "category": "Governance",
+            "description": "Automated remediation actions to enforce guest-level configuration compliance on machines."
+        },
+        {
+            "service": "Azure Monitor Private Link",
+            "category": "Management + Governance",
+            "description": "Access monitoring data and insights over private endpoints to keep telemetry within private networks."
+        },
+        {
+            "service": "Azure Monitor Metrics Explorer",
+            "category": "Management + Governance",
+            "description": "Interactive tool to visualize and analyze time-series metrics across resources."
+        },
+        {
+            "service": "Azure Monitor Alerts Suppression",
+            "category": "Management + Governance",
+            "description": "Temporarily suppress alerts during maintenance windows or planned operations to reduce noise."
+        },
+        {
+            "service": "Azure Automation Hybrid Runbook Worker",
+            "category": "Management + Governance",
+            "description": "Run automation runbooks on hybrid machines to manage resources across cloud and on-premises."
+        },
+        {
+            "service": "Azure Automation Desired State Configuration",
+            "category": "Management + Governance",
+            "description": "Ensure machines remain in a defined configuration state using DSC-based automation."
+        },
+        {
+            "service": "Azure Backup Cross-Region Restore",
+            "category": "Storage",
+            "description": "Restore backup data to alternate regions to support disaster recovery and geographic resilience."
+        },
+        {
+            "service": "Azure Backup Long-Term Retention",
+            "category": "Storage",
+            "description": "Retention policies and vault capabilities to meet long-term archival and compliance needs."
+        },
+        {
+            "service": "Azure Site Recovery Mobility Service for Linux",
+            "category": "Migration",
+            "description": "Agent support for replicating Linux machines to Azure as part of disaster recovery plans."
+        },
+        {
+            "service": "Azure Migrate App Containerization Tools",
+            "category": "Migration",
+            "description": "Tooling to analyze, containerize, and migrate legacy applications to container platforms."
+        },
+        {
+            "service": "Azure Database for PostgreSQL High Availability",
+            "category": "Databases",
+            "description": "Built-in high-availability configurations and automated failover for managed Postgres instances."
+        },
+        {
+            "service": "Azure Database for MySQL High Availability",
+            "category": "Databases",
+            "description": "Managed MySQL deployments with zone-redundant high availability and automated failover."
+        },
+        {
+            "service": "Azure Database for MariaDB High Availability",
+            "category": "Databases",
+            "description": "High-availability managed MariaDB with automated backups and failover capabilities."
+        },
+        {
+            "service": "Azure SQL Vulnerability Assessment",
+            "category": "Databases",
+            "description": "Automated scanning and actionable remediation steps to reduce database security risks."
+        },
+        {
+            "service": "Azure SQL Threat Detection",
+            "category": "Databases",
+            "description": "Behavioral analytics to detect anomalous database activities and potential threats."
+        },
+        {
+            "service": "Azure Synapse Pipelines",
+            "category": "Analytics",
+            "description": "Data integration and orchestration pipelines built into Synapse for ETL/ELT workflows."
+        },
+        {
+            "service": "Azure Synapse Serverless SQL Pools",
+            "category": "Analytics",
+            "description": "On-demand, serverless query capability for analyzing data in data lake storage using T-SQL."
+        },
+        {
+            "service": "Azure Synapse Dedicated SQL Pools",
+            "category": "Analytics",
+            "description": "Provisioned data warehousing compute for high-performance, large-scale analytics."
+        },
+        {
+            "service": "Azure Data Factory Integration Runtime",
+            "category": "Analytics",
+            "description": "Compute infrastructure for executing data movement and transformation activities across environments."
+        },
+        {
+            "service": "Azure Data Factory Mapping Data Flow Debug",
+            "category": "Analytics",
+            "description": "Interactive debugging and testing for visual data transformation flows."
+        },
+        {
+            "service": "Azure Databricks Workspace",
+            "category": "Analytics",
+            "description": "Collaborative environment for data engineering, data science, and analytics on Databricks."
+        },
+        {
+            "service": "Azure Data Explorer Ingest",
+            "category": "Analytics",
+            "description": "High-throughput ingestion pipelines for streaming and batch telemetry into Kusto clusters."
+        },
+        {
+            "service": "Azure Cognitive Services Custom Vision",
+            "category": "AI + Machine Learning",
+            "description": "Trainable image classification and object detection models tailored to custom datasets."
+        },
+        {
+            "service": "Azure Cognitive Services Face",
+            "category": "AI + Machine Learning",
+            "description": "Face detection, verification, and identification APIs for building identity-aware experiences."
+        },
+        {
+            "service": "Azure Cognitive Services Speech to Text Batch",
+            "category": "AI + Machine Learning",
+            "description": "Batch transcription capabilities for large audio files and offline processing."
+        },
+        {
+            "service": "Azure Cognitive Services Speech SDK",
+            "category": "AI + Machine Learning",
+            "description": "Client libraries to integrate speech recognition and synthesis into applications."
+        },
+        {
+            "service": "Azure Bot Service Channels",
+            "category": "AI + Machine Learning",
+            "description": "Connect bots to multiple messaging channels such as Teams, Web Chat, and others."
+        },
+        {
+            "service": "Azure Bot Service Composer",
+            "category": "AI + Machine Learning",
+            "description": "Visual authoring tool to design, test, and deploy conversational experiences."
+        },
+        {
+            "service": "Azure Cognitive Search Indexers",
+            "category": "AI + Machine Learning",
+            "description": "Automated connectors and indexers to pull content from data sources into search indexes."
+        },
+        {
+            "service": "Azure Cognitive Search Synonyms",
+            "category": "AI + Machine Learning",
+            "description": "Synonym maps to improve search relevance and handle alternate query terms."
+        },
+        {
+            "service": "Azure Media Services DRM",
+            "category": "Media",
+            "description": "Digital rights management and content protection for streaming media assets."
+        },
+        {
+            "service": "Azure Media Services Live Transcription",
+            "category": "Media",
+            "description": "Real-time captioning and transcription for live streaming events."
+        },
+        {
+            "service": "Azure CDN Rules Engine",
+            "category": "Networking",
+            "description": "Edge-level request and response manipulation to implement caching, redirects, and security rules."
+        },
+        {
+            "service": "Azure Front Door Origin Groups",
+            "category": "Networking",
+            "description": "Group backend origins for health-based routing and failover in global application delivery."
+        },
+        {
+            "service": "Azure Application Gateway Autoscaling",
+            "category": "Networking",
+            "description": "Automatic scaling of application gateway instances to match traffic demands."
+        },
+        {
+            "service": "Azure Virtual Network Peering",
+            "category": "Networking",
+            "description": "Low-latency, high-bandwidth connectivity between virtual networks within or across regions."
+        },
+        {
+            "service": "Azure Virtual Desktop",
+            "category": "Desktop Virtualization",
+            "description": "Managed desktop and app virtualization to deliver Windows desktops and remote apps with centralized management and security."
+        },
+        {
+            "service": "Azure Windows 365",
+            "category": "Desktop Virtualization",
+            "description": "Cloud PC service that streams a personalized Windows desktop to any device with simplified provisioning and management."
+        },
+        {
+            "service": "Azure Files NFS 4.1",
+            "category": "Storage",
+            "description": "NFS protocol support for Azure Files enabling native Linux/UNIX file semantics and enterprise file workloads."
+        },
+        {
+            "service": "Azure Files Premium",
+            "category": "Storage",
+            "description": "High-performance SMB and NFS file shares for IO-intensive enterprise applications and lift-and-shift scenarios."
+        },
+        {
+            "service": "Azure Storage Account Firewall",
+            "category": "Security",
+            "description": "Network-level controls to restrict storage account access to selected virtual networks and IP ranges for enhanced protection."
+        },
+        {
+            "service": "Azure Synapse Studio",
+            "category": "Analytics",
+            "description": "Unified workspace for data integration, exploration, warehousing, and big data analytics with collaborative tooling."
+        },
+        {
+            "service": "Azure Purview Scanning",
+            "category": "Governance",
+            "description": "Automated scanning and classification of data sources to populate the data map and enforce governance policies."
+        },
+        {
+            "service": "Microsoft Defender for Cloud",
+            "category": "Security",
+            "description": "Cloud workload protection that provides threat detection, vulnerability assessment, and security posture management."
+        },
+        {
+            "service": "Azure Lighthouse",
+            "category": "Management + Governance",
+            "description": "Delegated management capabilities enabling service providers and central teams to manage customer estates at scale."
+        },
+        {
+            "service": "Azure Policy",
+            "category": "Governance",
+            "description": "Policy-as-code engine to enforce organizational standards and compliance across subscriptions and resources."
+        },
+        {
+            "service": "Azure Blueprints",
+            "category": "Governance",
+            "description": "Package and deploy repeatable environments that include resource templates, policies, and role assignments."
+        },
+        {
+            "service": "Azure Resource Graph",
+            "category": "Management + Governance",
+            "description": "Fast, efficient querying and exploration of resource inventory across subscriptions for governance and auditing."
+        },
+        {
+            "service": "Azure Bicep",
+            "category": "Management + Governance",
+            "description": "Declarative domain-specific language for authoring infrastructure-as-code with simpler syntax than ARM JSON."
+        },
+        {
+            "service": "Azure CLI",
+            "category": "Developer Tools",
+            "description": "Cross-platform command-line interface for managing Azure resources and automating operational workflows."
+        },
+        {
+            "service": "Azure PowerShell",
+            "category": "Developer Tools",
+            "description": "PowerShell modules for scripting and automating Azure resource management and administrative tasks."
+        },
+        {
+            "service": "Azure SDKs",
+            "category": "Developer Tools",
+            "description": "Language-specific client libraries to integrate Azure services into applications with idiomatic APIs."
+        },
+        {
+            "service": "Azure DevOps Services",
+            "category": "Developer Tools",
+            "description": "End-to-end DevOps platform offering repos, pipelines, artifacts, boards, and test management for teams."
+        },
+        {
+            "service": "GitHub for Azure",
+            "category": "Developer Tools",
+            "description": "Integration between GitHub and Azure for CI/CD, Actions, and developer workflows targeting Azure services."
+        },
+        {
+            "service": "Azure Monitor",
+            "category": "Management + Governance",
+            "description": "Full-stack monitoring for applications, infrastructure, and networks with metrics, logs, and alerts."
+        },
+        {
+            "service": "Azure Application Insights",
+            "category": "Management + Governance",
+            "description": "Application performance monitoring and diagnostics for web apps and services to detect and triage issues."
+        },
+        {
+            "service": "Azure Log Analytics",
+            "category": "Management + Governance",
+            "description": "Collect, query, and analyze telemetry and logs from applications and infrastructure at scale."
+        },
+        {
+            "service": "Azure Monitor Workbooks",
+            "category": "Management + Governance",
+            "description": "Interactive reports and visualizations for telemetry and operational data to support investigations."
+        },
+        {
+            "service": "Azure Monitor Metrics",
+            "category": "Management + Governance",
+            "description": "Time-series metrics collection and visualization with alerting and autoscale integration."
+        },
+        {
+            "service": "Azure Monitor Alerts",
+            "category": "Management + Governance",
+            "description": "Alerting and action rules based on telemetry and metrics to trigger notifications and automation."
+        },
+        {
+            "service": "Azure Backup",
+            "category": "Storage",
+            "description": "Managed backup service for Azure VMs, files, databases, and workloads with centralized recovery."
+        },
+        {
+            "service": "Azure Site Recovery",
+            "category": "Migration",
+            "description": "Disaster recovery orchestration for VMs and physical servers with automated failover and testing."
+        },
+        {
+            "service": "Azure Migrate",
+            "category": "Migration",
+            "description": "Assessment and migration tools to plan and move servers, databases, and apps to Azure."
+        },
+        {
+            "service": "Azure Data Box",
+            "category": "Migration",
+            "description": "Appliance and service family for offline data transfer to Azure including rugged and edge devices."
+        },
+        {
+            "service": "Azure Database Migration Service",
+            "category": "Migration",
+            "description": "Guided service to migrate databases from on-premises or other clouds to Azure with minimal downtime."
+        },
+        {
+            "service": "Azure Arc",
+            "category": "Hybrid",
+            "description": "Extend Azure management and governance to on-premises, multi-cloud, and edge resources."
+        },
+        {
+            "service": "Azure Stack Hub",
+            "category": "Hybrid",
+            "description": "Run Azure services from your datacenter with consistent APIs and hybrid application patterns."
+        },
+        {
+            "service": "Azure Stack HCI",
+            "category": "Hybrid",
+            "description": "Hyperconverged infrastructure solution for running virtualized workloads on-premises with Azure integration."
+        },
+        {
+            "service": "Azure Stack Edge",
+            "category": "Edge",
+            "description": "Edge compute and storage appliance for local processing, ML inference, and accelerated data transfer."
+        },
+        {
+            "service": "Azure IoT Hub",
+            "category": "IoT + Edge",
+            "description": "Central message hub for secure, bi-directional device-to-cloud communication and device management."
+        },
+        {
+            "service": "Azure IoT Central",
+            "category": "IoT + Edge",
+            "description": "SaaS IoT application platform for rapid device onboarding, management, and telemetry visualization."
+        },
+        {
+            "service": "Azure Digital Twins",
+            "category": "IoT + Edge",
+            "description": "Model and simulate real-world environments and relationships to build spatial intelligence solutions."
+        },
+        {
+            "service": "Azure Time Series Insights",
+            "category": "IoT + Edge",
+            "description": "Scalable time-series data store and analytics for IoT telemetry with fast query and visualization."
+        },
+        {
+            "service": "Azure Maps",
+            "category": "Developer Tools",
+            "description": "Geospatial APIs and mapping services for location-aware applications and mobility scenarios."
+        },
+        {
+            "service": "Azure Communication Services",
+            "category": "Media + Comms",
+            "description": "Programmable voice, chat, SMS, and video APIs to add communications to applications."
+        },
+        {
+            "service": "Azure Notification Hubs",
+            "category": "Mobile",
+            "description": "Push notification service for sending targeted messages to millions of mobile devices."
+        },
+        {
+            "service": "Azure API Management",
+            "category": "Integration",
+            "description": "Publish, secure, and analyze APIs with developer portal, policies, and gateway capabilities."
+        },
+        {
+            "service": "Azure Logic Apps",
+            "category": "Integration",
+            "description": "Low-code workflow automation to connect apps, data, and services across cloud and on-premises."
+        },
+        {
+            "service": "Azure Event Grid",
+            "category": "Integration",
+            "description": "Event routing service for building reactive, event-driven architectures at scale."
+        },
+        {
+            "service": "Azure Event Hubs",
+            "category": "Messaging",
+            "description": "Big-data streaming platform and event ingestion service for telemetry and analytics pipelines."
+        },
+        {
+            "service": "Azure Service Bus",
+            "category": "Messaging",
+            "description": "Enterprise messaging for reliable asynchronous communication between applications and services."
+        },
+        {
+            "service": "Azure Storage (Blob, File, Queue, Table)",
+            "category": "Storage",
+            "description": "Durable, scalable object and file storage with tiers for hot, cool, and archive data."
+        },
+        {
+            "service": "Azure Disk Storage",
+            "category": "Storage",
+            "description": "High-performance managed disks for VMs with SSD and HDD options and snapshot capabilities."
+        },
+        {
+            "service": "Azure SQL Database",
+            "category": "Databases",
+            "description": "Managed relational database service compatible with SQL Server offering automated maintenance and scaling."
+        },
+        {
+            "service": "Azure Cosmos DB",
+            "category": "Databases",
+            "description": "Globally distributed, multi-model NoSQL database with low-latency reads and multi-region replication."
+        },
+        {
+            "service": "Azure Database for PostgreSQL",
+            "category": "Databases",
+            "description": "Managed PostgreSQL service with scaling, automated backups, and security features."
+        },
+        {
+            "service": "Azure Database for MySQL",
+            "category": "Databases",
+            "description": "Managed MySQL service with automated maintenance, high availability, and scaling options."
+        },
+        {
+            "service": "Azure Cache for Redis",
+            "category": "Databases",
+            "description": "In-memory data store for caching and fast data access to improve application performance."
+        },
+        {
+            "service": "Azure Front Door Rules Engine",
+            "category": "Networking",
+            "description": "Edge-level request and response manipulation to implement redirects, header transforms, and custom routing rules."
+        },
+        {
+            "service": "Azure Front Door WAF Managed Rules",
+            "category": "Security",
+            "description": "Preconfigured web application firewall rule sets to protect applications from common threats and vulnerabilities."
+        },
+        {
+            "service": "Azure Application Gateway URL-based Routing",
+            "category": "Networking",
+            "description": "Route HTTP requests to backend pools based on URL path patterns for flexible application architectures."
+        },
+        {
+            "service": "Azure Application Gateway End-to-End TLS",
+            "category": "Security",
+            "description": "Secure traffic between clients and backend servers with TLS termination and re-encryption options."
+        },
+        {
+            "service": "Azure Virtual Network Gateway ExpressRoute",
+            "category": "Networking",
+            "description": "Integrate ExpressRoute circuits with virtual networks for private, high-throughput connectivity."
+        },
+        {
+            "service": "Azure Virtual Network Gateway VPN",
+            "category": "Networking",
+            "description": "Site-to-site and point-to-site VPN connectivity for secure hybrid network topologies."
+        },
+        {
+            "service": "Azure Network Virtual Appliance (NVA) Marketplace",
+            "category": "Networking",
+            "description": "Third-party virtual appliances for advanced routing, security, and network functions available in Marketplace."
+        },
+        {
+            "service": "Azure Route Server",
+            "category": "Networking",
+            "description": "Simplify dynamic routing between network virtual appliances and Azure virtual networks using BGP."
+        },
+        {
+            "service": "Azure Private Endpoint DNS Integration",
+            "category": "Networking",
+            "description": "Automatic DNS integration for private endpoints to enable private connectivity to PaaS services."
+        },
+        {
+            "service": "Azure Virtual Network NAT",
+            "category": "Networking",
+            "description": "Simplified outbound internet connectivity for subnets with scalable NAT and SNAT port management."
+        },
+        {
+            "service": "Azure Firewall Threat Intelligence-based Filtering",
+            "category": "Security",
+            "description": "Block or alert on traffic associated with known malicious IPs and domains using threat feeds."
+        },
+        {
+            "service": "Azure Key Vault Managed HSM Backup",
+            "category": "Security",
+            "description": "Secure backup and restore capabilities for managed HSM clusters to protect cryptographic assets."
+        },
+        {
+            "service": "Azure Key Vault Soft-Delete",
+            "category": "Security",
+            "description": "Recover deleted keys, secrets, and certificates within a retention period to prevent data loss."
+        },
+        {
+            "service": "Azure AD Identity Protection Risk Policies",
+            "category": "Identity",
+            "description": "Detect risky sign-ins and compromised accounts and enforce conditional access remediation."
+        },
+        {
+            "service": "Azure AD Access Reviews",
+            "category": "Identity",
+            "description": "Periodic review workflows to certify and remove unnecessary access across identities and groups."
+        },
+        {
+            "service": "Azure AD Entitlement Management",
+            "category": "Identity",
+            "description": "Automate access request, approval, and lifecycle for external and internal users."
+        },
+        {
+            "service": "Azure Managed Identity for Azure Functions",
+            "category": "Identity",
+            "description": "Assign managed identities to serverless functions to securely access other Azure resources without secrets."
+        },
+        {
+            "service": "Azure Policy Initiative Compliance Dashboard",
+            "category": "Governance",
+            "description": "Centralized view of policy compliance across subscriptions with actionable remediation guidance."
+        },
+        {
+            "service": "Azure Blueprints Versioning",
+            "category": "Governance",
+            "description": "Manage blueprint versions to track and roll out environment definitions consistently across tenants."
+        },
+        {
+            "service": "Azure Resource Graph Change History",
+            "category": "Management + Governance",
+            "description": "Track and query historical changes to resource properties for auditing and troubleshooting."
+        },
+        {
+            "service": "Azure Monitor Log Alerts Scheduled Query Rules",
+            "category": "Management + Governance",
+            "description": "Create alert rules based on scheduled log queries to detect conditions and trigger actions."
+        },
+        {
+            "service": "Azure Monitor Diagnostic Settings to Storage",
+            "category": "Management + Governance",
+            "description": "Archive resource diagnostics and logs to storage accounts for long-term retention and compliance."
+        },
+        {
+            "service": "Azure Monitor Private Link for Metrics",
+            "category": "Management + Governance",
+            "description": "Access metrics and monitoring data over private endpoints to keep telemetry within private networks."
+        },
+        {
+            "service": "Azure Automation Hybrid Worker Groups",
+            "category": "Management + Governance",
+            "description": "Group hybrid runbook workers to target runbooks to specific on-premises or cloud machines."
+        },
+        {
+            "service": "Azure Backup Cross-Subscription Restore",
+            "category": "Storage",
+            "description": "Restore backup data across subscriptions to support recovery and migration scenarios."
+        },
+        {
+            "service": "Azure Backup Soft-Delete for VMs",
+            "category": "Storage",
+            "description": "Protect VM backups from accidental deletion by retaining deleted recovery points for a retention period."
+        },
+        {
+            "service": "Azure Site Recovery Multi-VM Consistency",
+            "category": "Migration",
+            "description": "Ensure application-consistent replication and failover for multi-VM applications and tiers."
+        },
+        {
+            "service": "Azure Migrate Server Assessment Dependency Mapping",
+            "category": "Migration",
+            "description": "Visualize application dependencies to plan migration waves and reduce cutover risk."
+        },
+        {
+            "service": "Azure Migrate Database Assessment Compatibility",
+            "category": "Migration",
+            "description": "Assess database compatibility and recommend target Azure database options for migration."
+        },
+        {
+            "service": "Azure Arc-enabled SQL Managed Instance (Preview)",
+            "category": "Hybrid",
+            "description": "Bring managed SQL capabilities to on-premises and multi-cloud environments under Azure governance."
+        },
+        {
+            "service": "Azure Arc-enabled Kubernetes Extensions",
+            "category": "Hybrid",
+            "description": "Deploy and manage extensions and agents across connected Kubernetes clusters from Azure."
+        },
+        {
+            "service": "Azure Stack HCI Azure Kubernetes Service (AKS) on HCI",
+            "category": "Hybrid",
+            "description": "Run AKS workloads on Azure Stack HCI for consistent Kubernetes experience on-premises."
+        },
+        {
+            "service": "Azure Stack Edge GPU for AI",
+            "category": "Edge",
+            "description": "Edge appliance with GPU acceleration for local inferencing, video analytics, and ML workloads."
+        },
+        {
+            "service": "Azure IoT Hub Device Twin Tags and Desired Properties",
+            "category": "IoT + Edge",
+            "description": "Manage device metadata and desired configuration state for large-scale device fleets."
+        },
+        {
+            "service": "Azure IoT Hub File Upload",
+            "category": "IoT + Edge",
+            "description": "Securely upload device files to Azure storage for diagnostics, logs, and telemetry artifacts."
+        },
+        {
+            "service": "Azure IoT Central Rules and Actions",
+            "category": "IoT + Edge",
+            "description": "Define rules to trigger actions, notifications, or integrations based on device telemetry and state."
+        },
+        {
+            "service": "Azure Digital Twins Time Series Insights Integration",
+            "category": "IoT + Edge",
+            "description": "Stream digital twin telemetry into Time Series Insights for fast querying and visualization."
+        },
+        {
+            "service": "Azure Maps Isochrone and Isochrone Routing",
+            "category": "Developer Tools",
+            "description": "Compute reachable areas and travel-time-based routing for mobility and logistics applications."
+        },
+        {
+            "service": "Azure Maps Batch Reverse Geocoding",
+            "category": "Developer Tools",
+            "description": "Bulk reverse-geocoding for large datasets to enrich records with location metadata."
+        },
+        {
+            "service": "Azure Communication Services Phone Number Provisioning",
+            "category": "Media + Comms",
+            "description": "Provision and manage PSTN phone numbers for voice and SMS capabilities in applications."
+        },
+        {
+            "service": "Azure Communication Services Recording and Transcription",
+            "category": "Media + Comms",
+            "description": "Record calls and meetings and generate transcripts for compliance and analysis."
+        },
+        {
+            "service": "Azure Notification Hubs Tag Expressions",
+            "category": "Mobile",
+            "description": "Complex tag expressions to target notifications to dynamic audiences across devices."
+        },
+        {
+            "service": "Azure API Management Versioning and Revisions",
+            "category": "Integration",
+            "description": "Manage API versions and revisions to support backward compatibility and staged rollouts."
+        },
+        {
+            "service": "Azure API Management Policy Expressions for Security",
+            "category": "Integration",
+            "description": "Use policy expressions to implement authentication, rate limiting, and request validation."
+        },
+        {
+            "service": "Azure Logic Apps Enterprise Integration Pack B2B",
+            "category": "Integration",
+            "description": "Support for EDI, AS2, and B2B messaging scenarios with partner onboarding and mapping."
+        },
+        {
+            "service": "Azure Event Grid Retry and Dead-Lettering",
+            "category": "Integration",
+            "description": "Automatic retry policies and dead-lettering to handle undeliverable events reliably."
+        },
+        {
+            "service": "Azure Event Hubs Capture to ADLS Gen2 with Partitioning",
+            "category": "Messaging",
+            "description": "Capture streaming events into ADLS Gen2 with partitioned files for efficient downstream processing."
+        },
+        {
+            "service": "Azure Service Bus Geo-DR Namespace Pairing",
+            "category": "Messaging",
+            "description": "Pair namespaces across regions to enable disaster recovery and failover for messaging workloads."
+        },
+        {
+            "service": "Azure Queue Storage Message TTL and Poison Queue",
+            "category": "Storage",
+            "description": "Control message time-to-live and route repeatedly failing messages to poison queues for inspection."
+        },
+        {
+            "service": "Azure Blob Storage Versioning",
+            "category": "Storage",
+            "description": "Automatically maintain versions of blobs to enable point-in-time recovery and auditing."
+        },
+        {
+            "service": "Azure Files AD Kerberos Authentication",
+            "category": "Storage",
+            "description": "Enable Kerberos-based authentication for Azure Files to support enterprise identity integration."
+        },
+        {
+            "service": "Azure NetApp Files Performance Tiers",
+            "category": "Storage",
+            "description": "Choose performance tiers for enterprise file shares to match workload IOPS and throughput needs."
+        },
+        {
+            "service": "Azure Elastic SAN Thin Provisioning",
+            "category": "Storage",
+            "description": "Efficient capacity utilization for SAN volumes with thin provisioning and dynamic scaling."
+        },
+        {
+            "service": "Azure Chaos Studio",
+            "category": "Reliability",
+            "description": "Controlled fault-injection and chaos experiments to validate resilience and recovery procedures for cloud applications."
+        },
+        {
+            "service": "Azure Monitor Application Map",
+            "category": "Management + Governance",
+            "description": "Visualize application components and dependencies to identify performance bottlenecks and failure domains."
+        },
+        {
+            "service": "Azure Monitor Service Map",
+            "category": "Management + Governance",
+            "description": "Automatic discovery and mapping of processes and network connections across servers to aid troubleshooting."
+        },
+        {
+            "service": "Azure Resource Manager Locks (ReadOnly)",
+            "category": "Management + Governance",
+            "description": "Apply read-only locks to prevent accidental modification of critical resources and configurations."
+        },
+        {
+            "service": "Azure Resource Manager Locks (CanNotDelete)",
+            "category": "Management + Governance",
+            "description": "Apply delete-protection locks to ensure critical resources cannot be removed without explicit lock removal."
+        },
+        {
+            "service": "Azure Advisor High Availability Recommendations",
+            "category": "Management + Governance",
+            "description": "Targeted guidance to improve redundancy and reduce single points of failure across deployed workloads."
+        },
+        {
+            "service": "Azure Advisor Performance Recommendations",
+            "category": "Management + Governance",
+            "description": "Actionable suggestions to optimize resource sizing, configuration, and responsiveness for better performance."
+        },
+        {
+            "service": "Azure Advisor Security Recommendations",
+            "category": "Management + Governance",
+            "description": "Security-focused recommendations to remediate misconfigurations and harden cloud resources against threats."
+        },
+        {
+            "service": "Azure Monitor Application Insights Snapshot Debugger",
+            "category": "Management + Governance",
+            "description": "Capture and inspect application exceptions with snapshots to speed root-cause analysis of production errors."
+        },
+        {
+            "service": "Azure Monitor Application Insights Availability Tests",
+            "category": "Management + Governance",
+            "description": "Synthetic transaction monitoring to validate application availability and performance from global locations."
+        },
+        {
+            "service": "Azure DevOps Release Gates",
+            "category": "Developer Tools",
+            "description": "Pre-deployment checks and approvals to enforce quality and compliance before promoting releases."
+        },
+        {
+            "service": "Azure DevOps Environments Approvals",
+            "category": "Developer Tools",
+            "description": "Approval workflows and environment protection to control deployments to critical targets."
+        },
+        {
+            "service": "Azure DevOps Secure Pipeline Secrets",
+            "category": "Developer Tools",
+            "description": "Secure storage and consumption of secrets in pipelines without exposing them in logs or code."
+        },
+        {
+            "service": "Azure DevOps Test Plans Automated Tests",
+            "category": "Developer Tools",
+            "description": "Run automated test suites as part of CI/CD to validate application behavior and regressions."
+        },
+        {
+            "service": "Azure DevOps Artifacts Upstream Sources Caching",
+            "category": "Developer Tools",
+            "description": "Cache external package feeds to improve reliability and reduce external dependency outages."
+        },
+        {
+            "service": "Azure DevOps Work Item Templates",
+            "category": "Developer Tools",
+            "description": "Reusable work item templates to standardize tracking and accelerate issue creation."
+        },
+        {
+            "service": "Azure DevTest Labs Auto-Start/Auto-Shutdown",
+            "category": "Developer Tools",
+            "description": "Automate lab VM lifecycle to reduce costs by starting and stopping environments on schedules."
+        },
+        {
+            "service": "Azure DevTest Labs Artifact Repository",
+            "category": "Developer Tools",
+            "description": "Prebuilt artifacts and scripts to quickly provision development and test environments."
+        },
+        {
+            "service": "Azure Spring Apps Observability",
+            "category": "App Platform",
+            "description": "Integrated metrics, logs, and tracing for Spring Boot applications to simplify troubleshooting."
+        },
+        {
+            "service": "Azure Spring Apps Enterprise Security",
+            "category": "App Platform",
+            "description": "Enterprise-grade identity, network, and compliance controls for managed Spring workloads."
+        },
+        {
+            "service": "Azure App Service Scale-Out Rules",
+            "category": "App Platform",
+            "description": "Define metric-based and schedule-based scaling rules to automatically adjust app instances."
+        },
+        {
+            "service": "Azure App Service Hybrid Connections Manager (Agent)",
+            "category": "App Platform",
+            "description": "Lightweight agent to enable secure connectivity from App Service to on-premises resources."
+        },
+        {
+            "service": "Azure SignalR Service Connection Strings",
+            "category": "App Platform",
+            "description": "Securely manage connection strings and access keys for real-time messaging endpoints."
+        },
+        {
+            "service": "Azure API Management Backend Caching",
+            "category": "Integration",
+            "description": "Cache backend responses at the gateway to reduce latency and backend load for APIs."
+        },
+        {
+            "service": "Azure API Management OAuth2 and OpenID Connect",
+            "category": "Integration",
+            "description": "Integrate modern identity protocols to secure APIs and enable single sign-on scenarios."
+        },
+        {
+            "service": "Azure Logic Apps Managed Identity Support",
+            "category": "Integration",
+            "description": "Use managed identities in workflows to securely access Azure resources without secrets."
+        },
+        {
+            "service": "Azure Logic Apps Durable Functions Integration",
+            "category": "Integration",
+            "description": "Combine durable orchestrations with Logic Apps connectors to build complex, stateful workflows."
+        },
+        {
+            "service": "Azure Event Grid Schema Mapping",
+            "category": "Integration",
+            "description": "Transform and normalize event payloads to simplify downstream processing and routing."
+        },
+        {
+            "service": "Azure Event Hubs Capture Partitioning",
+            "category": "Messaging",
+            "description": "Partition-aware capture to produce files aligned with event partitions for efficient downstream processing."
+        },
+        {
+            "service": "Azure Event Hubs Geo-DR",
+            "category": "Messaging",
+            "description": "Disaster recovery pairing and failover to protect event ingestion across regions."
+        },
+        {
+            "service": "Azure Service Bus Auto-Inflate",
+            "category": "Messaging",
+            "description": "Automatically increase throughput units to handle spikes in messaging load without manual intervention."
+        },
+        {
+            "service": "Azure Service Bus Message Deferral",
+            "category": "Messaging",
+            "description": "Defer message processing until a later time while preserving message state and ordering."
+        },
+        {
+            "service": "Azure Queue Storage Batch Operations",
+            "category": "Messaging",
+            "description": "Process and manage multiple queue messages in batch to improve throughput and efficiency."
+        },
+        {
+            "service": "Azure Blob Storage Archive Tier Restore",
+            "category": "Storage",
+            "description": "Restore archived blobs to hot or cool tiers for retrieval with configurable priority and speed."
+        },
+        {
+            "service": "Azure Blob Storage Object Replication",
+            "category": "Storage",
+            "description": "Asynchronous replication of blobs between storage accounts for cross-region redundancy and compliance."
+        },
+        {
+            "service": "Azure Files Cross-Region Replication",
+            "category": "Storage",
+            "description": "Replicate file shares across regions to support disaster recovery and data locality requirements."
+        },
+        {
+            "service": "Azure Files SMB Multichannel",
+            "category": "Storage",
+            "description": "Improve throughput and resilience by enabling multiple network connections for SMB file shares."
+        },
+        {
+            "service": "Azure NetApp Files Snapshot Restore",
+            "category": "Storage",
+            "description": "Instantly restore file shares from snapshots to recover data or create clones for testing."
+        },
+        {
+            "service": "Azure Elastic SAN Replication",
+            "category": "Storage",
+            "description": "Block-level replication for SAN volumes to support backup, DR, and cross-region data mobility."
+        },
+        {
+            "service": "Azure Disk Encryption with Key Vault",
+            "category": "Security",
+            "description": "Encrypt VM disks using customer-managed keys stored in Key Vault for stronger control and compliance."
+        },
+        {
+            "service": "Azure Confidential VMs Secure Boot",
+            "category": "Security",
+            "description": "Hardware-backed secure boot and measured launch to ensure VM integrity in confidential environments."
+        },
+        {
+            "service": "Azure Dedicated HSM Compliance Reports",
+            "category": "Security",
+            "description": "Compliance and audit reporting for dedicated HSM instances to meet regulatory requirements."
+        },
+        {
+            "service": "Azure Key Vault Access Policies",
+            "category": "Security",
+            "description": "Fine-grained access control to keys, secrets, and certificates using role assignments and policies."
+        },
+        {
+            "service": "Azure Key Vault Soft-Delete and Purge Protection (HSM)",
+            "category": "Security",
+            "description": "Protect cryptographic assets in HSM-backed vaults from accidental or malicious deletion."
+        },
+        {
+            "service": "Azure AD Conditional Access Named Locations",
+            "category": "Identity",
+            "description": "Define trusted IP ranges and countries to tailor conditional access policies based on location."
+        },
+        {
+            "service": "Azure AD Conditional Access Session Controls",
+            "category": "Identity",
+            "description": "Apply session-level controls such as sign-in frequency and app-enforced restrictions to protect sessions."
+        },
+        {
+            "service": "Azure AD Identity Protection Risk Detections",
+            "category": "Identity",
+            "description": "Detect risky sign-ins and compromised credentials using behavioral analytics and signals."
+        },
+        {
+            "service": "Azure AD B2C Custom Policies",
+            "category": "Identity",
+            "description": "Highly customizable identity journeys and user flows for consumer-facing applications."
+        },
+        {
+            "service": "Azure AD B2C Social Identity Providers",
+            "category": "Identity",
+            "description": "Enable sign-in with social accounts and external identity providers for consumer apps."
+        },
+        {
+            "service": "Azure Policy Initiative Assignment via Blueprints",
+            "category": "Governance",
+            "description": "Combine blueprints and initiatives to deploy compliant environments with policy enforcement."
+        },
+        {
+            "service": "Azure Policy Guest Configuration Assessment",
+            "category": "Governance",
+            "description": "Assess and report on guest OS configuration compliance across virtual machines and servers."
+        },
+        {
+            "service": "Azure Resource Graph Inventory Exports",
+            "category": "Management + Governance",
+            "description": "Export resource inventory and query results for reporting, auditing, and downstream automation."
+        },
+        {
+            "service": "Azure Advisor - Cost",
+            "category": "Management + Governance",
+            "description": "Personalized cost optimization recommendations to reduce spend and improve resource utilization."
+        },
+        {
+            "service": "Azure Advisor - Performance",
+            "category": "Management + Governance",
+            "description": "Recommendations to improve application and infrastructure performance through configuration and sizing changes."
+        },
+        {
+            "service": "Azure Advisor - Security",
+            "category": "Management + Governance",
+            "description": "Security-focused guidance to remediate misconfigurations and reduce attack surface across subscriptions."
+        },
+        {
+            "service": "Azure Well-Architected Review Tool",
+            "category": "Advisory",
+            "description": "Assessment tooling to evaluate workloads against best-practice pillars and produce prioritized improvement actions."
+        },
+        {
+            "service": "Azure Marketplace Private Offers",
+            "category": "Ecosystem",
+            "description": "Mechanism for enterprises to receive and accept private procurement offers from marketplace publishers."
+        },
+        {
+            "service": "Azure Marketplace Consulting Services",
+            "category": "Ecosystem",
+            "description": "Third-party consulting engagements and professional services available through the Azure Marketplace."
+        },
+        {
+            "service": "Azure Managed Applications",
+            "category": "Ecosystem",
+            "description": "Deployable, managed solutions that allow publishers or partners to operate applications in customer subscriptions."
+        },
+        {
+            "service": "Azure Stack Development Kit",
+            "category": "Hybrid",
+            "description": "Single-node deployment of Azure Stack for development and testing of hybrid applications and integrations."
+        },
+        {
+            "service": "Azure VMware Solution HCX",
+            "category": "Hybrid",
+            "description": "Hybrid connectivity and migration tooling to move VMware workloads between on-premises and Azure VMware Solution."
+        },
+        {
+            "service": "Azure Arc Data Controller",
+            "category": "Hybrid",
+            "description": "Control plane for running Azure data services on-premises and at the edge with unified management."
+        },
+        {
+            "service": "Azure Arc-enabled PostgreSQL Hyperscale",
+            "category": "Hybrid",
+            "description": "Bring managed, scalable Postgres capabilities under Azure management across environments."
+        },
+        {
+            "service": "Azure Stack Edge Pro",
+            "category": "Edge",
+            "description": "Edge appliance with compute and storage for local processing, accelerated inference, and secure transfer to Azure."
+        },
+        {
+            "service": "Azure Edge Zones with Carrier",
+            "category": "Edge",
+            "description": "Carrier-integrated edge locations that provide localized compute and networking for low-latency apps."
+        },
+        {
+            "service": "Azure IoT Hub Device Provisioning Service (DPS)",
+            "category": "IoT + Edge",
+            "description": "Zero-touch, secure provisioning service to enroll devices into IoT Hub at scale."
+        },
+        {
+            "service": "Azure IoT Hub Device Streams",
+            "category": "IoT + Edge",
+            "description": "Secure bi-directional streaming channel for diagnostics, remote access, and device management."
+        },
+        {
+            "service": "Azure IoT Central Marketplace Templates",
+            "category": "IoT + Edge",
+            "description": "Prebuilt application templates and device models to accelerate IoT solution deployment."
+        },
+        {
+            "service": "Azure Digital Twins Graph Query",
+            "category": "IoT + Edge",
+            "description": "Query language and APIs to traverse and analyze relationships in digital twin models."
+        },
+        {
+            "service": "Azure Time Series Insights Gen2 Warm Store",
+            "category": "IoT + Edge",
+            "description": "Cost-optimized storage tier for recent time-series data with fast query performance."
+        },
+        {
+            "service": "Azure Maps Mobility Services",
+            "category": "Developer Tools",
+            "description": "Routing, traffic, and mobility analytics APIs to build transportation and logistics solutions."
+        },
+        {
+            "service": "Azure Maps Creator",
+            "category": "Developer Tools",
+            "description": "Create and manage custom map data and tiles for specialized mapping scenarios."
+        },
+        {
+            "service": "Azure Communication Services - Chat",
+            "category": "Media + Comms",
+            "description": "Managed chat APIs and SDKs for building in-app messaging experiences with moderation and persistence."
+        },
+        {
+            "service": "Azure Communication Services - Voice",
+            "category": "Media + Comms",
+            "description": "Programmable voice APIs for PSTN calling, call control, and telephony integration."
+        },
+        {
+            "service": "Azure Communication Services - Video",
+            "category": "Media + Comms",
+            "description": "Real-time video SDKs and managed rooms for multi-party video experiences."
+        },
+        {
+            "service": "Azure Media Services - Live Events",
+            "category": "Media",
+            "description": "Live encoding, packaging, and streaming services for broadcast-grade live events and low-latency streaming."
+        },
+        {
+            "service": "Azure Media Services - On-Demand",
+            "category": "Media",
+            "description": "Encoding, packaging, and delivery workflows for video-on-demand and OTT scenarios."
+        },
+        {
+            "service": "Azure Cognitive Services - Vision",
+            "category": "AI + Machine Learning",
+            "description": "APIs for image analysis, OCR, object detection, and spatial understanding to extract insights from visual content."
+        },
+        {
+            "service": "Azure Cognitive Services - Speech",
+            "category": "AI + Machine Learning",
+            "description": "Speech-to-text, text-to-speech, and speech translation capabilities for voice-enabled applications."
+        },
+        {
+            "service": "Azure Cognitive Services - Language",
+            "category": "AI + Machine Learning",
+            "description": "Natural language processing APIs for sentiment, entity recognition, summarization, and conversational AI."
+        },
+        {
+            "service": "Azure Cognitive Services - Decision",
+            "category": "AI + Machine Learning",
+            "description": "Services like Personalizer and Anomaly Detector to make contextual, adaptive decisions and detect anomalies."
+        },
+        {
+            "service": "Azure OpenAI Service",
+            "category": "AI + Machine Learning",
+            "description": "Access to advanced generative models and APIs for building conversational agents, summarization, and content generation."
+        },
+        {
+            "service": "Azure Machine Learning - Compute Instances",
+            "category": "AI + Machine Learning",
+            "description": "Managed compute for development and experimentation with preconfigured environments for data scientists."
+        },
+        {
+            "service": "Azure Machine Learning - Compute Clusters",
+            "category": "AI + Machine Learning",
+            "description": "Scalable training and inference compute clusters with autoscaling and GPU support for model workloads."
+        },
+        {
+            "service": "Azure Machine Learning - Model Registry",
+            "category": "AI + Machine Learning",
+            "description": "Centralized model versioning, lineage, and deployment artifacts to support MLOps practices."
+        },
+        {
+            "service": "Azure Synapse Analytics - Studio",
+            "category": "Analytics",
+            "description": "Unified workspace for data integration, exploration, warehousing, and big data analytics with collaborative tooling."
+        },
+        {
+            "service": "Azure Synapse Analytics - Serverless SQL",
+            "category": "Analytics",
+            "description": "On-demand T-SQL query capability over data lake storage for ad-hoc analytics without provisioning compute."
+        },
+        {
+            "service": "Azure Synapse Analytics - Dedicated SQL Pool",
+            "category": "Analytics",
+            "description": "Provisioned data warehousing compute for high-performance, large-scale analytics workloads."
+        },
+        {
+            "service": "Azure Databricks - Workspaces",
+            "category": "Analytics",
+            "description": "Collaborative environment for data engineering, data science, and analytics built on Apache Spark."
+        },
+        {
+            "service": "Azure Data Factory - Pipelines",
+            "category": "Analytics",
+            "description": "Orchestrate data movement and transformation workflows across cloud and on-premises sources."
+        },
+        {
+            "service": "Azure Data Factory - Integration Runtime",
+            "category": "Analytics",
+            "description": "Compute infrastructure for executing data flows and movement activities in different network contexts."
+        },
+        {
+            "service": "Azure Data Explorer (Kusto)",
+            "category": "Analytics",
+            "description": "Fast, fully managed service for interactive analytics on large volumes of telemetry and log data using KQL."
+        },
+        {
+            "service": "Azure Purview (Microsoft Purview) - Data Map",
+            "category": "Governance",
+            "description": "Automated discovery, classification, and cataloging of enterprise data assets for governance and lineage."
+        },
+        {
+            "service": "Azure Purview - Data Catalog",
+            "category": "Governance",
+            "description": "Searchable catalog and metadata store to help users discover and understand governed data assets."
+        },
+        {
+            "service": "Azure Policy - Initiative Definitions",
+            "category": "Governance",
+            "description": "Group related policy definitions into initiatives to apply comprehensive governance controls at scale."
+        },
+        {
+            "service": "Azure Blueprints - Artifacts",
+            "category": "Governance",
+            "description": "Compose resource templates, policies, and role assignments into reusable blueprint artifacts for environment provisioning."
+        },
+        {
+            "service": "Azure Key Vault - Secrets",
+            "category": "Security",
+            "description": "Securely store and manage application secrets, connection strings, and credentials with access controls."
+        },
+        {
+            "service": "Azure Key Vault - Keys",
+            "category": "Security",
+            "description": "Manage cryptographic keys for encryption, signing, and key lifecycle operations with HSM-backed options."
+        },
+        {
+            "service": "Azure Key Vault - Certificates",
+            "category": "Security",
+            "description": "Provision, manage, and auto-renew TLS/SSL certificates with integrated lifecycle management."
+        },
+        {
+            "service": "Azure Defender for Cloud",
+            "category": "Security",
+            "description": "Unified cloud security posture management and threat protection across Azure and hybrid workloads."
+        },
+        {
+            "service": "Microsoft Sentinel",
+            "category": "Security",
+            "description": "Cloud-native SIEM and SOAR for intelligent security analytics, threat detection, and automated response."
+        },
+        {
+            "service": "Azure Firewall",
+            "category": "Security",
+            "description": "Managed, cloud-native network security service with centralized policy, NAT, and threat intelligence filtering."
+        },
+        {
+            "service": "Azure DDoS Protection",
+            "category": "Security",
+            "description": "DDoS mitigation service to protect public-facing applications and resources from volumetric attacks."
+        },
+        {
+            "service": "Azure Active Directory - Identity Protection",
+            "category": "Identity",
+            "description": "Risk-based detection and automated remediation to protect user identities and sign-ins."
+        },
+        {
+            "service": "Azure Active Directory - Privileged Identity Management",
+            "category": "Identity",
+            "description": "Just-in-time privileged access, approval workflows, and oversight for high-privilege roles."
+        },
+        {
+            "service": "Azure Active Directory - B2C",
+            "category": "Identity",
+            "description": "Customer identity and access management platform for consumer-facing applications with customizable user journeys."
+        },
+        {
+            "service": "Azure Active Directory - B2B",
+            "category": "Identity",
+            "description": "Secure collaboration capabilities to invite and manage external partners using their own identities."
+        }
+    ]
+}
