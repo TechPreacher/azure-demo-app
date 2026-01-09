@@ -76,22 +76,22 @@
 
 ### Tests for User Story 1
 
-- [ ] T029 [P] [US1] Unit test for storage service list_services() in backend/tests/unit/test_storage.py
-- [ ] T030 [P] [US1] Integration test for GET /api/v1/services endpoint in backend/tests/integration/test_api.py
-- [ ] T031 [P] [US1] Test for API client get_services() in frontend/tests/test_api_client.py
+- [X] T029 [P] [US1] Unit test for storage service list_services() in backend/tests/unit/test_storage.py
+- [X] T030 [P] [US1] Integration test for GET /api/v1/services endpoint in backend/tests/integration/test_api.py
+- [X] T031 [P] [US1] Test for API client get_services() in frontend/tests/test_api_client.py
 
 ### Implementation for User Story 1
 
-- [ ] T032 [US1] Implement list_services() in storage adapters in backend/src/services/storage.py
-- [ ] T033 [US1] Implement get_service_by_name() in storage adapters in backend/src/services/storage.py
-- [ ] T034 [US1] Create API routes file in backend/src/api/routes.py with router setup
-- [ ] T035 [US1] Implement GET /api/v1/services endpoint in backend/src/api/routes.py
-- [ ] T036 [US1] Implement GET /api/v1/services/{service_name} endpoint in backend/src/api/routes.py
-- [ ] T037 [US1] Register routes in backend/src/main.py
-- [ ] T038 [US1] Create service list component in frontend/src/components/service_list.py (table display)
-- [ ] T039 [US1] Create filter component in frontend/src/components/filters.py (search by name/category)
-- [ ] T040 [US1] Integrate list and filter components in frontend/src/app.py
-- [ ] T041 [US1] Add loading states and error handling to frontend views
+- [X] T032 [US1] Implement list_services() in storage adapters in backend/src/services/storage.py
+- [X] T033 [US1] Implement get_service_by_name() in storage adapters in backend/src/services/storage.py
+- [X] T034 [US1] Create API routes file in backend/src/api/routes.py with router setup
+- [X] T035 [US1] Implement GET /api/v1/services endpoint in backend/src/api/routes.py
+- [X] T036 [US1] Implement GET /api/v1/services/{service_name} endpoint in backend/src/api/routes.py
+- [X] T037 [US1] Register routes in backend/src/main.py
+- [X] T038 [US1] Create service list component in frontend/src/components/service_list.py (table display)
+- [X] T039 [US1] Create filter component in frontend/src/components/filters.py (search by name/category)
+- [X] T040 [US1] Integrate list and filter components in frontend/src/app.py
+- [X] T041 [US1] Add loading states and error handling to frontend views
 
 **Checkpoint**: User Story 1 complete - users can view and search Azure services
 

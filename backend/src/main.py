@@ -14,6 +14,7 @@ from typing import Any
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
+from src.api.routes import router as api_router
 from src.config import get_settings
 
 # Configure structured JSON logging
@@ -122,6 +123,9 @@ def create_app() -> FastAPI:
             "docs": "/docs",
             "health": "/health",
         }
+
+    # Register API routes
+    app.include_router(api_router)
 
     return app
 
