@@ -9,8 +9,8 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query, status
 
 from src.api.dependencies import StorageDep
-from src.models.service import Service, ServiceList
-from src.services.storage import ServiceNotFoundError
+from src.models.service import Service, ServiceCreate, ServiceList
+from src.services.storage import DuplicateServiceError, ServiceNotFoundError
 
 logger = logging.getLogger(__name__)
 
@@ -93,5 +93,52 @@ async def get_service(
         logger.warning(f"Service not found: {service_name}")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        ) from e
+
+
+@router.post(
+    "/services",
+    response_model=Service,
+    status_code=status.HTTP_201_CREATED,
+    summary="Create a new service",
+    description="Add a new Azure service to the catalog.",
+    responses={
+        409: {
+            "description": "Service already exists",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Service already exists: Example Service"}
+                }
+            },
+        }
+    },
+)
+async def create_service(
+    service: ServiceCreate,
+    storage: StorageDep,
+) -> Service:
+    """Create a new Azure service.
+
+    Args:
+        service: Service data to create.
+        storage: Storage adapter dependency.
+
+    Returns:
+        The created service.
+
+    Raises:
+        HTTPException: 409 if service name already exists.
+    """
+    logger.info(f"Creating service: {service.service}")
+
+    try:
+        created = storage.create_service(service)
+        logger.info(f"Created service: {created.service}")
+        return created
+    except DuplicateServiceError as e:
+        logger.warning(f"Duplicate service: {service.service}")
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
             detail=str(e),
         ) from e

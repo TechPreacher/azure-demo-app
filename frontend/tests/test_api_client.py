@@ -207,3 +207,96 @@ class TestServiceData:
         assert result["service"] == sample_service.service
         assert result["category"] == sample_service.category
         assert result["description"] == sample_service.description
+
+
+class TestAPIClientCreateService:
+    """Tests for APIClient.create_service() method."""
+
+    def test_create_service_returns_service_data(
+        self, sample_service: ServiceData
+    ) -> None:
+        """Test that create_service returns ServiceData object."""
+        with patch.object(httpx.Client, "post") as mock_post:
+            mock_response = MagicMock()
+            mock_response.status_code = 201
+            mock_response.json.return_value = sample_service.to_dict()
+            mock_post.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            result = client.create_service(sample_service)
+
+            assert isinstance(result, ServiceData)
+            assert result.service == sample_service.service
+            assert result.category == sample_service.category
+
+    def test_create_service_sends_correct_data(
+        self, sample_service: ServiceData
+    ) -> None:
+        """Test that create_service sends correct JSON payload."""
+        with patch.object(httpx.Client, "post") as mock_post:
+            mock_response = MagicMock()
+            mock_response.status_code = 201
+            mock_response.json.return_value = sample_service.to_dict()
+            mock_post.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            client.create_service(sample_service)
+
+            mock_post.assert_called_once()
+            call_kwargs = mock_post.call_args.kwargs
+            assert call_kwargs["json"] == sample_service.to_dict()
+
+    def test_create_service_raises_api_error_on_409(self) -> None:
+        """Test that create_service raises APIError on duplicate (409)."""
+        with patch.object(httpx.Client, "post") as mock_post:
+            mock_response = MagicMock()
+            mock_response.status_code = 409
+            mock_response.json.return_value = {"detail": "Service already exists"}
+            mock_post.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            service = ServiceData(
+                service="Duplicate",
+                category="Test",
+                description="Test",
+            )
+
+            with pytest.raises(APIError) as exc_info:
+                client.create_service(service)
+
+            assert exc_info.value.status_code == 409
+
+    def test_create_service_raises_api_error_on_validation_error(self) -> None:
+        """Test that create_service raises APIError on validation error (422)."""
+        with patch.object(httpx.Client, "post") as mock_post:
+            mock_response = MagicMock()
+            mock_response.status_code = 422
+            mock_response.json.return_value = {"detail": "Validation error"}
+            mock_post.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            service = ServiceData(
+                service="Invalid",
+                category="",
+                description="",
+            )
+
+            with pytest.raises(APIError) as exc_info:
+                client.create_service(service)
+
+            assert exc_info.value.status_code == 422
+
+    def test_create_service_raises_api_error_on_connection_error(self) -> None:
+        """Test that create_service raises APIError on connection error."""
+        with patch.object(httpx.Client, "post") as mock_post:
+            mock_post.side_effect = httpx.RequestError("Connection failed")
+
+            client = APIClient(base_url="http://test-api:8000")
+            service = ServiceData(
+                service="Test",
+                category="Test",
+                description="Test",
+            )
+
+            with pytest.raises(APIError, match="Cannot connect to API"):
+                client.create_service(service)

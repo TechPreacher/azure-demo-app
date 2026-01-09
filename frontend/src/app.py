@@ -8,8 +8,9 @@ import logging
 
 import streamlit as st
 
-from src.api_client import APIClient, APIError
+from src.api_client import APIClient, APIError, ServiceData
 from src.components.filters import display_filters, get_unique_categories
+from src.components.service_form import display_service_form_modal
 from src.components.service_list import display_service_list
 from src.config import config
 
@@ -94,6 +95,33 @@ def load_all_categories() -> list[str]:
         return []
 
 
+def create_service(service: ServiceData) -> bool:
+    """Create a new service via the API.
+
+    Args:
+        service: Service data to create.
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        client = get_api_client()
+        client.create_service(service)
+        logger.info(f"Created service: {service.service}")
+        return True
+    except APIError as e:
+        logger.error(f"Failed to create service: {e}")
+        if e.status_code == 409:
+            st.error(f"⚠️ A service with name '{service.service}' already exists.")
+        else:
+            st.error(f"⚠️ Failed to create service: {e}")
+        return False
+    except Exception as e:
+        logger.error(f"Unexpected error creating service: {e}")
+        st.error(f"⚠️ An unexpected error occurred: {e}")
+        return False
+
+
 def main() -> None:
     """Main application entry point."""
     # Header
@@ -126,6 +154,11 @@ def main() -> None:
         selected_category, search_term = display_filters(categories=categories)
 
     # Main content area
+    st.markdown("---")
+
+    # Add new service form (collapsible)
+    display_service_form_modal(on_submit=create_service, categories=categories)
+
     st.markdown("---")
 
     # Load services with filters

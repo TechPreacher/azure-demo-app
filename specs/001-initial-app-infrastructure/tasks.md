@@ -105,17 +105,17 @@
 
 ### Tests for User Story 2
 
-- [ ] T042 [P] [US2] Unit test for storage service create_service() in backend/tests/unit/test_storage.py
-- [ ] T043 [P] [US2] Integration test for POST /api/v1/services endpoint in backend/tests/integration/test_api.py
-- [ ] T044 [P] [US2] Test for API client create_service() in frontend/tests/test_api_client.py
+- [X] T042 [P] [US2] Unit test for storage service create_service() in backend/tests/unit/test_storage.py
+- [X] T043 [P] [US2] Integration test for POST /api/v1/services endpoint in backend/tests/integration/test_api.py
+- [X] T044 [P] [US2] Test for API client create_service() in frontend/tests/test_api_client.py
 
 ### Implementation for User Story 2
 
-- [ ] T045 [US2] Implement create_service() in storage adapters in backend/src/services/storage.py
-- [ ] T046 [US2] Add duplicate service name validation in create_service()
-- [ ] T047 [US2] Implement POST /api/v1/services endpoint in backend/src/api/routes.py
-- [ ] T048 [US2] Create service form component in frontend/src/components/service_form.py (create mode)
-- [ ] T049 [US2] Integrate create form in frontend/src/app.py with success/error feedback
+- [X] T045 [US2] Implement create_service() in storage adapters in backend/src/services/storage.py
+- [X] T046 [US2] Add duplicate service name validation in create_service()
+- [X] T047 [US2] Implement POST /api/v1/services endpoint in backend/src/api/routes.py
+- [X] T048 [US2] Create service form component in frontend/src/components/service_form.py (create mode)
+- [X] T049 [US2] Integrate create form in frontend/src/app.py with success/error feedback
 
 **Checkpoint**: User Story 2 complete - users can create new services
 

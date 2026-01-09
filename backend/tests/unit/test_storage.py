@@ -8,8 +8,9 @@ from pathlib import Path
 
 import pytest
 
-from src.models.service import Service
+from src.models.service import Service, ServiceCreate
 from src.services.storage import (
+    DuplicateServiceError,
     LocalFileStorageAdapter,
     ServiceNotFoundError,
     StorageError,
@@ -146,3 +147,82 @@ class TestLocalFileStorageAdapterGetService:
         """Test that service name lookup is case-sensitive."""
         with pytest.raises(ServiceNotFoundError):
             storage_adapter.get_service("azure virtual machines")
+
+
+class TestLocalFileStorageAdapterCreateService:
+    """Unit tests for LocalFileStorageAdapter.create_service()."""
+
+    def test_create_service_adds_new_service(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that create_service adds a new service to storage."""
+        new_service = ServiceCreate(
+            service="Azure Container Apps",
+            category="Containers",
+            description="Fully managed serverless container service.",
+        )
+
+        result = storage_adapter.create_service(new_service)
+
+        assert isinstance(result, Service)
+        assert result.service == "Azure Container Apps"
+        assert result.category == "Containers"
+        assert result.description == "Fully managed serverless container service."
+
+    def test_create_service_persists_to_storage(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that created service can be retrieved."""
+        new_service = ServiceCreate(
+            service="Azure Container Apps",
+            category="Containers",
+            description="Fully managed serverless container service.",
+        )
+
+        storage_adapter.create_service(new_service)
+        retrieved = storage_adapter.get_service("Azure Container Apps")
+
+        assert retrieved.service == "Azure Container Apps"
+
+    def test_create_service_raises_duplicate_error(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that create_service raises DuplicateServiceError for existing name."""
+        duplicate_service = ServiceCreate(
+            service="Azure Virtual Machines",  # Already exists in sample data
+            category="Compute",
+            description="Duplicate service.",
+        )
+
+        with pytest.raises(DuplicateServiceError, match="Service already exists"):
+            storage_adapter.create_service(duplicate_service)
+
+    def test_create_service_in_empty_storage(
+        self, empty_storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that create_service works on empty storage."""
+        new_service = ServiceCreate(
+            service="First Service",
+            category="Test",
+            description="The first service.",
+        )
+
+        result = empty_storage_adapter.create_service(new_service)
+
+        assert result.service == "First Service"
+        assert len(empty_storage_adapter.list_services()) == 1
+
+    def test_create_service_preserves_existing_services(
+        self, storage_adapter: LocalFileStorageAdapter, sample_services: list[dict]
+    ) -> None:
+        """Test that create_service doesn't affect existing services."""
+        original_count = len(storage_adapter.list_services())
+
+        new_service = ServiceCreate(
+            service="New Service",
+            category="Test",
+            description="A new service.",
+        )
+        storage_adapter.create_service(new_service)
+
+        assert len(storage_adapter.list_services()) == original_count + 1

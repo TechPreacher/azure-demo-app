@@ -214,3 +214,110 @@ class TestHealthEndpoint:
         assert data["status"] == "healthy"
         assert "service" in data
         assert "version" in data
+
+
+class TestCreateServiceEndpoint:
+    """Integration tests for POST /api/v1/services endpoint."""
+
+    def test_create_service_returns_201(self, api_client: TestClient) -> None:
+        """Test that endpoint returns 201 for successful creation."""
+        new_service = {
+            "service": "Azure Container Apps",
+            "category": "Containers",
+            "description": "Fully managed serverless container service.",
+        }
+
+        response = api_client.post("/api/v1/services", json=new_service)
+
+        assert response.status_code == 201
+
+    def test_create_service_returns_created_service(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns the created service data."""
+        new_service = {
+            "service": "Azure Functions",
+            "category": "Serverless",
+            "description": "Event-driven serverless compute platform.",
+        }
+
+        response = api_client.post("/api/v1/services", json=new_service)
+        data = response.json()
+
+        assert data["service"] == "Azure Functions"
+        assert data["category"] == "Serverless"
+        assert data["description"] == "Event-driven serverless compute platform."
+
+    def test_create_service_persists(self, api_client: TestClient) -> None:
+        """Test that created service can be retrieved."""
+        new_service = {
+            "service": "Azure Logic Apps",
+            "category": "Integration",
+            "description": "Cloud-based workflow automation.",
+        }
+
+        api_client.post("/api/v1/services", json=new_service)
+        get_response = api_client.get("/api/v1/services/Azure Logic Apps")
+
+        assert get_response.status_code == 200
+        assert get_response.json()["service"] == "Azure Logic Apps"
+
+    def test_create_service_returns_409_for_duplicate(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns 409 for duplicate service name."""
+        duplicate_service = {
+            "service": "Azure Virtual Machines",  # Already exists
+            "category": "Compute",
+            "description": "Duplicate service.",
+        }
+
+        response = api_client.post("/api/v1/services", json=duplicate_service)
+
+        assert response.status_code == 409
+
+    def test_create_service_409_includes_detail(self, api_client: TestClient) -> None:
+        """Test that 409 response includes error detail."""
+        duplicate_service = {
+            "service": "Azure Virtual Machines",
+            "category": "Compute",
+            "description": "Duplicate.",
+        }
+
+        response = api_client.post("/api/v1/services", json=duplicate_service)
+        data = response.json()
+
+        assert "detail" in data
+        assert "already exists" in data["detail"].lower()
+
+    def test_create_service_returns_422_for_invalid_data(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns 422 for invalid request data."""
+        invalid_service = {
+            "service": "Missing Fields",
+            # Missing category and description
+        }
+
+        response = api_client.post("/api/v1/services", json=invalid_service)
+
+        assert response.status_code == 422
+
+    def test_create_service_increases_total_count(
+        self, api_client: TestClient, test_services: list[dict]
+    ) -> None:
+        """Test that creating a service increases the total count."""
+        initial_response = api_client.get("/api/v1/services")
+        initial_count = initial_response.json()["total"]
+
+        new_service = {
+            "service": "New Test Service",
+            "category": "Test",
+            "description": "A test service.",
+        }
+        api_client.post("/api/v1/services", json=new_service)
+
+        final_response = api_client.get("/api/v1/services")
+        final_count = final_response.json()["total"]
+
+        assert final_count == initial_count + 1
