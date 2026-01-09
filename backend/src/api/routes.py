@@ -9,7 +9,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query, status
 
 from src.api.dependencies import StorageDep
-from src.models.service import Service, ServiceCreate, ServiceList
+from src.models.service import Service, ServiceCreate, ServiceList, ServiceUpdate
 from src.services.storage import DuplicateServiceError, ServiceNotFoundError
 
 logger = logging.getLogger(__name__)
@@ -138,6 +138,69 @@ async def create_service(
         return created
     except DuplicateServiceError as e:
         logger.warning(f"Duplicate service: {service.service}")
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=str(e),
+        ) from e
+
+
+@router.put(
+    "/services/{service_name}",
+    response_model=Service,
+    summary="Update an existing service",
+    description="Update an existing Azure service. All fields are optional.",
+    responses={
+        404: {
+            "description": "Service not found",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Service not found: Example Service"}
+                }
+            },
+        },
+        409: {
+            "description": "Name conflict with existing service",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Service already exists: Example Service"}
+                }
+            },
+        },
+    },
+)
+async def update_service(
+    service_name: str,
+    update: ServiceUpdate,
+    storage: StorageDep,
+) -> Service:
+    """Update an existing Azure service.
+
+    Args:
+        service_name: Name of the service to update.
+        update: Fields to update (partial update supported).
+        storage: Storage adapter dependency.
+
+    Returns:
+        The updated service.
+
+    Raises:
+        HTTPException: 404 if service not found.
+        HTTPException: 409 if new name conflicts with existing service.
+    """
+    logger.info(f"Updating service: {service_name}")
+
+    try:
+        updated = storage.update_service(service_name, update)
+        logger.info(f"Updated service: {service_name}")
+        return updated
+    except ServiceNotFoundError as e:
+        logger.warning(f"Service not found: {service_name}")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        ) from e
+    except DuplicateServiceError as e:
+        logger.warning(f"Name conflict updating service: {service_name}")
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail=str(e),

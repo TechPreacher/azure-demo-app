@@ -321,3 +321,151 @@ class TestCreateServiceEndpoint:
         final_count = final_response.json()["total"]
 
         assert final_count == initial_count + 1
+
+
+class TestUpdateServiceEndpoint:
+    """Integration tests for PUT /api/v1/services/{service_name} endpoint."""
+
+    def test_update_service_returns_200(self, api_client: TestClient) -> None:
+        """Test that endpoint returns 200 for successful update."""
+        update_data = {"description": "Updated VM description."}
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+
+        assert response.status_code == 200
+
+    def test_update_service_returns_updated_service(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns the updated service data."""
+        update_data = {"description": "Newly updated description."}
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+        data = response.json()
+
+        assert data["service"] == "Azure Virtual Machines"
+        assert data["description"] == "Newly updated description."
+        assert data["category"] == "Compute"
+
+    def test_update_service_changes_category(self, api_client: TestClient) -> None:
+        """Test that endpoint can update category field."""
+        update_data = {"category": "Infrastructure"}
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+        data = response.json()
+
+        assert data["category"] == "Infrastructure"
+
+    def test_update_service_changes_name(self, api_client: TestClient) -> None:
+        """Test that endpoint can rename a service."""
+        update_data = {"service": "Azure VMs"}
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+        data = response.json()
+
+        assert response.status_code == 200
+        assert data["service"] == "Azure VMs"
+
+        # Verify new name can be retrieved
+        get_response = api_client.get("/api/v1/services/Azure VMs")
+        assert get_response.status_code == 200
+
+        # Verify old name no longer exists
+        old_response = api_client.get("/api/v1/services/Azure Virtual Machines")
+        assert old_response.status_code == 404
+
+    def test_update_service_changes_multiple_fields(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint can update multiple fields at once."""
+        update_data = {
+            "service": "Azure VMs",
+            "category": "Infrastructure",
+            "description": "Virtual machines for all workloads.",
+        }
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+        data = response.json()
+
+        assert data["service"] == "Azure VMs"
+        assert data["category"] == "Infrastructure"
+        assert data["description"] == "Virtual machines for all workloads."
+
+    def test_update_service_persists(self, api_client: TestClient) -> None:
+        """Test that updated service changes persist."""
+        update_data = {"description": "Persisted update."}
+
+        api_client.put("/api/v1/services/Azure Virtual Machines", json=update_data)
+
+        get_response = api_client.get("/api/v1/services/Azure Virtual Machines")
+        data = get_response.json()
+
+        assert data["description"] == "Persisted update."
+
+    def test_update_service_returns_404_for_missing(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns 404 for nonexistent service."""
+        update_data = {"description": "Update attempt."}
+
+        response = api_client.put("/api/v1/services/Nonexistent Service", json=update_data)
+
+        assert response.status_code == 404
+
+    def test_update_service_404_includes_detail(self, api_client: TestClient) -> None:
+        """Test that 404 response includes error detail."""
+        update_data = {"description": "Update."}
+
+        response = api_client.put("/api/v1/services/Nonexistent Service", json=update_data)
+        data = response.json()
+
+        assert "detail" in data
+
+    def test_update_service_returns_409_for_name_conflict(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns 409 when renaming to existing name."""
+        update_data = {"service": "Azure SQL Database"}  # Already exists
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+
+        assert response.status_code == 409
+
+    def test_update_service_409_includes_detail(self, api_client: TestClient) -> None:
+        """Test that 409 response includes error detail."""
+        update_data = {"service": "Azure SQL Database"}
+
+        response = api_client.put(
+            "/api/v1/services/Azure Virtual Machines", json=update_data
+        )
+        data = response.json()
+
+        assert "detail" in data
+        assert "already exists" in data["detail"].lower()
+
+    def test_update_service_preserves_total_count(
+        self, api_client: TestClient, test_services: list[dict]
+    ) -> None:
+        """Test that updating doesn't change total service count."""
+        initial_response = api_client.get("/api/v1/services")
+        initial_count = initial_response.json()["total"]
+
+        update_data = {"description": "Updated."}
+        api_client.put("/api/v1/services/Azure Virtual Machines", json=update_data)
+
+        final_response = api_client.get("/api/v1/services")
+        final_count = final_response.json()["total"]
+
+        assert final_count == initial_count

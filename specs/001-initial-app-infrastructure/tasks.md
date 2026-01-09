@@ -129,17 +129,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T050 [P] [US3] Unit test for storage service update_service() in backend/tests/unit/test_storage.py
-- [ ] T051 [P] [US3] Integration test for PUT /api/v1/services/{name} endpoint in backend/tests/integration/test_api.py
-- [ ] T052 [P] [US3] Test for API client update_service() in frontend/tests/test_api_client.py
+- [X] T050 [P] [US3] Unit test for storage service update_service() in backend/tests/unit/test_storage.py
+- [X] T051 [P] [US3] Integration test for PUT /api/v1/services/{name} endpoint in backend/tests/integration/test_api.py
+- [X] T052 [P] [US3] Test for API client update_service() in frontend/tests/test_api_client.py
 
 ### Implementation for User Story 3
 
-- [ ] T053 [US3] Implement update_service() in storage adapters in backend/src/services/storage.py
-- [ ] T054 [US3] Implement PUT /api/v1/services/{service_name} endpoint in backend/src/api/routes.py
-- [ ] T055 [US3] Add edit mode to service form component in frontend/src/components/service_form.py
-- [ ] T056 [US3] Add edit button and modal trigger to service list in frontend/src/components/service_list.py
-- [ ] T057 [US3] Integrate edit workflow in frontend/src/app.py
+- [X] T053 [US3] Implement update_service() in storage adapters in backend/src/services/storage.py
+- [X] T054 [US3] Implement PUT /api/v1/services/{service_name} endpoint in backend/src/api/routes.py
+- [X] T055 [US3] Add edit mode to service form component in frontend/src/components/service_form.py
+- [X] T056 [US3] Add edit button and modal trigger to service list in frontend/src/components/service_list.py
+- [X] T057 [US3] Integrate edit workflow in frontend/src/app.py
 
 **Checkpoint**: User Story 3 complete - users can edit services
 

@@ -10,8 +10,11 @@ import streamlit as st
 
 from src.api_client import APIClient, APIError, ServiceData
 from src.components.filters import display_filters, get_unique_categories
-from src.components.service_form import display_service_form_modal
-from src.components.service_list import display_service_list
+from src.components.service_form import (
+    display_edit_service_form,
+    display_service_form_modal,
+)
+from src.components.service_list import display_service_cards
 from src.config import config
 
 # Configure logging
@@ -122,6 +125,51 @@ def create_service(service: ServiceData) -> bool:
         return False
 
 
+def update_service(service_name: str, updates: dict[str, str]) -> bool:
+    """Update an existing service via the API.
+
+    Args:
+        service_name: Name of the service to update.
+        updates: Dictionary of fields to update.
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        client = get_api_client()
+        client.update_service(service_name, updates)
+        logger.info(f"Updated service: {service_name}")
+        return True
+    except APIError as e:
+        logger.error(f"Failed to update service: {e}")
+        if e.status_code == 404:
+            st.error(f"⚠️ Service '{service_name}' not found.")
+        elif e.status_code == 409:
+            st.error(f"⚠️ A service with the new name already exists.")
+        else:
+            st.error(f"⚠️ Failed to update service: {e}")
+        return False
+    except Exception as e:
+        logger.error(f"Unexpected error updating service: {e}")
+        st.error(f"⚠️ An unexpected error occurred: {e}")
+        return False
+
+
+def set_editing_service(service: ServiceData) -> None:
+    """Set the service to edit in session state.
+
+    Args:
+        service: Service to edit.
+    """
+    st.session_state["editing_service"] = service
+
+
+def clear_editing_service() -> None:
+    """Clear the editing service from session state."""
+    if "editing_service" in st.session_state:
+        del st.session_state["editing_service"]
+
+
 def main() -> None:
     """Main application entry point."""
     # Header
@@ -156,8 +204,20 @@ def main() -> None:
     # Main content area
     st.markdown("---")
 
-    # Add new service form (collapsible)
-    display_service_form_modal(on_submit=create_service, categories=categories)
+    # Check if we're editing a service
+    editing_service = st.session_state.get("editing_service")
+
+    if editing_service:
+        # Display edit form
+        display_edit_service_form(
+            service=editing_service,
+            on_submit=update_service,
+            on_cancel=clear_editing_service,
+            categories=categories,
+        )
+    else:
+        # Add new service form (collapsible)
+        display_service_form_modal(on_submit=create_service, categories=categories)
 
     st.markdown("---")
 
@@ -173,8 +233,8 @@ def main() -> None:
         st.error(error)
         st.stop()
 
-    # Display service list
-    display_service_list(services)
+    # Display service list with edit capability
+    display_service_cards(services, on_edit=set_editing_service)
 
     # Footer
     st.markdown("---")

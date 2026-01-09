@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from src.models.service import Service, ServiceCreate
+from src.models.service import Service, ServiceCreate, ServiceUpdate
 from src.services.storage import (
     DuplicateServiceError,
     LocalFileStorageAdapter,
@@ -226,3 +226,117 @@ class TestLocalFileStorageAdapterCreateService:
         storage_adapter.create_service(new_service)
 
         assert len(storage_adapter.list_services()) == original_count + 1
+
+
+class TestLocalFileStorageAdapterUpdateService:
+    """Unit tests for LocalFileStorageAdapter.update_service()."""
+
+    def test_update_service_changes_description(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service changes the description field."""
+        update = ServiceUpdate(description="Updated description for VMs.")
+
+        result = storage_adapter.update_service("Azure Virtual Machines", update)
+
+        assert result.description == "Updated description for VMs."
+        assert result.service == "Azure Virtual Machines"
+        assert result.category == "Compute"
+
+    def test_update_service_changes_category(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service changes the category field."""
+        update = ServiceUpdate(category="Infrastructure")
+
+        result = storage_adapter.update_service("Azure Virtual Machines", update)
+
+        assert result.category == "Infrastructure"
+        assert result.service == "Azure Virtual Machines"
+
+    def test_update_service_changes_name(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service can rename a service."""
+        update = ServiceUpdate(service="Azure VMs")
+
+        result = storage_adapter.update_service("Azure Virtual Machines", update)
+
+        assert result.service == "Azure VMs"
+        # Verify old name no longer exists
+        with pytest.raises(ServiceNotFoundError):
+            storage_adapter.get_service("Azure Virtual Machines")
+        # Verify new name works
+        retrieved = storage_adapter.get_service("Azure VMs")
+        assert retrieved.service == "Azure VMs"
+
+    def test_update_service_changes_multiple_fields(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service can change multiple fields at once."""
+        update = ServiceUpdate(
+            service="Azure VMs",
+            category="Infrastructure",
+            description="New VM description.",
+        )
+
+        result = storage_adapter.update_service("Azure Virtual Machines", update)
+
+        assert result.service == "Azure VMs"
+        assert result.category == "Infrastructure"
+        assert result.description == "New VM description."
+
+    def test_update_service_persists_changes(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that updated service changes are persisted to storage."""
+        update = ServiceUpdate(description="Persisted description.")
+
+        storage_adapter.update_service("Azure Virtual Machines", update)
+        retrieved = storage_adapter.get_service("Azure Virtual Machines")
+
+        assert retrieved.description == "Persisted description."
+
+    def test_update_service_raises_not_found(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service raises ServiceNotFoundError for missing service."""
+        update = ServiceUpdate(description="Updated.")
+
+        with pytest.raises(ServiceNotFoundError, match="Service not found"):
+            storage_adapter.update_service("Nonexistent Service", update)
+
+    def test_update_service_raises_duplicate_on_name_conflict(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service raises DuplicateServiceError on name conflict."""
+        # Try to rename to an existing service name
+        update = ServiceUpdate(service="Azure SQL Database")
+
+        with pytest.raises(DuplicateServiceError, match="Service already exists"):
+            storage_adapter.update_service("Azure Virtual Machines", update)
+
+    def test_update_service_with_no_changes(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service with empty update returns unchanged service."""
+        original = storage_adapter.get_service("Azure Virtual Machines")
+        update = ServiceUpdate()  # No fields set
+
+        result = storage_adapter.update_service("Azure Virtual Machines", update)
+
+        assert result.service == original.service
+        assert result.category == original.category
+        assert result.description == original.description
+
+    def test_update_service_preserves_other_services(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that update_service doesn't affect other services."""
+        update = ServiceUpdate(description="Changed.")
+
+        storage_adapter.update_service("Azure Virtual Machines", update)
+
+        # Verify other services are unchanged
+        sql_service = storage_adapter.get_service("Azure SQL Database")
+        assert sql_service.description == "Managed relational database service compatible with SQL Server."

@@ -300,3 +300,111 @@ class TestAPIClientCreateService:
 
             with pytest.raises(APIError, match="Cannot connect to API"):
                 client.create_service(service)
+
+
+class TestAPIClientUpdateService:
+    """Tests for APIClient.update_service() method."""
+
+    def test_update_service_returns_service_data(
+        self, sample_service: ServiceData
+    ) -> None:
+        """Test that update_service returns ServiceData object."""
+        updated_data = {
+            "service": sample_service.service,
+            "category": sample_service.category,
+            "description": "Updated description.",
+        }
+
+        with patch.object(httpx.Client, "put") as mock_put:
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.json.return_value = updated_data
+            mock_put.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            result = client.update_service(
+                sample_service.service, {"description": "Updated description."}
+            )
+
+            assert isinstance(result, ServiceData)
+            assert result.description == "Updated description."
+
+    def test_update_service_sends_correct_data(
+        self, sample_service: ServiceData
+    ) -> None:
+        """Test that update_service sends correct JSON payload."""
+        update_data = {"description": "New description."}
+
+        with patch.object(httpx.Client, "put") as mock_put:
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.json.return_value = {
+                "service": sample_service.service,
+                "category": sample_service.category,
+                "description": "New description.",
+            }
+            mock_put.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            client.update_service(sample_service.service, update_data)
+
+            mock_put.assert_called_once()
+            call_kwargs = mock_put.call_args.kwargs
+            assert call_kwargs["json"] == update_data
+
+    def test_update_service_calls_correct_endpoint(
+        self, sample_service: ServiceData
+    ) -> None:
+        """Test that update_service calls the correct URL."""
+        with patch.object(httpx.Client, "put") as mock_put:
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.json.return_value = sample_service.to_dict()
+            mock_put.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            client.update_service(sample_service.service, {"category": "Test"})
+
+            mock_put.assert_called_once()
+            call_url = mock_put.call_args[0][0]
+            assert f"services/{sample_service.service}" in call_url
+
+    def test_update_service_raises_api_error_on_404(self) -> None:
+        """Test that update_service raises APIError on 404."""
+        with patch.object(httpx.Client, "put") as mock_put:
+            mock_response = MagicMock()
+            mock_response.status_code = 404
+            mock_response.json.return_value = {"detail": "Service not found"}
+            mock_put.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+
+            with pytest.raises(APIError) as exc_info:
+                client.update_service("Nonexistent", {"description": "Update"})
+
+            assert exc_info.value.status_code == 404
+
+    def test_update_service_raises_api_error_on_409(self) -> None:
+        """Test that update_service raises APIError on name conflict (409)."""
+        with patch.object(httpx.Client, "put") as mock_put:
+            mock_response = MagicMock()
+            mock_response.status_code = 409
+            mock_response.json.return_value = {"detail": "Service already exists"}
+            mock_put.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+
+            with pytest.raises(APIError) as exc_info:
+                client.update_service("Original", {"service": "Duplicate"})
+
+            assert exc_info.value.status_code == 409
+
+    def test_update_service_raises_api_error_on_connection_error(self) -> None:
+        """Test that update_service raises APIError on connection error."""
+        with patch.object(httpx.Client, "put") as mock_put:
+            mock_put.side_effect = httpx.RequestError("Connection failed")
+
+            client = APIClient(base_url="http://test-api:8000")
+
+            with pytest.raises(APIError, match="Cannot connect to API"):
+                client.update_service("Test Service", {"description": "Update"})
