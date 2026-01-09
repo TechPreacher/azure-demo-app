@@ -153,16 +153,16 @@
 
 ### Tests for User Story 4
 
-- [ ] T058 [P] [US4] Unit test for storage service delete_service() in backend/tests/unit/test_storage.py
-- [ ] T059 [P] [US4] Integration test for DELETE /api/v1/services/{name} endpoint in backend/tests/integration/test_api.py
-- [ ] T060 [P] [US4] Test for API client delete_service() in frontend/tests/test_api_client.py
+- [X] T058 [P] [US4] Unit test for storage service delete_service() in backend/tests/unit/test_storage.py
+- [X] T059 [P] [US4] Integration test for DELETE /api/v1/services/{name} endpoint in backend/tests/integration/test_api.py
+- [X] T060 [P] [US4] Test for API client delete_service() in frontend/tests/test_api_client.py
 
 ### Implementation for User Story 4
 
-- [ ] T061 [US4] Implement delete_service() in storage adapters in backend/src/services/storage.py
-- [ ] T062 [US4] Implement DELETE /api/v1/services/{service_name} endpoint in backend/src/api/routes.py
-- [ ] T063 [US4] Add delete button with confirmation dialog to service list in frontend/src/components/service_list.py
-- [ ] T064 [US4] Integrate delete workflow in frontend/src/app.py
+- [X] T061 [US4] Implement delete_service() in storage adapters in backend/src/services/storage.py
+- [X] T062 [US4] Implement DELETE /api/v1/services/{service_name} endpoint in backend/src/api/routes.py
+- [X] T063 [US4] Add delete button with confirmation dialog to service list in frontend/src/components/service_list.py
+- [X] T064 [US4] Integrate delete workflow in frontend/src/app.py
 
 **Checkpoint**: User Story 4 complete - full CRUD functionality available
 

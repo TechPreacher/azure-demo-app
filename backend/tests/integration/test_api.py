@@ -469,3 +469,74 @@ class TestUpdateServiceEndpoint:
         final_count = final_response.json()["total"]
 
         assert final_count == initial_count
+
+
+class TestDeleteServiceEndpoint:
+    """Integration tests for DELETE /api/v1/services/{service_name} endpoint."""
+
+    def test_delete_service_returns_204(self, api_client: TestClient) -> None:
+        """Test that endpoint returns 204 for successful deletion."""
+        response = api_client.delete("/api/v1/services/Azure Virtual Machines")
+
+        assert response.status_code == 204
+
+    def test_delete_service_removes_service(self, api_client: TestClient) -> None:
+        """Test that deleted service can no longer be retrieved."""
+        api_client.delete("/api/v1/services/Azure Virtual Machines")
+
+        get_response = api_client.get("/api/v1/services/Azure Virtual Machines")
+        assert get_response.status_code == 404
+
+    def test_delete_service_decreases_count(
+        self, api_client: TestClient, test_services: list[dict]
+    ) -> None:
+        """Test that deleting a service decreases the total count."""
+        initial_response = api_client.get("/api/v1/services")
+        initial_count = initial_response.json()["total"]
+
+        api_client.delete("/api/v1/services/Azure Virtual Machines")
+
+        final_response = api_client.get("/api/v1/services")
+        final_count = final_response.json()["total"]
+
+        assert final_count == initial_count - 1
+
+    def test_delete_service_returns_404_for_missing(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that endpoint returns 404 for nonexistent service."""
+        response = api_client.delete("/api/v1/services/Nonexistent Service")
+
+        assert response.status_code == 404
+
+    def test_delete_service_404_includes_detail(self, api_client: TestClient) -> None:
+        """Test that 404 response includes error detail."""
+        response = api_client.delete("/api/v1/services/Nonexistent Service")
+        data = response.json()
+
+        assert "detail" in data
+
+    def test_delete_service_preserves_other_services(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that deleting doesn't affect other services."""
+        api_client.delete("/api/v1/services/Azure Virtual Machines")
+
+        # Other services should still exist
+        sql_response = api_client.get("/api/v1/services/Azure SQL Database")
+        assert sql_response.status_code == 200
+
+        app_response = api_client.get("/api/v1/services/Azure App Service")
+        assert app_response.status_code == 200
+
+    def test_delete_service_is_idempotent_fails_second_time(
+        self, api_client: TestClient
+    ) -> None:
+        """Test that deleting same service twice fails the second time."""
+        # First delete succeeds
+        response1 = api_client.delete("/api/v1/services/Azure Virtual Machines")
+        assert response1.status_code == 204
+
+        # Second delete fails
+        response2 = api_client.delete("/api/v1/services/Azure Virtual Machines")
+        assert response2.status_code == 404

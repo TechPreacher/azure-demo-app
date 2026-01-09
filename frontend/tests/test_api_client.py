@@ -408,3 +408,74 @@ class TestAPIClientUpdateService:
 
             with pytest.raises(APIError, match="Cannot connect to API"):
                 client.update_service("Test Service", {"description": "Update"})
+
+
+class TestAPIClientDeleteService:
+    """Tests for APIClient.delete_service() method."""
+
+    def test_delete_service_succeeds(self) -> None:
+        """Test that delete_service succeeds with 204 response."""
+        with patch.object(httpx.Client, "delete") as mock_delete:
+            mock_response = MagicMock()
+            mock_response.status_code = 204
+            mock_delete.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            # Should not raise
+            client.delete_service("Azure Virtual Machines")
+
+            mock_delete.assert_called_once()
+
+    def test_delete_service_calls_correct_endpoint(self) -> None:
+        """Test that delete_service calls the correct URL."""
+        with patch.object(httpx.Client, "delete") as mock_delete:
+            mock_response = MagicMock()
+            mock_response.status_code = 204
+            mock_delete.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+            client.delete_service("Azure Virtual Machines")
+
+            mock_delete.assert_called_once()
+            call_url = mock_delete.call_args[0][0]
+            assert "services/Azure Virtual Machines" in call_url
+
+    def test_delete_service_raises_api_error_on_404(self) -> None:
+        """Test that delete_service raises APIError on 404."""
+        with patch.object(httpx.Client, "delete") as mock_delete:
+            mock_response = MagicMock()
+            mock_response.status_code = 404
+            mock_response.json.return_value = {"detail": "Service not found"}
+            mock_delete.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+
+            with pytest.raises(APIError) as exc_info:
+                client.delete_service("Nonexistent Service")
+
+            assert exc_info.value.status_code == 404
+
+    def test_delete_service_raises_api_error_on_server_error(self) -> None:
+        """Test that delete_service raises APIError on server error."""
+        with patch.object(httpx.Client, "delete") as mock_delete:
+            mock_response = MagicMock()
+            mock_response.status_code = 500
+            mock_response.json.return_value = {"detail": "Internal Server Error"}
+            mock_delete.return_value = mock_response
+
+            client = APIClient(base_url="http://test-api:8000")
+
+            with pytest.raises(APIError) as exc_info:
+                client.delete_service("Test Service")
+
+            assert exc_info.value.status_code == 500
+
+    def test_delete_service_raises_api_error_on_connection_error(self) -> None:
+        """Test that delete_service raises APIError on connection error."""
+        with patch.object(httpx.Client, "delete") as mock_delete:
+            mock_delete.side_effect = httpx.RequestError("Connection failed")
+
+            client = APIClient(base_url="http://test-api:8000")
+
+            with pytest.raises(APIError, match="Cannot connect to API"):
+                client.delete_service("Test Service")

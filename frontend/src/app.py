@@ -14,7 +14,7 @@ from src.components.service_form import (
     display_edit_service_form,
     display_service_form_modal,
 )
-from src.components.service_list import display_service_cards
+from src.components.service_list import display_delete_confirmation, display_service_cards
 from src.config import config
 
 # Configure logging
@@ -170,6 +170,48 @@ def clear_editing_service() -> None:
         del st.session_state["editing_service"]
 
 
+def delete_service(service_name: str) -> bool:
+    """Delete a service via the API.
+
+    Args:
+        service_name: Name of the service to delete.
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        client = get_api_client()
+        client.delete_service(service_name)
+        logger.info(f"Deleted service: {service_name}")
+        return True
+    except APIError as e:
+        logger.error(f"Failed to delete service: {e}")
+        if e.status_code == 404:
+            st.error(f"⚠️ Service '{service_name}' not found.")
+        else:
+            st.error(f"⚠️ Failed to delete service: {e}")
+        return False
+    except Exception as e:
+        logger.error(f"Unexpected error deleting service: {e}")
+        st.error(f"⚠️ An unexpected error occurred: {e}")
+        return False
+
+
+def set_deleting_service(service: ServiceData) -> None:
+    """Set the service to delete in session state.
+
+    Args:
+        service: Service to delete.
+    """
+    st.session_state["deleting_service"] = service
+
+
+def clear_deleting_service() -> None:
+    """Clear the deleting service from session state."""
+    if "deleting_service" in st.session_state:
+        del st.session_state["deleting_service"]
+
+
 def main() -> None:
     """Main application entry point."""
     # Header
@@ -206,8 +248,16 @@ def main() -> None:
 
     # Check if we're editing a service
     editing_service = st.session_state.get("editing_service")
+    deleting_service = st.session_state.get("deleting_service")
 
-    if editing_service:
+    if deleting_service:
+        # Display delete confirmation
+        display_delete_confirmation(
+            service=deleting_service,
+            on_confirm=delete_service,
+            on_cancel=clear_deleting_service,
+        )
+    elif editing_service:
         # Display edit form
         display_edit_service_form(
             service=editing_service,
@@ -233,8 +283,12 @@ def main() -> None:
         st.error(error)
         st.stop()
 
-    # Display service list with edit capability
-    display_service_cards(services, on_edit=set_editing_service)
+    # Display service list with edit and delete capability
+    display_service_cards(
+        services,
+        on_edit=set_editing_service,
+        on_delete=set_deleting_service,
+    )
 
     # Footer
     st.markdown("---")

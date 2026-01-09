@@ -340,3 +340,71 @@ class TestLocalFileStorageAdapterUpdateService:
         # Verify other services are unchanged
         sql_service = storage_adapter.get_service("Azure SQL Database")
         assert sql_service.description == "Managed relational database service compatible with SQL Server."
+
+
+class TestLocalFileStorageAdapterDeleteService:
+    """Unit tests for LocalFileStorageAdapter.delete_service()."""
+
+    def test_delete_service_removes_service(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that delete_service removes the service from storage."""
+        storage_adapter.delete_service("Azure Virtual Machines")
+
+        with pytest.raises(ServiceNotFoundError):
+            storage_adapter.get_service("Azure Virtual Machines")
+
+    def test_delete_service_decreases_count(
+        self, storage_adapter: LocalFileStorageAdapter, sample_services: list[dict]
+    ) -> None:
+        """Test that delete_service decreases the total service count."""
+        original_count = len(storage_adapter.list_services())
+
+        storage_adapter.delete_service("Azure Virtual Machines")
+
+        assert len(storage_adapter.list_services()) == original_count - 1
+
+    def test_delete_service_raises_not_found(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that delete_service raises ServiceNotFoundError for missing service."""
+        with pytest.raises(ServiceNotFoundError, match="Service not found"):
+            storage_adapter.delete_service("Nonexistent Service")
+
+    def test_delete_service_preserves_other_services(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that delete_service doesn't affect other services."""
+        storage_adapter.delete_service("Azure Virtual Machines")
+
+        # Verify other services still exist
+        sql_service = storage_adapter.get_service("Azure SQL Database")
+        assert sql_service.service == "Azure SQL Database"
+
+        app_service = storage_adapter.get_service("Azure App Service")
+        assert app_service.service == "Azure App Service"
+
+    def test_delete_service_can_delete_last_service(
+        self, empty_storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that delete_service works when deleting the only service."""
+        # First create a service
+        new_service = ServiceCreate(
+            service="Only Service",
+            category="Test",
+            description="The only service.",
+        )
+        empty_storage_adapter.create_service(new_service)
+        assert len(empty_storage_adapter.list_services()) == 1
+
+        # Delete it
+        empty_storage_adapter.delete_service("Only Service")
+
+        assert len(empty_storage_adapter.list_services()) == 0
+
+    def test_delete_service_is_case_sensitive(
+        self, storage_adapter: LocalFileStorageAdapter
+    ) -> None:
+        """Test that delete_service name matching is case-sensitive."""
+        with pytest.raises(ServiceNotFoundError):
+            storage_adapter.delete_service("azure virtual machines")

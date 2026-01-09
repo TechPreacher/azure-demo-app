@@ -205,3 +205,45 @@ async def update_service(
             status_code=status.HTTP_409_CONFLICT,
             detail=str(e),
         ) from e
+
+
+@router.delete(
+    "/services/{service_name}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="Delete a service",
+    description="Remove an Azure service from the catalog.",
+    responses={
+        404: {
+            "description": "Service not found",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Service not found: Example Service"}
+                }
+            },
+        },
+    },
+)
+async def delete_service(
+    service_name: str,
+    storage: StorageDep,
+) -> None:
+    """Delete an Azure service.
+
+    Args:
+        service_name: Name of the service to delete.
+        storage: Storage adapter dependency.
+
+    Raises:
+        HTTPException: 404 if service not found.
+    """
+    logger.info(f"Deleting service: {service_name}")
+
+    try:
+        storage.delete_service(service_name)
+        logger.info(f"Deleted service: {service_name}")
+    except ServiceNotFoundError as e:
+        logger.warning(f"Service not found: {service_name}")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        ) from e

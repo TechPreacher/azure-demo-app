@@ -119,12 +119,14 @@ def display_service_detail(service: ServiceData) -> None:
 def display_service_cards(
     services: list[ServiceData],
     on_edit: Callable[[ServiceData], None] | None = None,
+    on_delete: Callable[[ServiceData], None] | None = None,
 ) -> None:
-    """Display services as expandable cards with optional edit button.
+    """Display services as expandable cards with optional edit and delete buttons.
 
     Args:
         services: List of services to display.
         on_edit: Optional callback when edit is clicked for a service.
+        on_delete: Optional callback when delete is clicked for a service.
     """
     if not services:
         st.info("No services found matching your criteria.")
@@ -136,24 +138,37 @@ def display_service_cards(
         with st.expander(f"**{service.service}** - {service.category}"):
             st.markdown(service.description)
 
-            if on_edit:
-                if st.button(
-                    "✏️ Edit",
-                    key=f"edit_btn_{idx}",
-                    help=f"Edit {service.service}",
-                ):
-                    on_edit(service)
+            col1, col2 = st.columns(2)
+            with col1:
+                if on_edit:
+                    if st.button(
+                        "✏️ Edit",
+                        key=f"edit_btn_{idx}",
+                        help=f"Edit {service.service}",
+                    ):
+                        on_edit(service)
+            with col2:
+                if on_delete:
+                    if st.button(
+                        "🗑️ Delete",
+                        key=f"delete_btn_{idx}",
+                        help=f"Delete {service.service}",
+                        type="secondary",
+                    ):
+                        on_delete(service)
 
 
 def display_service_list_with_actions(
     services: list[ServiceData],
     on_edit: Callable[[ServiceData], None] | None = None,
+    on_delete: Callable[[ServiceData], None] | None = None,
 ) -> None:
     """Display services in a list format with action buttons.
 
     Args:
         services: List of services to display.
         on_edit: Optional callback when edit is clicked for a service.
+        on_delete: Optional callback when delete is clicked for a service.
     """
     if not services:
         st.info("No services found matching your criteria.")
@@ -162,7 +177,7 @@ def display_service_list_with_actions(
     st.markdown(f"**Found {len(services)} service(s)**")
 
     for idx, service in enumerate(services):
-        col1, col2, col3 = st.columns([3, 2, 1])
+        col1, col2, col3, col4 = st.columns([3, 2, 0.5, 0.5])
 
         with col1:
             st.markdown(f"**{service.service}**")
@@ -180,4 +195,50 @@ def display_service_list_with_actions(
                 ):
                     on_edit(service)
 
+        with col4:
+            if on_delete:
+                if st.button(
+                    "🗑️",
+                    key=f"delete_action_{idx}",
+                    help=f"Delete {service.service}",
+                ):
+                    on_delete(service)
+
         st.divider()
+
+
+def display_delete_confirmation(
+    service: ServiceData,
+    on_confirm: Callable[[str], bool],
+    on_cancel: Callable[[], None],
+) -> None:
+    """Display a delete confirmation dialog.
+
+    Args:
+        service: The service to delete.
+        on_confirm: Callback when delete is confirmed. Takes service name.
+        on_cancel: Callback when delete is cancelled.
+    """
+    st.warning(f"⚠️ Are you sure you want to delete **{service.service}**?")
+    st.caption("This action cannot be undone.")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button(
+            "🗑️ Yes, Delete",
+            key="confirm_delete",
+            type="primary",
+            use_container_width=True,
+        ):
+            success = on_confirm(service.service)
+            if success:
+                st.success(f"✅ Service '{service.service}' deleted successfully!")
+                st.rerun()
+    with col2:
+        if st.button(
+            "Cancel",
+            key="cancel_delete",
+            use_container_width=True,
+        ):
+            on_cancel()
+            st.rerun()
