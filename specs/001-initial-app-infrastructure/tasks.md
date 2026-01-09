@@ -172,14 +172,16 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T065 [P] Add OpenAPI schema validation contract test in backend/tests/contract/test_openapi.py
-- [ ] T066 [P] Configure pytest-cov and add coverage reporting in backend/pyproject.toml
-- [ ] T067 [P] Add Application Insights integration to backend in backend/src/main.py
-- [ ] T068 [P] Add Application Insights integration to frontend in frontend/src/app.py
-- [ ] T069 [P] Add correlation ID logging middleware in backend/src/main.py
-- [ ] T070 Update README.md with complete documentation (setup, testing, deployment)
-- [ ] T071 Run full test suite and verify 80% coverage threshold
-- [ ] T072 Test local development workflow end-to-end
+- [X] T065 [P] Add OpenAPI schema validation contract test in backend/tests/contract/test_openapi.py
+- [X] T066 [P] Configure pytest-cov and add coverage reporting in backend/pyproject.toml
+- [X] T067 [P] Add Application Insights integration to backend in backend/src/main.py
+- [X] T068 [P] Add Application Insights integration to frontend in frontend/src/app.py
+- [X] T069 [P] Add correlation ID logging middleware in backend/src/main.py
+- [X] T070 Update README.md with complete documentation (setup, testing, deployment)
+- [X] T071 Run full test suite and verify 80% coverage threshold
+- [X] T072 Test local development workflow end-to-end
+
+**Checkpoint**: Phase 8 complete - all polish tasks done
 
 ---
 
