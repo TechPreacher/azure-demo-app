@@ -19,13 +19,13 @@ variable "location" {
 variable "sku_tier" {
   description = "SKU tier for the App Service Plan"
   type        = string
-  default     = "Basic"
+  default     = "Standard"
 }
 
 variable "sku_size" {
   description = "SKU size for the App Service Plan"
   type        = string
-  default     = "B1"
+  default     = "S1"
 }
 
 variable "backend_app_settings" {

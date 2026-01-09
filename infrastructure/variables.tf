@@ -50,8 +50,8 @@ variable "app_service_sku" {
     size = string
   })
   default = {
-    tier = "Basic"
-    size = "B1"
+    tier = "Standard"
+    size = "S1"
   }
 }
 
