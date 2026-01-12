@@ -122,7 +122,8 @@ Every application component MUST emit telemetry to Azure Application Insights:
 
 - Telemetry collection must not add more than 5ms latency to API requests
 - Use async-compatible instrumentation where possible
-- Configure appropriate sampling rate (start with 100% in dev, recommend 10% in production for high-volume scenarios)
+- Use 100% sampling ratio (`sampling_ratio=1.0`) for all environments to capture every request
+- Enable Live Metrics (`enable_live_metrics=True`) for real-time operational monitoring
 
 ### Compatibility Requirements
 
@@ -155,15 +156,22 @@ The following items are explicitly excluded from this feature:
 
 ## Questions & Assumptions *(mandatory)*
 
-### Open Questions
+## Clarifications
+
+### Session 2026-01-12
+
+- Q: Should we enable Live Metrics for real-time monitoring? → A: Yes, enable Live Metrics (`enable_live_metrics=True`)
+- Q: What sampling ratio should be used in production? → A: 100% sampling - capture every request
+
+### Resolved Questions
 
 1. **Q**: Should we enable Live Metrics for real-time monitoring?  
-   **Status**: To be decided  
-   **Impact**: Minor - can be enabled with `enable_live_metrics=True` parameter
+   **Status**: ✅ Resolved  
+   **Decision**: Enable Live Metrics with `enable_live_metrics=True` for real-time operational monitoring
 
 2. **Q**: What sampling ratio should be used in production?  
-   **Status**: To be decided  
-   **Default recommendation**: Start with 10% (`sampling_ratio=0.1`) for production, 100% for development
+   **Status**: ✅ Resolved  
+   **Decision**: Use 100% sampling (`sampling_ratio=1.0`) to capture every request
 
 ### Assumptions
 
