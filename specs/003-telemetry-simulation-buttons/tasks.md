@@ -58,10 +58,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T007 [US2] Define ERROR_MESSAGES pool constant in backend/src/api/simulation.py
-- [ ] T008 [US2] Implement POST /api/v1/simulate/error endpoint with HTTPException in backend/src/api/simulation.py
-- [ ] T009 [US2] Add simulate_error() method to API client in frontend/src/api_client.py
-- [ ] T010 [US2] Add "Error" button with error display to sidebar in frontend/src/app.py
+- [X] T007 [US2] Define ERROR_MESSAGES pool constant in backend/src/api/simulation.py
+- [X] T008 [US2] Implement POST /api/v1/simulate/error endpoint with HTTPException in backend/src/api/simulation.py
+- [X] T009 [US2] Add simulate_error() method to API client in frontend/src/api_client.py
+- [X] T010 [US2] Add "Error" button with error display to sidebar in frontend/src/app.py
 
 **Checkpoint**: Error simulation fully functional and independently testable
 

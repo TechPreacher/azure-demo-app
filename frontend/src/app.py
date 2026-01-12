@@ -265,6 +265,13 @@ def main() -> None:
                 except APIError as e:
                     st.error(f"❌ Failed: {e}")
 
+        if st.button("❌ Simulate Error", help="Triggers a 500 server error"):
+            try:
+                client = get_api_client()
+                client.simulate_error()
+            except APIError as e:
+                st.error(f"🔥 Simulated error: {e}")
+
     # Main content area
     st.markdown("---")
 

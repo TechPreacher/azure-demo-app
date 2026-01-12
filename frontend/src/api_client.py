@@ -290,6 +290,25 @@ class APIClient:
             logger.error(f"Failed to simulate latency: {e}")
             raise APIError(f"Cannot connect to API: {e}") from e
 
+    def simulate_error(self) -> None:
+        """Trigger error simulation endpoint.
+
+        Calls the backend simulation endpoint which returns HTTP 500
+        with a randomly selected realistic error message.
+
+        Raises:
+            APIError: Always raises with simulated error details.
+        """
+        try:
+            response = self._client.post(
+                self._get_url("simulate/error"),
+            )
+            # This will raise APIError due to 500 status
+            self._handle_response(response)
+        except httpx.RequestError as e:
+            logger.error(f"Failed to simulate error: {e}")
+            raise APIError(f"Cannot connect to API: {e}") from e
+
     def __enter__(self) -> "APIClient":
         """Context manager entry."""
         return self
