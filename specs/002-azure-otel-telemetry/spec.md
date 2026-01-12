@@ -3,7 +3,7 @@
 **Feature Branch**: `002-azure-otel-telemetry`  
 **Created**: 2026-01-12  
 **Status**: Draft  
-**Input**: Migrate from OpenCensus to Azure Monitor OpenTelemetry for Python SDK with cloud role names for each component (frontend, backend, storage)
+**Input**: Implement Azure Monitor OpenTelemetry for all application components (frontend, backend, storage) with distinct cloud role names. The Azure Monitor OpenTelemetry Python SDK is MANDATORY to ensure compatibility with Azure Monitor health model and Azure Service Groups.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -66,14 +66,16 @@ As a developer/operator, I want storage operations (Azure Blob Storage or local 
 
 ### Functional Requirements
 
-- **FR-001**: System MUST use `azure-monitor-opentelemetry` package for all telemetry collection (replacing OpenCensus)
-- **FR-002**: Backend MUST report cloud role name as "azure-service-catalog-backend" via `OTEL_SERVICE_NAME` environment variable
-- **FR-003**: Frontend MUST report cloud role name as "azure-service-catalog-frontend" via `OTEL_SERVICE_NAME` environment variable
-- **FR-004**: System MUST automatically instrument HTTP requests, responses, and exceptions
-- **FR-005**: System MUST propagate trace context between frontend and backend for distributed tracing
-- **FR-006**: Storage operations MUST be instrumented with custom spans including operation type and duration
-- **FR-007**: System MUST gracefully degrade when Application Insights is unavailable (no crashes, log warning)
-- **FR-008**: System MUST use environment variables for configuration (no hardcoded connection strings)
+- **FR-001**: ALL application components (frontend, backend, storage layer) MUST emit telemetry to Azure Application Insights
+- **FR-002**: System MUST use ONLY the `azure-monitor-opentelemetry` package for telemetry collection to ensure compatibility with Azure Monitor health model and Azure Service Groups
+- **FR-003**: Backend MUST report cloud role name as "azure-service-catalog-backend" via `OTEL_SERVICE_NAME` environment variable
+- **FR-004**: Frontend MUST report cloud role name as "azure-service-catalog-frontend" via `OTEL_SERVICE_NAME` environment variable
+- **FR-005**: System MUST automatically instrument HTTP requests, responses, and exceptions
+- **FR-006**: System MUST propagate trace context between frontend and backend for distributed tracing
+- **FR-007**: Storage operations MUST be instrumented with custom spans including operation type and duration
+- **FR-008**: System MUST gracefully degrade when Application Insights is unavailable (no crashes, log warning)
+- **FR-009**: System MUST use environment variables for configuration (no hardcoded connection strings)
+- **FR-010**: OpenCensus packages MUST be removed from all dependencies (incompatible with Azure Monitor health model)
 
 ### Key Entities
 
@@ -82,6 +84,25 @@ As a developer/operator, I want storage operations (Azure Blob Storage or local 
 - **Cloud Role**: Identifies a service component in the Application Map (frontend, backend)
 
 ## Technical Constraints *(mandatory)*
+
+### Mandatory SDK Requirement
+
+> **CRITICAL**: The **Azure Monitor OpenTelemetry Python SDK** (`azure-monitor-opentelemetry` package) is the ONLY permitted telemetry library for this project. This requirement ensures compatibility with:
+> - **Azure Monitor health model** for unified health signals
+> - **Azure Service Groups** for resource health aggregation
+> - **Application Map** for distributed tracing visualization
+> 
+> OpenCensus and other telemetry libraries are PROHIBITED as they are incompatible with Azure Monitor's health model integration.
+
+### All Components Must Emit Telemetry
+
+Every application component MUST emit telemetry to Azure Application Insights:
+
+| Component | Cloud Role Name | Telemetry Types |
+|-----------|----------------|-----------------|
+| Frontend (Streamlit) | `azure-service-catalog-frontend` | Logs, HTTP client spans, exceptions |
+| Backend (FastAPI) | `azure-service-catalog-backend` | Logs, HTTP server spans, exceptions, custom spans |
+| Storage Layer | (child of backend) | Custom spans for storage operations |
 
 ### Must Use
 
@@ -92,9 +113,10 @@ As a developer/operator, I want storage operations (Azure Blob Storage or local 
 
 ### Must Avoid
 
-- **OpenCensus** packages (`opencensus-ext-azure`, `opencensus.trace`) - deprecated, must be removed
+- **OpenCensus** packages (`opencensus-ext-azure`, `opencensus.trace`) - deprecated and incompatible with Azure Monitor health model
 - Hardcoded connection strings in code
 - Custom telemetry initializers when environment variables suffice
+- Alternative telemetry SDKs (e.g., raw OpenTelemetry exporters without Azure Monitor distro)
 
 ### Performance Requirements
 
