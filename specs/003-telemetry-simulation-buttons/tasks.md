@@ -71,7 +71,7 @@
 
 **Purpose**: Documentation and validation
 
-- [ ] T011 [P] Add simulation section header and styling to sidebar in frontend/src/app.py
+- [X] T011 [P] Add simulation section header and styling to sidebar in frontend/src/app.py
 - [ ] T012 Run quickstart.md validation steps to verify telemetry in Application Insights
 
 ---
