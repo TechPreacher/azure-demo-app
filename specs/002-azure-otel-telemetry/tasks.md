@@ -112,13 +112,13 @@
 
 - [X] T035 [P] Update backend/README.md with telemetry configuration section
 - [X] T036 [P] Update frontend/README.md with telemetry configuration section
-- [ ] T037 Apply Terraform changes: `cd infrastructure && terraform apply`
-- [ ] T038 Deploy backend to Azure: `./scripts/deploy.sh` (backend portion)
-- [ ] T039 Deploy frontend to Azure: `./scripts/deploy.sh` (frontend portion)
-- [ ] T040 Validate quickstart.md: verify all commands and steps work as documented
-- [ ] T041 Verify Application Map shows two distinct nodes (frontend, backend) in Azure Portal
-- [ ] T042 Verify end-to-end traces from frontend through backend to storage in Transaction Search
-- [ ] T043 Verify exceptions captured in Failures view with full stack traces
+- [X] T037 Apply Terraform changes: `cd infrastructure && terraform apply`
+- [X] T038 Deploy backend to Azure: `./scripts/deploy.sh` (backend portion)
+- [X] T039 Deploy frontend to Azure: `./scripts/deploy.sh` (frontend portion)
+- [X] T040 Validate quickstart.md: verify all commands and steps work as documented
+- [X] T041 Verify Application Map shows two distinct nodes (frontend, backend) in Azure Portal
+- [X] T042 Verify end-to-end traces from frontend through backend to storage in Transaction Search
+- [X] T043 Verify exceptions captured in Failures view with full stack traces
 - [X] T044 Run `grep -r "opencensus" backend/ frontend/` to confirm zero OpenCensus references remain
 
 ---
