@@ -50,14 +50,14 @@
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Create backend/src/telemetry.py with `configure_telemetry()` function using `configure_azure_monitor(enable_live_metrics=True, sampling_ratio=1.0)`
-- [ ] T011 [US1] Update backend/src/main.py: remove ALL OpenCensus imports (lines 30-51)
-- [ ] T012 [US1] Update backend/src/main.py: import and call `configure_telemetry()` at module top BEFORE FastAPI imports
-- [ ] T013 [US1] Update backend/src/main.py: update logger namespace to use structured logging compatible with OpenTelemetry
-- [ ] T014 [P] [US1] Create backend/tests/unit/test_telemetry.py with tests for configure_telemetry() function
-- [ ] T015 [US1] Run backend tests: `cd backend && uv run pytest tests/unit/test_telemetry.py -v`
-- [ ] T016 [US1] Verify backend starts locally: `cd backend && uv run uvicorn src.main:app --reload`
-- [ ] T017 [US1] Update backend/pyproject.toml coverage exclusions: remove opencensus lines, add telemetry graceful degradation
+- [X] T010 [US1] Create backend/src/telemetry.py with `configure_telemetry()` function using `configure_azure_monitor(enable_live_metrics=True, sampling_ratio=1.0)`
+- [X] T011 [US1] Update backend/src/main.py: remove ALL OpenCensus imports (lines 30-51)
+- [X] T012 [US1] Update backend/src/main.py: import and call `configure_telemetry()` at module top BEFORE FastAPI imports
+- [X] T013 [US1] Update backend/src/main.py: update logger namespace to use structured logging compatible with OpenTelemetry
+- [X] T014 [P] [US1] Create backend/tests/unit/test_telemetry.py with tests for configure_telemetry() function
+- [X] T015 [US1] Run backend tests: `cd backend && uv run pytest tests/unit/test_telemetry.py -v`
+- [X] T016 [US1] Verify backend starts locally: `cd backend && uv run uvicorn src.main:app --reload`
+- [X] T017 [US1] Update backend/pyproject.toml coverage exclusions: remove opencensus lines, add telemetry graceful degradation
 
 **Checkpoint**: Backend telemetry functional—verify in App Insights Application Map
 

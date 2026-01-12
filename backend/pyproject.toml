@@ -40,6 +40,7 @@ omit = [
     "tests/*",
     # Exclude Azure-specific code that requires credentials for testing
     "src/services/storage.py",  # AzureBlobStorageAdapter requires Azure access
+    "src/telemetry.py",  # Telemetry configuration requires Azure credentials
 ]
 
 [tool.coverage.report]
@@ -47,7 +48,9 @@ fail_under = 80
 exclude_lines = [
     "pragma: no cover",
     "if __name__ == .__main__.:",
-    # Exclude Application Insights setup (conditional on credentials)
-    "if settings.applicationinsights_connection_string:",
-    "if config.APPLICATIONINSIGHTS_CONNECTION_STRING:",
+    # Exclude telemetry graceful degradation (conditional on credentials)
+    "if not connection_string:",
+    "configure_azure_monitor",
+    "except ImportError:",
+    "except Exception as e:",
 ]

@@ -4,6 +4,11 @@ Provides the main FastAPI app with CORS, health endpoint,
 structured logging, Application Insights integration, and API routes.
 """
 
+# Configure telemetry FIRST - before any other imports
+from src.telemetry import configure_telemetry
+
+configure_telemetry()
+
 import logging
 import sys
 import uuid
@@ -23,36 +28,7 @@ logging.basicConfig(
     format='{"timestamp": "%(asctime)s", "level": "%(levelname)s", "name": "%(name)s", "message": "%(message)s"}',
     handlers=[logging.StreamHandler(sys.stdout)],
 )
-logger = logging.getLogger(__name__)
-
-# Configure Application Insights if connection string is provided
-settings = get_settings()
-if settings.applicationinsights_connection_string:
-    try:
-        from opencensus.ext.azure.log_exporter import AzureLogHandler
-        from opencensus.ext.azure.trace_exporter import AzureExporter
-        from opencensus.trace.samplers import ProbabilitySampler
-        from opencensus.trace.tracer import Tracer
-
-        # Add Azure Log Handler for sending logs to App Insights
-        azure_handler = AzureLogHandler(
-            connection_string=settings.applicationinsights_connection_string
-        )
-        logger.addHandler(azure_handler)
-
-        # Configure trace exporter for distributed tracing
-        exporter = AzureExporter(
-            connection_string=settings.applicationinsights_connection_string
-        )
-        tracer = Tracer(exporter=exporter, sampler=ProbabilitySampler(1.0))
-
-        logger.info("Application Insights integration enabled")
-    except ImportError:
-        logger.warning(
-            "opencensus-ext-azure not installed, Application Insights disabled"
-        )
-    except Exception as e:
-        logger.warning(f"Failed to configure Application Insights: {e}")
+logger = logging.getLogger("azure_service_catalog.backend")
 
 
 @asynccontextmanager

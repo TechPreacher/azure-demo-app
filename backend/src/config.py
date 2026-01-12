@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     # Storage configuration
     storage_type: Literal["local", "azure"] = "local"
     local_data_path: str = "../data/services.json"
+    local_storage_path: str = "../data/services.json"  # Alias for compatibility
 
     # Azure Blob Storage settings (required when storage_type="azure")
     azure_storage_account_name: str = ""
@@ -26,6 +27,9 @@ class Settings(BaseSettings):
 
     # Application Insights (optional)
     applicationinsights_connection_string: str = ""
+
+    # OpenTelemetry configuration (set via OTEL_SERVICE_NAME env var)
+    otel_service_name: str = "azure-service-catalog-backend"
 
     # API settings
     api_v1_prefix: str = "/api/v1"
@@ -39,6 +43,7 @@ class Settings(BaseSettings):
         "env_file": ".env",
         "env_file_encoding": "utf-8",
         "case_sensitive": False,
+        "extra": "ignore",  # Ignore extra env vars not defined in the model
     }
 
 
