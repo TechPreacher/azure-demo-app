@@ -2,19 +2,21 @@
 ================================================================================
 SYNC IMPACT REPORT
 ================================================================================
-Version Change: 1.0.0 → 1.1.0 (MINOR - new principle added)
+Version Change: 1.1.0 → 1.2.0 (MINOR - expanded Observability principle)
 
-Modified Principles: None
+Modified Principles:
+  - Principle IV: Observability → expanded with mandatory telemetry requirements
 
 Added Sections:
-  - Principle VI: Test-Driven Quality (new testing mandate)
+  - Telemetry mandate: All components MUST emit telemetry to Application Insights
+  - SDK requirement: Azure Monitor OpenTelemetry Python SDK is MANDATORY
 
 Removed Sections: None
 
 Templates Requiring Updates:
-  - .specify/templates/plan-template.md ✅ compatible (Testing context exists)
-  - .specify/templates/spec-template.md ✅ compatible (User Scenarios & Testing section exists)
-  - .specify/templates/tasks-template.md ✅ compatible (test phases documented)
+  - .specify/templates/plan-template.md ✅ compatible (no telemetry-specific sections)
+  - .specify/templates/spec-template.md ✅ compatible (Technical Constraints section exists)
+  - .specify/templates/tasks-template.md ✅ compatible (implementation phases documented)
 
 Follow-up TODOs: None
 ================================================================================
@@ -58,12 +60,24 @@ Environment-specific settings MUST NOT be hardcoded:
 
 ### IV. Observability
 
-All services MUST implement structured logging and health monitoring:
+All services MUST implement structured logging, health monitoring, and distributed telemetry:
 
+**Logging**:
 - Use Python `logging` module with JSON-formatted output for production
-- Health check endpoints (`/health`) MUST be exposed by each service
-- Azure Application Insights integration for production telemetry
 - Request IDs MUST propagate across service boundaries for tracing
+
+**Health Monitoring**:
+- Health check endpoints (`/health`) MUST be exposed by each service
+
+**Telemetry** (MANDATORY):
+- All application components (frontend, backend, storage layer) MUST emit telemetry to Azure Application Insights
+- The **Azure Monitor OpenTelemetry Python SDK** (`azure-monitor-opentelemetry` package) is the ONLY permitted telemetry library—this ensures compatibility with Azure Monitor health model and Azure Service Groups
+- Each component MUST set a distinct cloud role name via `OTEL_SERVICE_NAME` environment variable for Application Map identification
+- OpenCensus (`opencensus-ext-azure`) is PROHIBITED—it is deprecated and incompatible with Azure Monitor health model
+- Telemetry configuration MUST use `configure_azure_monitor()` as the single entry point
+- Connection strings MUST be provided via `APPLICATIONINSIGHTS_CONNECTION_STRING` environment variable (never hardcoded)
+
+**Rationale**: Consistent telemetry using the Azure Monitor OpenTelemetry SDK enables distributed tracing, Application Map visualization, and integration with Azure Service Groups health monitoring.
 
 ### V. Simplicity First
 
@@ -99,9 +113,10 @@ The following technologies are MANDATORY for this project:
 | Storage | Azure Blob Storage | - | Persistent data (data.json) |
 | Language | Python | 3.11+ | All services |
 | Testing | pytest | 7.x+ | Unit and integration tests |
+| Telemetry | azure-monitor-opentelemetry | latest | Azure Monitor integration |
 | Deployment | Azure App Service | - | Hosting both services |
 
-**Prohibited**: Direct SQL databases, GraphQL, alternative web frameworks.
+**Prohibited**: Direct SQL databases, GraphQL, alternative web frameworks, OpenCensus telemetry packages.
 
 ## Development Workflow
 
@@ -156,4 +171,4 @@ This constitution supersedes all other development practices for this project.
 - Violations require explicit justification in PR description
 - Recurring violations trigger constitution review
 
-**Version**: 1.1.0 | **Ratified**: 2026-01-08 | **Last Amended**: 2026-01-08
+**Version**: 1.2.0 | **Ratified**: 2026-01-08 | **Last Amended**: 2026-01-12

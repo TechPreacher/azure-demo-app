@@ -80,7 +80,7 @@ pydantic-settings>=2.1.0
 uvicorn[standard]>=0.27.0
 azure-storage-blob>=12.19.0
 azure-identity>=1.15.0
-opencensus-ext-azure>=1.1.13
+azure-monitor-opentelemetry>=1.0.0
 httpx>=0.26.0
 EOF
 
@@ -113,7 +113,7 @@ echo "   Creating requirements.txt..."
 cat > requirements.txt << 'EOF'
 streamlit>=1.30.0
 httpx>=0.26.0
-opencensus-ext-azure>=1.1.13
+azure-monitor-opentelemetry>=1.0.0
 EOF
 
 # Create deployment package

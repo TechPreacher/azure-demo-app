@@ -4,6 +4,11 @@ Provides a web interface for viewing, creating, updating, and deleting
 Azure service definitions with Application Insights integration.
 """
 
+# Configure telemetry BEFORE any other imports
+from src.telemetry import configure_telemetry
+
+configure_telemetry()
+
 import logging
 
 import streamlit as st
@@ -17,27 +22,12 @@ from src.components.service_form import (
 from src.components.service_list import display_delete_confirmation, display_service_cards
 from src.config import config
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-# Configure Application Insights if connection string is provided
-if config.APPLICATIONINSIGHTS_CONNECTION_STRING:
-    try:
-        from opencensus.ext.azure.log_exporter import AzureLogHandler
-
-        # Add Azure Log Handler for sending logs to App Insights
-        azure_handler = AzureLogHandler(
-            connection_string=config.APPLICATIONINSIGHTS_CONNECTION_STRING
-        )
-        logger.addHandler(azure_handler)
-        logger.info("Application Insights integration enabled for frontend")
-    except ImportError:
-        logger.warning(
-            "opencensus-ext-azure not installed, Application Insights disabled"
-        )
-    except Exception as e:
-        logger.warning(f"Failed to configure Application Insights: {e}")
+# Configure logging with structured format compatible with OpenTelemetry
+logging.basicConfig(
+    level=logging.INFO,
+    format='{"timestamp": "%(asctime)s", "level": "%(levelname)s", "name": "%(name)s", "message": "%(message)s"}',
+)
+logger = logging.getLogger("azure_service_catalog.frontend")
 
 # Page configuration - must be first Streamlit command
 st.set_page_config(

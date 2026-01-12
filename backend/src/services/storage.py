@@ -3,6 +3,8 @@
 Provides abstract interface and concrete implementations for:
 - LocalFileStorageAdapter: Development - reads/writes local JSON file
 - AzureBlobStorageAdapter: Production - reads/writes Azure Blob Storage
+
+Instrumented with OpenTelemetry spans for observability.
 """
 
 import json
@@ -13,6 +15,7 @@ from typing import TYPE_CHECKING
 
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
+from opentelemetry import trace
 
 from src.models.service import Service, ServiceCreate, ServiceUpdate
 
@@ -20,6 +23,9 @@ if TYPE_CHECKING:
     from src.config import Settings
 
 logger = logging.getLogger(__name__)
+
+# Create tracer for storage operations
+tracer = trace.get_tracer(__name__)
 
 
 class StorageError(Exception):
@@ -190,92 +196,161 @@ class LocalFileStorageAdapter(StorageAdapter):
         search: str | None = None,
     ) -> list[Service]:
         """List all services, optionally filtered."""
-        services = self._read_data()
-        result = []
-
-        for svc in services:
-            # Apply category filter
-            if category and svc.get("category", "").lower() != category.lower():
-                continue
-
-            # Apply search filter
+        with tracer.start_as_current_span("storage.list_services") as span:
+            span.set_attribute("storage.type", "local")
+            span.set_attribute("storage.file_path", str(self.file_path))
+            if category:
+                span.set_attribute("filter.category", category)
             if search:
-                search_lower = search.lower()
-                name_match = search_lower in svc.get("service", "").lower()
-                desc_match = search_lower in svc.get("description", "").lower()
-                if not (name_match or desc_match):
-                    continue
+                span.set_attribute("filter.search", search)
 
-            result.append(Service(**svc))
+            try:
+                services = self._read_data()
+                result = []
 
-        return result
+                for svc in services:
+                    # Apply category filter
+                    if category and svc.get("category", "").lower() != category.lower():
+                        continue
+
+                    # Apply search filter
+                    if search:
+                        search_lower = search.lower()
+                        name_match = search_lower in svc.get("service", "").lower()
+                        desc_match = search_lower in svc.get("description", "").lower()
+                        if not (name_match or desc_match):
+                            continue
+
+                    result.append(Service(**svc))
+
+                span.set_attribute("result.count", len(result))
+                return result
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def get_service(self, service_name: str) -> Service:
         """Get a single service by name."""
-        services = self._read_data()
+        with tracer.start_as_current_span("storage.get_service") as span:
+            span.set_attribute("storage.type", "local")
+            span.set_attribute("service.name", service_name)
 
-        for svc in services:
-            if svc.get("service") == service_name:
-                return Service(**svc)
+            try:
+                services = self._read_data()
 
-        raise ServiceNotFoundError(f"Service not found: {service_name}")
+                for svc in services:
+                    if svc.get("service") == service_name:
+                        span.set_attribute("result.found", True)
+                        return Service(**svc)
+
+                span.set_attribute("result.found", False)
+                raise ServiceNotFoundError(f"Service not found: {service_name}")
+            except ServiceNotFoundError:
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def create_service(self, service: ServiceCreate) -> Service:
         """Create a new service."""
-        services = self._read_data()
+        with tracer.start_as_current_span("storage.create_service") as span:
+            span.set_attribute("storage.type", "local")
+            span.set_attribute("service.name", service.service)
 
-        # Check for duplicate
-        for svc in services:
-            if svc.get("service") == service.service:
-                raise DuplicateServiceError(f"Service already exists: {service.service}")
+            try:
+                services = self._read_data()
 
-        # Add new service
-        new_service = service.model_dump()
-        services.append(new_service)
-        self._write_data(services)
+                # Check for duplicate
+                for svc in services:
+                    if svc.get("service") == service.service:
+                        span.set_attribute("result.duplicate", True)
+                        raise DuplicateServiceError(f"Service already exists: {service.service}")
 
-        logger.info(f"Created service: {service.service}")
-        return Service(**new_service)
+                # Add new service
+                new_service = service.model_dump()
+                services.append(new_service)
+                self._write_data(services)
+
+                span.set_attribute("result.created", True)
+                logger.info(f"Created service: {service.service}")
+                return Service(**new_service)
+            except DuplicateServiceError:
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def update_service(self, service_name: str, update: ServiceUpdate) -> Service:
         """Update an existing service."""
-        services = self._read_data()
-        found_index = None
+        with tracer.start_as_current_span("storage.update_service") as span:
+            span.set_attribute("storage.type", "local")
+            span.set_attribute("service.name", service_name)
+            if update.service:
+                span.set_attribute("service.new_name", update.service)
 
-        for i, svc in enumerate(services):
-            if svc.get("service") == service_name:
-                found_index = i
-                break
+            try:
+                services = self._read_data()
+                found_index = None
 
-        if found_index is None:
-            raise ServiceNotFoundError(f"Service not found: {service_name}")
+                for i, svc in enumerate(services):
+                    if svc.get("service") == service_name:
+                        found_index = i
+                        break
 
-        # Check if new name conflicts with existing service
-        if update.service and update.service != service_name:
-            for svc in services:
-                if svc.get("service") == update.service:
-                    raise DuplicateServiceError(f"Service already exists: {update.service}")
+                if found_index is None:
+                    span.set_attribute("result.found", False)
+                    raise ServiceNotFoundError(f"Service not found: {service_name}")
 
-        # Apply updates (only non-None fields)
-        update_data = update.model_dump(exclude_none=True)
-        services[found_index].update(update_data)
-        self._write_data(services)
+                # Check if new name conflicts with existing service
+                if update.service and update.service != service_name:
+                    for svc in services:
+                        if svc.get("service") == update.service:
+                            span.set_attribute("result.duplicate", True)
+                            raise DuplicateServiceError(f"Service already exists: {update.service}")
 
-        logger.info(f"Updated service: {service_name}")
-        return Service(**services[found_index])
+                # Apply updates (only non-None fields)
+                update_data = update.model_dump(exclude_none=True)
+                services[found_index].update(update_data)
+                self._write_data(services)
+
+                span.set_attribute("result.updated", True)
+                logger.info(f"Updated service: {service_name}")
+                return Service(**services[found_index])
+            except (ServiceNotFoundError, DuplicateServiceError):
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def delete_service(self, service_name: str) -> None:
         """Delete a service."""
-        services = self._read_data()
-        original_count = len(services)
+        with tracer.start_as_current_span("storage.delete_service") as span:
+            span.set_attribute("storage.type", "local")
+            span.set_attribute("service.name", service_name)
 
-        services = [svc for svc in services if svc.get("service") != service_name]
+            try:
+                services = self._read_data()
+                original_count = len(services)
 
-        if len(services) == original_count:
-            raise ServiceNotFoundError(f"Service not found: {service_name}")
+                services = [svc for svc in services if svc.get("service") != service_name]
 
-        self._write_data(services)
-        logger.info(f"Deleted service: {service_name}")
+                if len(services) == original_count:
+                    span.set_attribute("result.found", False)
+                    raise ServiceNotFoundError(f"Service not found: {service_name}")
+
+                self._write_data(services)
+                span.set_attribute("result.deleted", True)
+                logger.info(f"Deleted service: {service_name}")
+            except ServiceNotFoundError:
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
 
 class AzureBlobStorageAdapter(StorageAdapter):
@@ -395,92 +470,162 @@ class AzureBlobStorageAdapter(StorageAdapter):
         search: str | None = None,
     ) -> list[Service]:
         """List all services, optionally filtered."""
-        services = self._read_data()
-        result = []
-
-        for svc in services:
-            # Apply category filter
-            if category and svc.get("category", "").lower() != category.lower():
-                continue
-
-            # Apply search filter
+        with tracer.start_as_current_span("storage.list_services") as span:
+            span.set_attribute("storage.type", "azure_blob")
+            span.set_attribute("storage.container", self.container_name)
+            span.set_attribute("storage.blob", self.blob_name)
+            if category:
+                span.set_attribute("filter.category", category)
             if search:
-                search_lower = search.lower()
-                name_match = search_lower in svc.get("service", "").lower()
-                desc_match = search_lower in svc.get("description", "").lower()
-                if not (name_match or desc_match):
-                    continue
+                span.set_attribute("filter.search", search)
 
-            result.append(Service(**svc))
+            try:
+                services = self._read_data()
+                result = []
 
-        return result
+                for svc in services:
+                    # Apply category filter
+                    if category and svc.get("category", "").lower() != category.lower():
+                        continue
+
+                    # Apply search filter
+                    if search:
+                        search_lower = search.lower()
+                        name_match = search_lower in svc.get("service", "").lower()
+                        desc_match = search_lower in svc.get("description", "").lower()
+                        if not (name_match or desc_match):
+                            continue
+
+                    result.append(Service(**svc))
+
+                span.set_attribute("result.count", len(result))
+                return result
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def get_service(self, service_name: str) -> Service:
         """Get a single service by name."""
-        services = self._read_data()
+        with tracer.start_as_current_span("storage.get_service") as span:
+            span.set_attribute("storage.type", "azure_blob")
+            span.set_attribute("service.name", service_name)
 
-        for svc in services:
-            if svc.get("service") == service_name:
-                return Service(**svc)
+            try:
+                services = self._read_data()
 
-        raise ServiceNotFoundError(f"Service not found: {service_name}")
+                for svc in services:
+                    if svc.get("service") == service_name:
+                        span.set_attribute("result.found", True)
+                        return Service(**svc)
+
+                span.set_attribute("result.found", False)
+                raise ServiceNotFoundError(f"Service not found: {service_name}")
+            except ServiceNotFoundError:
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def create_service(self, service: ServiceCreate) -> Service:
         """Create a new service."""
-        services = self._read_data()
+        with tracer.start_as_current_span("storage.create_service") as span:
+            span.set_attribute("storage.type", "azure_blob")
+            span.set_attribute("service.name", service.service)
 
-        # Check for duplicate
-        for svc in services:
-            if svc.get("service") == service.service:
-                raise DuplicateServiceError(f"Service already exists: {service.service}")
+            try:
+                services = self._read_data()
 
-        # Add new service
-        new_service = service.model_dump()
-        services.append(new_service)
-        self._write_data(services)
+                # Check for duplicate
+                for svc in services:
+                    if svc.get("service") == service.service:
+                        span.set_attribute("result.duplicate", True)
+                        raise DuplicateServiceError(f"Service already exists: {service.service}")
 
-        logger.info(f"Created service: {service.service}")
-        return Service(**new_service)
+                # Add new service
+                new_service = service.model_dump()
+                services.append(new_service)
+                self._write_data(services)
+
+                span.set_attribute("result.created", True)
+                logger.info(f"Created service: {service.service}")
+                return Service(**new_service)
+            except DuplicateServiceError:
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def update_service(self, service_name: str, update: ServiceUpdate) -> Service:
         """Update an existing service."""
-        services = self._read_data()
-        found_index = None
+        with tracer.start_as_current_span("storage.update_service") as span:
+            span.set_attribute("storage.type", "azure_blob")
+            span.set_attribute("service.name", service_name)
+            if update.service:
+                span.set_attribute("service.new_name", update.service)
 
-        for i, svc in enumerate(services):
-            if svc.get("service") == service_name:
-                found_index = i
-                break
+            try:
+                services = self._read_data()
+                found_index = None
 
-        if found_index is None:
-            raise ServiceNotFoundError(f"Service not found: {service_name}")
+                for i, svc in enumerate(services):
+                    if svc.get("service") == service_name:
+                        found_index = i
+                        break
 
-        # Check if new name conflicts with existing service
-        if update.service and update.service != service_name:
-            for svc in services:
-                if svc.get("service") == update.service:
-                    raise DuplicateServiceError(f"Service already exists: {update.service}")
+                if found_index is None:
+                    span.set_attribute("result.found", False)
+                    raise ServiceNotFoundError(f"Service not found: {service_name}")
 
-        # Apply updates (only non-None fields)
-        update_data = update.model_dump(exclude_none=True)
-        services[found_index].update(update_data)
-        self._write_data(services)
+                # Check if new name conflicts with existing service
+                if update.service and update.service != service_name:
+                    for svc in services:
+                        if svc.get("service") == update.service:
+                            span.set_attribute("result.duplicate", True)
+                            raise DuplicateServiceError(f"Service already exists: {update.service}")
 
-        logger.info(f"Updated service: {service_name}")
-        return Service(**services[found_index])
+                # Apply updates (only non-None fields)
+                update_data = update.model_dump(exclude_none=True)
+                services[found_index].update(update_data)
+                self._write_data(services)
+
+                span.set_attribute("result.updated", True)
+                logger.info(f"Updated service: {service_name}")
+                return Service(**services[found_index])
+            except (ServiceNotFoundError, DuplicateServiceError):
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
     def delete_service(self, service_name: str) -> None:
         """Delete a service."""
-        services = self._read_data()
-        original_count = len(services)
+        with tracer.start_as_current_span("storage.delete_service") as span:
+            span.set_attribute("storage.type", "azure_blob")
+            span.set_attribute("service.name", service_name)
 
-        services = [svc for svc in services if svc.get("service") != service_name]
+            try:
+                services = self._read_data()
+                original_count = len(services)
 
-        if len(services) == original_count:
-            raise ServiceNotFoundError(f"Service not found: {service_name}")
+                services = [svc for svc in services if svc.get("service") != service_name]
 
-        self._write_data(services)
-        logger.info(f"Deleted service: {service_name}")
+                if len(services) == original_count:
+                    span.set_attribute("result.found", False)
+                    raise ServiceNotFoundError(f"Service not found: {service_name}")
+
+                self._write_data(services)
+                span.set_attribute("result.deleted", True)
+                logger.info(f"Deleted service: {service_name}")
+            except ServiceNotFoundError:
+                raise
+            except Exception as e:
+                span.set_status(trace.StatusCode.ERROR, str(e))
+                span.record_exception(e)
+                raise
 
 
 def get_storage_adapter(settings: "Settings") -> StorageAdapter:
