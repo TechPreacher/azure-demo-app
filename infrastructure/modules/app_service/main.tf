@@ -126,6 +126,9 @@ resource "azurerm_linux_web_app" "backend" {
       "APPLICATIONINSIGHTS_CONNECTION_STRING" = var.application_insights_connection_string
       "APPINSIGHTS_INSTRUMENTATIONKEY"        = var.application_insights_instrumentation_key
 
+      # OpenTelemetry configuration
+      "OTEL_SERVICE_NAME" = "azure-service-catalog-backend"
+
       # Python configuration
       "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
       "WEBSITES_PORT"                  = "8000"
@@ -167,6 +170,9 @@ resource "azurerm_linux_web_app" "frontend" {
       # Application Insights
       "APPLICATIONINSIGHTS_CONNECTION_STRING" = var.application_insights_connection_string
       "APPINSIGHTS_INSTRUMENTATIONKEY"        = var.application_insights_instrumentation_key
+
+      # OpenTelemetry configuration
+      "OTEL_SERVICE_NAME" = "azure-service-catalog-frontend"
 
       # Python/Streamlit configuration
       "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
