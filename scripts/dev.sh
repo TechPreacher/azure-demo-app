@@ -48,7 +48,7 @@ sleep 2
 # Start frontend
 echo "🎨 Starting frontend on http://localhost:8501..."
 cd "$PROJECT_ROOT/frontend"
-uv run streamlit run src/app.py --server.port 8501 &
+uv run streamlit run src/app.py --server.port 8501 --server.headless true &
 FRONTEND_PID=$!
 
 echo ""

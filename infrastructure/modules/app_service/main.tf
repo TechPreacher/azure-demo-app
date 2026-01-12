@@ -156,7 +156,7 @@ resource "azurerm_linux_web_app" "frontend" {
     }
 
     always_on        = var.sku_tier != "Free" && var.sku_tier != "Shared"
-    app_command_line = "streamlit run src/app.py --server.port 8501 --server.address 0.0.0.0"
+    app_command_line = "bash startup.sh"
   }
 
   app_settings = merge(
@@ -170,7 +170,7 @@ resource "azurerm_linux_web_app" "frontend" {
 
       # Python/Streamlit configuration
       "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
-      "WEBSITES_PORT"                  = "8501"
+      "WEBSITES_PORT"                  = "8000"
     },
     var.frontend_app_settings
   )
