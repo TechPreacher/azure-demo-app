@@ -32,11 +32,11 @@
 
 **⚠️ CRITICAL**: Telemetry environment variables must be in place before any user story can emit telemetry
 
-- [ ] T005 Update infrastructure/modules/app_service/main.tf: add `OTEL_SERVICE_NAME=azure-service-catalog-backend` to backend app_settings
-- [ ] T006 Update infrastructure/modules/app_service/main.tf: add `OTEL_SERVICE_NAME=azure-service-catalog-frontend` to frontend app_settings
-- [ ] T007 Run `terraform plan` to verify infrastructure changes in infrastructure/
-- [ ] T008 Update backend/.env.example with OTEL_SERVICE_NAME and APPLICATIONINSIGHTS_CONNECTION_STRING
-- [ ] T009 Update frontend/.env.example with OTEL_SERVICE_NAME and APPLICATIONINSIGHTS_CONNECTION_STRING
+- [X] T005 Update infrastructure/modules/app_service/main.tf: add `OTEL_SERVICE_NAME=azure-service-catalog-backend` to backend app_settings
+- [X] T006 Update infrastructure/modules/app_service/main.tf: add `OTEL_SERVICE_NAME=azure-service-catalog-frontend` to frontend app_settings
+- [X] T007 Run `terraform plan` to verify infrastructure changes in infrastructure/
+- [X] T008 Update backend/.env.example with OTEL_SERVICE_NAME and APPLICATIONINSIGHTS_CONNECTION_STRING
+- [X] T009 Update frontend/.env.example with OTEL_SERVICE_NAME and APPLICATIONINSIGHTS_CONNECTION_STRING
 
 **Checkpoint**: Foundation ready—user story implementation can begin
 
