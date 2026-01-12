@@ -71,13 +71,13 @@
 
 ### Implementation for User Story 2
 
-- [ ] T018 [US2] Create frontend/src/telemetry.py with `configure_telemetry()` function (same pattern as backend)
-- [ ] T019 [US2] Update frontend/src/app.py: remove ALL OpenCensus imports (lines 24-37)
-- [ ] T020 [US2] Update frontend/src/app.py: import and call `configure_telemetry()` BEFORE streamlit import
-- [ ] T021 [US2] Update frontend/src/app.py: ensure logging uses structured format compatible with OpenTelemetry
-- [ ] T022 [P] [US2] Create frontend/tests/test_telemetry.py with tests for configure_telemetry() function
-- [ ] T023 [US2] Run frontend tests: `cd frontend && uv run pytest tests/test_telemetry.py -v`
-- [ ] T024 [US2] Verify frontend starts locally: `cd frontend && uv run streamlit run src/app.py --server.headless true`
+- [X] T018 [US2] Create frontend/src/telemetry.py with `configure_telemetry()` function (same pattern as backend)
+- [X] T019 [US2] Update frontend/src/app.py: remove ALL OpenCensus imports (lines 24-37)
+- [X] T020 [US2] Update frontend/src/app.py: import and call `configure_telemetry()` BEFORE streamlit import
+- [X] T021 [US2] Update frontend/src/app.py: ensure logging uses structured format compatible with OpenTelemetry
+- [X] T022 [P] [US2] Create frontend/tests/test_telemetry.py with tests for configure_telemetry() function
+- [X] T023 [US2] Run frontend tests: `cd frontend && uv run pytest tests/test_telemetry.py -v`
+- [X] T024 [US2] Verify frontend starts locally: `cd frontend && uv run streamlit run src/app.py --server.headless true`
 
 **Checkpoint**: Frontend telemetry functional—Application Map shows both nodes with connection
 
@@ -91,16 +91,16 @@
 
 ### Implementation for User Story 3
 
-- [ ] T025 [US3] Update backend/src/services/storage.py: add OpenTelemetry tracer import `from opentelemetry import trace`
-- [ ] T026 [US3] Update backend/src/services/storage.py: create module-level tracer `tracer = trace.get_tracer(__name__)`
-- [ ] T027 [US3] Instrument `list_services()` in LocalFileStorageAdapter with span "storage.list_services" and attributes
-- [ ] T028 [US3] Instrument `get_service()` in LocalFileStorageAdapter with span "storage.get_service" and service_name attribute
-- [ ] T029 [US3] Instrument `create_service()` in LocalFileStorageAdapter with span "storage.create_service"
-- [ ] T030 [US3] Instrument `update_service()` in LocalFileStorageAdapter with span "storage.update_service"
-- [ ] T031 [US3] Instrument `delete_service()` in LocalFileStorageAdapter with span "storage.delete_service"
-- [ ] T032 [US3] Instrument AzureBlobStorageAdapter methods with matching spans (list, get, create, update, delete)
-- [ ] T033 [US3] Add span error handling: mark spans as failed on exceptions with error details
-- [ ] T034 [US3] Run full backend test suite: `cd backend && uv run pytest -v`
+- [X] T025 [US3] Update backend/src/services/storage.py: add OpenTelemetry tracer import `from opentelemetry import trace`
+- [X] T026 [US3] Update backend/src/services/storage.py: create module-level tracer `tracer = trace.get_tracer(__name__)`
+- [X] T027 [US3] Instrument `list_services()` in LocalFileStorageAdapter with span "storage.list_services" and attributes
+- [X] T028 [US3] Instrument `get_service()` in LocalFileStorageAdapter with span "storage.get_service" and service_name attribute
+- [X] T029 [US3] Instrument `create_service()` in LocalFileStorageAdapter with span "storage.create_service"
+- [X] T030 [US3] Instrument `update_service()` in LocalFileStorageAdapter with span "storage.update_service"
+- [X] T031 [US3] Instrument `delete_service()` in LocalFileStorageAdapter with span "storage.delete_service"
+- [X] T032 [US3] Instrument AzureBlobStorageAdapter methods with matching spans (list, get, create, update, delete)
+- [X] T033 [US3] Add span error handling: mark spans as failed on exceptions with error details
+- [X] T034 [US3] Run full backend test suite: `cd backend && uv run pytest -v`
 
 **Checkpoint**: Storage spans visible in App Insights traces as children of HTTP request spans
 
@@ -110,8 +110,8 @@
 
 **Purpose**: Documentation, validation, and deployment
 
-- [ ] T035 [P] Update backend/README.md with telemetry configuration section
-- [ ] T036 [P] Update frontend/README.md with telemetry configuration section
+- [X] T035 [P] Update backend/README.md with telemetry configuration section
+- [X] T036 [P] Update frontend/README.md with telemetry configuration section
 - [ ] T037 Apply Terraform changes: `cd infrastructure && terraform apply`
 - [ ] T038 Deploy backend to Azure: `./scripts/deploy.sh` (backend portion)
 - [ ] T039 Deploy frontend to Azure: `./scripts/deploy.sh` (frontend portion)
@@ -119,7 +119,7 @@
 - [ ] T041 Verify Application Map shows two distinct nodes (frontend, backend) in Azure Portal
 - [ ] T042 Verify end-to-end traces from frontend through backend to storage in Transaction Search
 - [ ] T043 Verify exceptions captured in Failures view with full stack traces
-- [ ] T044 Run `grep -r "opencensus" backend/ frontend/` to confirm zero OpenCensus references remain
+- [X] T044 Run `grep -r "opencensus" backend/ frontend/` to confirm zero OpenCensus references remain
 
 ---
 
