@@ -19,10 +19,10 @@
 
 **Purpose**: Remove deprecated dependencies and add new SDK across both projects
 
-- [ ] T001 [P] Update backend/pyproject.toml: remove `opencensus-ext-azure>=1.1.13`, add `azure-monitor-opentelemetry>=1.0.0`
-- [ ] T002 [P] Update frontend/pyproject.toml: remove `opencensus-ext-azure>=1.1.13`, add `azure-monitor-opentelemetry>=1.0.0`
-- [ ] T003 Run `uv sync` in backend/ to update lock file and install dependencies
-- [ ] T004 Run `uv sync` in frontend/ to update lock file and install dependencies
+- [X] T001 [P] Update backend/pyproject.toml: remove `opencensus-ext-azure>=1.1.13`, add `azure-monitor-opentelemetry>=1.0.0`
+- [X] T002 [P] Update frontend/pyproject.toml: remove `opencensus-ext-azure>=1.1.13`, add `azure-monitor-opentelemetry>=1.0.0`
+- [X] T003 Run `uv sync` in backend/ to update lock file and install dependencies
+- [X] T004 Run `uv sync` in frontend/ to update lock file and install dependencies
 
 ---
 
