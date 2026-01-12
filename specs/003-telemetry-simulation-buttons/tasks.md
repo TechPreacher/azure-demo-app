@@ -26,9 +26,9 @@
 
 **Purpose**: Shared components that both user stories depend on
 
-- [ ] T001 Create simulation response models in backend/src/models/simulation.py
-- [ ] T002 Create simulation router module skeleton in backend/src/api/simulation.py
-- [ ] T003 Register simulation router in backend/src/main.py
+- [X] T001 Create simulation response models in backend/src/models/simulation.py
+- [X] T002 Create simulation router module skeleton in backend/src/api/simulation.py
+- [X] T003 Register simulation router in backend/src/main.py
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
