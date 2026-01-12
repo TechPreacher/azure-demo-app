@@ -251,6 +251,20 @@ def main() -> None:
         # Display filters in sidebar
         selected_category, search_term = display_filters(categories=categories)
 
+        # Telemetry Simulation Section
+        st.markdown("---")
+        st.subheader("🧪 Telemetry Simulation")
+        st.caption("Test Application Insights integration")
+
+        if st.button("⏱️ Simulate Latency", help="Triggers a 10-20 second delay"):
+            with st.spinner("Simulating latency (10-20 seconds)..."):
+                try:
+                    client = get_api_client()
+                    result = client.simulate_latency()
+                    st.success(f"✅ Completed in {result['delay_seconds']} seconds")
+                except APIError as e:
+                    st.error(f"❌ Failed: {e}")
+
     # Main content area
     st.markdown("---")
 

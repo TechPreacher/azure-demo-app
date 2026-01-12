@@ -42,9 +42,9 @@
 
 ### Implementation for User Story 1
 
-- [ ] T004 [US1] Implement POST /api/v1/simulate/latency endpoint with async sleep in backend/src/api/simulation.py
-- [ ] T005 [US1] Add simulate_latency() method to API client in frontend/src/api_client.py
-- [ ] T006 [US1] Add "Latency" button with spinner to sidebar in frontend/src/app.py
+- [X] T004 [US1] Implement POST /api/v1/simulate/latency endpoint with async sleep in backend/src/api/simulation.py
+- [X] T005 [US1] Add simulate_latency() method to API client in frontend/src/api_client.py
+- [X] T006 [US1] Add "Latency" button with spinner to sidebar in frontend/src/app.py
 
 **Checkpoint**: Latency simulation fully functional and independently testable
 

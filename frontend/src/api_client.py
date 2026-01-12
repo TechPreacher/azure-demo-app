@@ -265,6 +265,31 @@ class APIClient:
         """Close the HTTP client."""
         self._client.close()
 
+    def simulate_latency(self) -> dict[str, Any]:
+        """Trigger latency simulation endpoint.
+
+        Calls the backend simulation endpoint which introduces a random
+        delay between 10 and 20 seconds.
+
+        Returns:
+            Response with status, delay_seconds, and message.
+
+        Raises:
+            APIError: If request fails or times out.
+        """
+        try:
+            response = self._client.post(
+                self._get_url("simulate/latency"),
+                timeout=30.0,  # Extended timeout for 10-20s delay
+            )
+            return self._handle_response(response)
+        except httpx.TimeoutException as e:
+            logger.error(f"Latency simulation timed out: {e}")
+            raise APIError("Latency simulation timed out") from e
+        except httpx.RequestError as e:
+            logger.error(f"Failed to simulate latency: {e}")
+            raise APIError(f"Cannot connect to API: {e}") from e
+
     def __enter__(self) -> "APIClient":
         """Context manager entry."""
         return self
