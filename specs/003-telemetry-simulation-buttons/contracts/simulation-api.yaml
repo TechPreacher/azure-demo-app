@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Telemetry Simulation API
+  description: Endpoints for simulating telemetry scenarios (latency and errors)
+  version: 1.0.0
+
+servers:
+  - url: /api/v1
+    description: API v1 prefix
+
+paths:
+  /simulate/latency:
+    post:
+      operationId: simulateLatency
+      summary: Simulate high latency response
+      description: |
+        Introduces a random delay between 10 and 20 seconds before responding.
+        Used for testing timeout handling and Application Insights duration tracking.
+      tags:
+        - Simulation
+      responses:
+        '200':
+          description: Latency simulation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatencySimulationResponse'
+              example:
+                status: completed
+                delay_seconds: 15.32
+                message: Latency simulation completed successfully
+
+  /simulate/error:
+    post:
+      operationId: simulateError
+      summary: Simulate server error response
+      description: |
+        Returns HTTP 500 Internal Server Error with a randomly selected realistic
+        error message. Used for testing error handling and Application Insights Failures view.
+      tags:
+        - Simulation
+      responses:
+        '500':
+          description: Simulated internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                detail:
+                  message: Database connection pool exhausted after 10 retries
+                  error_id: 550e8400-e29b-41d4-a716-446655440000
+                  timestamp: '2026-01-12T10:30:00Z'
+
+components:
+  schemas:
+    LatencySimulationResponse:
+      type: object
+      required:
+        - status
+        - delay_seconds
+        - message
+      properties:
+        status:
+          type: string
+          description: Operation status
+          enum:
+            - completed
+          example: completed
+        delay_seconds:
+          type: number
+          format: float
+          minimum: 10.0
+          maximum: 20.0
+          description: Actual delay applied in seconds
+          example: 15.32
+        message:
+          type: string
+          description: Human-readable completion message
+          example: Latency simulation completed successfully
+
+    ErrorSimulationDetail:
+      type: object
+      required:
+        - message
+        - error_id
+        - timestamp
+      properties:
+        message:
+          type: string
+          description: Randomly selected realistic error message
+          example: Database connection pool exhausted after 10 retries
+        error_id:
+          type: string
+          format: uuid
+          description: Unique identifier for correlation in Application Insights
+          example: 550e8400-e29b-41d4-a716-446655440000
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp when error was generated
+          example: '2026-01-12T10:30:00Z'
+
+    ErrorResponse:
+      type: object
+      required:
+        - detail
+      properties:
+        detail:
+          $ref: '#/components/schemas/ErrorSimulationDetail'
+
+  tags:
+    - name: Simulation
+      description: Telemetry simulation endpoints for testing Application Insights integration
